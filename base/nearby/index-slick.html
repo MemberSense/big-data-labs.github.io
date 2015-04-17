@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<html ng-app="baseApp">
+    <head>
+        
+        <link rel="stylesheet" type="text/css" href="../bower_components/slick-carousel/slick/slick.css" />
+        <link rel="stylesheet" type="text/css" href="../bower_components/slick-carousel/slick/slick-theme.css" />
+        
+        <!--<link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick.css" />
+        <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />-->
+        <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/css/style.css" />
+        
+
+</head>
+    <body>
+        
+     <section id="features" class="blue">
+      <div class="content">
+          <div><strong>Google XML Agenda Feeds</strong></div>
+        <div class="slider slider-for" id="agendas">
+        
+        </div>
+        <br>
+        <br>
+        <br>
+        <div><strong>Google XML Members Feeds</strong></div>
+        <div class="slider slider-for" id="members">
+        
+        </div>
+    <!--<div class="slider slider-nav">
+        
+    </div>-->
+    </div>
+    </section>
+
+        <script type="application/javascript">window.jQuery || 
+        document.write(unescape('%3Cscript src="../js/jquery.min.js"%3E%3C/script%3E'))</script>
+        <script type="text/javascript" src="../js/config.js"></script>
+        <script type="text/javascript" src="../bower_components/slick-carousel/slick/slick.min.js"></script>
+       
+
+<!-- From slider.html -->
+<script type="text/javascript">
+        function convertXmlGoogleFeed(xmlData) {
+            var data = {},
+            channel = xmlData.find("channel");
+            data.title = channel.find("title");
+            data.link = channel.find("link");
+            data.description = channel.find("description");
+            data.kind = 'Google XML Feeds';
+            
+            var items = channel.find("item");
+            
+            data.items = [];
+            
+            $.each(items, function(i, xmlitem) {
+                
+                var item = {};
+                data.items.push(item);
+                
+                item.id = i;
+                item.kind = 'Google XML Feeds';
+                item.title = $(xmlitem).find("title").text();
+                item.description = $(xmlitem).find("description").text();
+                item.pubDate = $(xmlitem).find("pubDate").text();
+                item.author = $(xmlitem).find("author").text();
+            });
+            return data;
+            
+        }
+    var html = [], j=0;
+    
+    $(document).ready(function () {
+        
+    /*
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        speed: 500,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        speed: 500,
+        asNavFor: '.slider-for',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true,
+        slide: 'div'
+    });
+    */
+    $('#agendas').slick(/*{
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 3,
+      centerMode: true,
+      variableWidth: true,
+      adaptiveHeight: true
+    }*/);
+    $('#members').slick(/*{
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 3,
+      centerMode: true,
+      variableWidth: true,
+      adaptiveHeight: true
+    }*/);
+
+        
+        $.each(feedOptions, function(i, feed) {
+            $.ajax({
+                url:feed.url,
+                dataType:"xml",
+                success: function(feedData) {
+                    var jsonData;
+                    jsonData = convertXmlGoogleFeed($(feedData));
+                    console.log(jsonData);
+                    xmlfeedlen = jsonData.items.length;
+                    
+                    for(var i=0; i < xmlfeedlen; i++) {
+                        var item = jsonData.items[i];
+                        // console.log(item);
+                        html[++j] = '<div><h3>';
+                        html[++j] = '<div>Slide: #'+(i+1)+'</div>';
+                        html[++j] = '<div class="title"><strong style="color:green">Title: </strong>'+item.title.substring(0, 20)+'...</div>';
+                        html[++j] = '<div class="author"><strong  style="color:green">Author: </strong>'+item.author+'</div>';
+                        html[++j] = '<div class="description"><strong  style="color:green">Description: </strong>'+item.description.substring(0,25)+'...</div>';
+                        html[++j] = '<div class="pubDate"><strong  style="color:green">Publication Date: </strong>'+item.pubDate+'</div>';
+                        html[++j] = '</div></h3>';
+                        // $('.slider-for').slick('slickAdd',html.join(' '));
+                        // $('.slider-nav').slick('slickAdd','<div class="author">'+item.author+'</div>');
+                    }
+                    $(feed.slickdiv).slick('slickAdd',html.join(' '));
+                    j=0;
+                    /*
+                    console.log($("#" + feed.slickdiv));
+                    console.log(html.join(' '));
+                    */
+                    
+                   
+                    
+                }
+                
+            });
+            
+        });
+    });
+</script>
+
+
+    </body>
+</html>

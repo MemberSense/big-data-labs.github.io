@@ -1,0 +1,63 @@
+<div 
+    data-role="view"
+    data-stretch="true"
+    data-model="viewModel"
+    
+    id="smartSlideshow"
+    class="smartSlideshow widgets"
+    style="display: block;"
+    >
+        <div 
+            class="slideshowContainer"
+            id="slideshowContainer"
+            style="min-height: 304px;"
+            
+            data-role="scrollview" 
+            data-source="ds" 
+            data-template="tmpl-smartslideshow"
+            data-items-per-page="1"
+            >
+        </div>
+
+</div>
+
+<script type="text/x-kendo-template" id="tmpl-smartslideshow">
+    <div class="slideContainer">
+        # for (var i = 0; i < data.length; i++) { #
+            # var item = data[i]; #
+            <div class="slide-class active">
+                <img class="slide-image lazyLarge grab-cursor" src="#= item.image #" alt="">
+            </div>
+        # } #
+    </div>
+</script>
+
+<script type="text/javascript">
+/*    var templateContent = $("#tmpl-smartslideshow").html();
+    var template = kendo.template(templateContent);
+
+    //Create some dummy data
+    var data = [
+        { name: "John", isAdmin: false },
+        { name: "Alex", isAdmin: true }
+    ];
+
+    var result = kendo.render(template, data); //render the template
+
+    $("#users").html(result); //append the result to the page
+    */
+    
+    var ds = new kendo.data.DataSource({
+        data: [
+            {title:"Item 1", desc:"Description 1"},
+            {title:"Item 2", desc:"Description 2"},
+            {title:"Item 3", desc:"Description 3"},
+            {title:"Item 4", desc:"Description 4"},
+            {title:"Item 5", desc:"Description 5"},
+            {title:"Item 6", desc:"Description 6"},
+            {title:"Item 7", desc:"Description 7"}
+        ]
+    });
+
+    var app = new kendo.mobile.Application();
+</script>

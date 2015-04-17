@@ -1,0 +1,309 @@
+
+/* Not sure if this is needed.  Delete after Aug 1, 2014.
+label {
+    display: inline;
+}
+*/
+body {
+  background-color: #f9f9f9;
+}
+.modal {
+  background:rgba(255,255,255,0.9);
+}
+.regular-checkbox {
+    display: none;
+}
+
+.regular-checkbox + label {
+    color: #4f93b0;
+    color: #333;
+    /* 0168ab
+    border: 1px solid #eee;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    */
+    padding: 6px 10px 0 30px;
+    float:left;
+    cursor: pointer;
+    font-size: 10.5pt;
+    background: url(../img/icons/checkbox-blue.png) no-repeat;
+    background-position: 0px 4px;
+    background-size: 22px 22px;
+    min-height:26px;
+}
+.regular-checkbox:checked + label {
+    background: url(../img/icons/checkbox-blue-on.png) no-repeat;
+    /* background-color: #dfeefb; */
+    background-position: 0px 4px;
+    background-size: 22px 22px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.regular-checkbox:checked + label:after {
+    content: '\2714';
+    font-size: 14px;
+    
+    position: absolute;
+    top: 4px;
+    left: 0px;
+    height:22px;
+    text-align: center;
+    color: #fff;
+    background-color: #33f;
+    width:22px;
+}
+
+.regular-checkbox:disabled + label {
+    color: #777;
+    cursor: default;
+}
+
+#shovelReadyLink {
+    display:none; /* Temp */
+}
+.checkbox-shovel-ready:checked + label:after {
+    background-color: purple;
+}
+.checkbox-buildings:checked + label:after {
+    background-color: #7cbd41;
+}
+.checkbox-manufacturers:checked + label:after {
+    background-color: #4b8df7;
+}
+.checkbox-international:checked + label:after {
+    background-color: #f1a350;
+}
+.checkbox-latlononly:checked + label:after {
+    background-color: #777;
+}
+
+.expandedDiv {
+  margin-top:10px;
+  border-bottom:1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+#rightCornerIcons > div {
+  float:left;
+  padding-right:8px;
+  cursor:pointer; 
+}
+
+#headerNav
+{
+    /*overflow: hidden;*/
+    border-bottom: 1px solid #ccc;
+    padding: 12px 10px 2px 28px;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    min-height: 64px;
+    z-index: 9; /* less than 10, to reside behind ionic modal popup */
+    box-shadow: 10px 3px 15px rgba(0,0,0,.55);
+}
+.headerNavTransparent
+{
+  background: rgba(255,255,255,.75);
+}
+.headerNavOpaque
+{
+  background: #fff;
+}
+#headerNav .items
+{
+    float: left;
+    padding-top: 18px;
+    list-style: none;
+}
+#headerNav .item
+{
+    float: left;
+    margin-right: 22px;
+    padding-bottom: 8px;
+}
+#headerNav .item a
+{
+    text-transform: uppercase;
+    color: #777;
+    font-family: 'Roboto Slab' , sans-serif;
+    font-weight: 700;
+    font-size: 10.5pt;
+    text-decoration: none;
+    text-shadow: 0 0 6px #fff;
+}
+#headerNav .item a:hover
+{
+    color: #333;
+}
+@media (max-width:800px){ /* 800 and less */
+  #headerNav .items { display: none; }
+}
+
+#mapToggle
+{
+    height: 30px;
+    color: #fff;
+    background: #555;
+    overflow: visible;
+}
+#mapToggle li
+{
+    float: left;
+    font-size: 10pt;
+    padding: 4px 8px 4px 8px;
+    height: 22px;
+    line-height: 21px;
+}
+#mapToggle li:hover
+{
+    background: #ccc;
+    cursor: pointer;
+}
+#mapToggle li.active
+{
+    background: #888;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.adminMessage { display: none; }
+.slideshowContainer { background-color: #fff; }
+
+.slideContainer { min-height: 600px; max-height:600px; }
+
+#smartDetail {
+   display: none;
+   background: #fff;
+   padding: 0 14px 0;
+   /*
+   position: absolute;
+   left: 50%;
+   top: 0px;
+   z-index: 10000;
+   */
+   overflow: auto; 
+}
+
+/* Remove if we remove Kendo */
+.km-pages li:hover { cursor: pointer; }
+ol.km-pages { margin-left:40px; }
+
+.navigation {
+  padding: 5px 10px 0;
+  font-family: Raleway,sans-serif;
+  background: #8c8c8c; /* Grey   #486ca5; #8a7967; */
+  background: #7e3c2c; /* Georgia clay dark */
+  background: #a65a40; /* lite */
+  background: #986855;
+  background: #9c6f60; /* drab */
+  background: #926763; /* redder */
+  background: #b88d66; /* morning */
+  background: #a27c5a;
+  background: #9c6f60;
+  background: #5970b4; /* blue */
+  box-shadow: rgba(0, 0, 0, 0.54902) 10px 3px 15px 0px;
+}
+.navigation-bottom { }
+
+.headerLogo {
+  float:left;max-width:115px;margin:2px 40px 0 0
+}
+#headerTitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 9px 9px 9px;
+  color: #fff;
+  font-family: Raleway,sans-serif;
+}
+
+.sectionBox {
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #dfeefb;
+}
+.sectionTitle {
+  font-size:16pt;
+  font-weight: bold;
+  color:#eee;
+  display: inline;
+  display:none;
+}
+
+.sectionStatus {
+  font-size: 11pt;
+  overflow: hidden;
+  font-family: calibri, helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+}
+.setLocation {
+  margin-bottom: 8px;
+}
+.sectionContent {
+  padding:10px 10px 10px 14px;
+}
+.fieldtitle {
+  min-width: 100px;
+  display:inline-block;
+}
+
+.smartGallery { margin:20px; }
+.menuIcon { margin-right:5px; }
+.slide-text { left:58%; right:5%; }
+.slide-title {
+    font-family: Raleway,sans-serif;
+    font-size: 24px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+
+/*
+Reactivate.  Need to figure out why script in nearby/index.html does not then show.
+#allforgoodSettings {
+  display:none;
+}
+#fbSettings {
+  display:none;
+}
+*/
+
+/* to do: Apply to a surrounding div instead. */
+.imageElement {max-width:550px;float:left;}
+
+#listContainer {
+  /* margin-left: 50%; */
+}
+
+#mySearch {
+    position:fixed;
+    bottom:0; /* Required for scrolling with list "After Map" */
+    top:54px;
+    margin-top: 40px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: rgba(255,255,255,.90);
+}
+@media (max-width:800px){ /* 800 and less */
+  .slide-text { left:20px; right:20px; }
+  .smartList { margin-left: 0px; }
+  #mySearch { padding: 20px; }
+  #headerNav {
+    border-bottom: 1px solid #ccc;
+    padding: 12px 10px 2px 28px;
+    min-height: 32px;
+  }
+  .headerLogo {
+    max-width:85px;margin-top: -4px;
+  }
+  #verticleMenu {
+    display: none;
+  }
+}
+
+.toggleCalendar {display:none;}

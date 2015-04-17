@@ -1,0 +1,195 @@
+<div id="consumerProductsDiv" style="position:relative" class="user-4">
+        <div style="display:none;float:right" class="button smallButton addButton user-4">+</div>
+        <input id="consumerProductsCB" type="checkbox" class="regular-checkbox checkbox-shovel-ready">
+        <label for="consumerProductsCB">Local Products &amp; Produce</label>
+        <div style="clear:both"></div>
+</div>
+
+<div id="manufacturersPanel" style="position:relative">
+    <div style="display:none;float:right" class="button smallButton addButton addManufacturer user-4">+</div>
+    <input id="manufacturersCB" type="checkbox" class="regular-checkbox checkbox-manufacturers">
+    <label for="manufacturersCB">Manufacturers</label>
+</div>
+<div style="clear:both"></div>
+
+<div style="position:relative">
+    <div style="display:none;float:right" class="button smallButton addButton addInternational user-4">+</div>
+    <input id="internationalCB" type="checkbox" class="regular-checkbox checkbox-international">
+    <label for="internationalCB">International</label>
+</div>
+<div style="clear:both"></div>
+
+<div class="sectionBox" id="sectionManufacturers" style="display:none;">
+    <div class="sectionContent" style="overflow:auto; margin-top:8px">
+
+        <div style="margin-bottom:8px">
+            <div style="float:left"><b>Type of Production</b></div>
+            <span class='nowrap' style="float:left;margin-bottom:4px">Applies to Manufactures &amp; International</span>
+        </div>
+        <div style="clear:both"></div>
+
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_0" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$0"
+            value="3364,481,4881" />
+            <label for="ctl00_ContentPlaceHolder1_CategoriesCBL_0">Aerospace</label>
+        </div>
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_1" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$1"
+            value="325411,3391" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_1">Biomedical</label>
+        </div>
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_2" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$2"
+            value="322" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_2">Paper</label>
+        </div>
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_3" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$3"
+            value="321" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_3">Wood Products</label>
+        </div>
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_4" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$4"
+            value="334,335" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_4">Computers and
+                Electronics</label>
+        </div>
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_5" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$5"
+            value="3361,3362,3363" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_5">Motor
+                Vehicles</label>
+        </div>
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_6" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$6"
+            value="337" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_6">Furniture</label>
+        </div>
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_7" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$7"
+            value="323" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_7">Printing</label>
+        </div>
+        <div class="typeCB" style="position:relative;clear:both">
+            <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_8" type="checkbox" class="regular-checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$8"
+            value="311" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_8">Food</label>
+        </div>
+    </div>
+
+    <div class="list" style="margin-bottom:10px">
+      <label class="item item-input">
+        <span class="input-label">NAICS<br />
+        <a href="http://www.naics.com/sic-codes-counts-division/?minsic=20&maxsic=39" target="naics">Lookup</a>
+        </span>
+        <textarea placeholder="Separate NAICS codes with commas." type="text" id="naicsTB" maxlength="100"></textarea>
+      </label>
+    </div>
+
+</div>
+
+<div class="sectionBox" id="sectionInternational" style="display:none;">
+    <div class="sectionContent" style="overflow:auto; margin-top:8px">
+       To search by country, visit our&nbsp;
+       <a href='http://georgiafacts.org/international' target='FullSearch'>Full Search</a>
+    </div>
+</div>
+
+<div id="availBuildDiv">
+        <div style="position:relative">
+                <div style="display:none;float:right" class="button smallButton addButton addBuilding user-4">+</div>
+                <input id="buildingsCB" type="checkbox" class="regular-checkbox checkbox-buildings">
+                <label for="buildingsCB">Available Buildings</label>
+                <div style="clear:both"></div>
+        </div>
+
+        <div id="sectionDimension" style="display:none">
+            <div style="font-size:10pt">Excludes Atlanta buildings less than <span class='nowrap'>20,000 sq ft.</span></div>
+            <div class="sectionBox">
+
+                <div class="sectionContent">
+                    <div class="fieldtitle">
+                    Minimum Size:</div>
+                    <input name="minsize" type="text" maxlength="10" id="minsize" style="width:100px;display:inline;margin-bottom:5px" />
+                    sq feet<br />
+                    <span class="fieldtitle">Maximum Size:</span>
+                    <input name="maxsize" type="text" maxlength="10" id="maxsize" style="width:100px;display:inline;margin-bottom:5px" />
+                    sq feet<br />
+                    <span class="fieldtitle">Ceiling Height:&nbsp;</span>
+                    <input name="ceiling" type="text" maxlength="4" id="ceiling" style="width:100px; display:inline;margin-bottom:5px" />
+                    feet<br />
+                </div>
+            </div>
+        </div>
+</div>
+
+<div id="shovelReadyDiv" style="position:relative" class="user-9">
+        <div style="display:none;float:right" class="button smallButton addButton addShovelReady user-9">+</div>
+        <input id="shovelReadyCB" type="checkbox" class="regular-checkbox checkbox-shovel-ready">
+        <label for="shovelReadyCB">Shovel Ready Sites</label>
+</div>
+<div style="clear:both;"></div>
+
+<!-- Why does this not work here?  But it did in Slider.html
+style="display:none;" class="user-9" -->
+<div id="sliderOptions" style="overflow:hidden">
+    <div id="fbSettings" style="clear:both" class="user-9">
+        <div style="float:left">
+            <div class="optionAround placesSelect" style="position:relative">
+                <input id="placesCB" type="checkbox" class="regular-checkbox">
+                <label for="placesCB">Nearby Places (FB)</label>
+            </div>
+        </div>
+        <div style="float:right" class="slider-frame">
+          <span class="slider-button">OFF</span>
+        </div>
+    </div>
+
+    <div id="allforgoodSettings" style="clear:both" class="user-9">
+        <div style="float:left">
+            
+            <div class="allforgoodSelect" style="position:relative">
+                <input id="allforgoodCB" type="checkbox" class="regular-checkbox">
+                <label for="allforgoodCB">Volunteer Projects (AFG)</label>
+            </div>
+
+        </div>
+        <div style="float:right" class="slider-frame">
+          <span class="slider-button">OFF</span>
+        </div>
+    </div>
+
+    <div id="homeHistorySettings" style="clear:both" class="user-9">
+        <div style="float:left">
+            
+            <div class="homeHistorySelect" style="position:relative">
+                <input id="homeHistoryCB" type="checkbox" class="regular-checkbox" />
+                <label for="homeHistoryCB">Home Histories</label>
+            </div>
+
+        </div>
+        <div style="float:right" class="slider-frame">
+          <span class="slider-button">OFF</span>
+        </div>
+    </div>
+
+    <div id="stateParkSettings" style="clear:both" class="user-9">
+        <div style="float:left">
+            
+            <div class="stateParkSelect" style="position:relative">
+                <input id="stateParkCB" type="checkbox" class="regular-checkbox" />
+                <label for="stateParkCB">State Parks</label>
+            </div>
+
+        </div>
+        <div style="float:right" class="slider-frame">
+          <span class="slider-button">OFF</span>
+        </div>
+    </div>
+
+</div>
+<div style="clear:both"></div>
+
+<div style="position:relative;overflow:hidden;margin-top:12px;padding-top:4px">
+
+    <div style="position:relative">
+        <input id="latLonOnlyCB" type="checkbox" class="regular-checkbox checkbox-latlononly" />
+        <label for="latLonOnlyCB">Only listings with map points.</label>
+        <br /><br />
+    </div>
+</div>
+
+
+

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html ng-app="baseApp">
+    <head>
+        <title>Georgia Location Explorer</title>
+        <link rel="stylesheet" href="../bower_components/bootstrap-css/css/bootstrap.css" />
+        <link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.css">
+        <!-- angular-ui/ui-calendar -->
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/jquery-ui/ui/jquery-ui.js"></script>
+        <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-ui-calendar/src/calendar.js"></script>
+        <script type="text/javascript" src="../bower_components/fullcalendar/dist/fullcalendar.js"></script>
+        <script type="text/javascript" src="../bower_components/fullcalendar/dist/gcal.js"></script>
+        <script type="text/javascript" src="../js/nearbyapp.js"></script>
+        
+</head>
+    <body>
+        
+        <div id="smartCalendar" ng-controller="CalendarCtrl">
+        Smart Calendar
+            <div class="calendar" ui-calendar="uiConfig.calendar"  ng-model="eventSources"></div>
+        </div>
+    </body>
+</html>

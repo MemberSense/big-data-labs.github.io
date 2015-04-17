@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html>
+<html ng-app="baseApp">
+    <head>
+        <title>Georgia Location Explorer</title>
+        <link rel="shortcut icon" type="image/png" href="/base/location/usa/ga/img/shortcut.ico" />
+
+        <link href="../fonts/font-awesome-4.1.0/css/font-awesome.min.css" media="all" type="text/css" rel="stylesheet">
+
+
+
+        <link rel="stylesheet" type="text/css" href="/base/css/base.css" />
+        <link rel="stylesheet" type="text/css" href="/base/css/smartWidget.1.0.css" />
+        <link rel="stylesheet" href="../fonts/entypo/entypo.css" id="style-resource-2" />
+      
+       
+        <link rel="stylesheet" type="text/css" href="../css/nearby.css" />
+        <link rel="stylesheet" href="http://code.ionicframework.com/1.0.0-beta.11/css/ionic.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Bing Map -->
+        <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+        <!-- jquery -->
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="application/javascript">window.jQuery || 
+        document.write(unescape('%3Cscript src="../js/jquery.min.js"%3E%3C/script%3E'))</script>
+        
+        <script type="text/javascript" src="http://code.ionicframework.com/1.0.0-beta.11/js/ionic.bundle.js"></script>
+
+        <!-- history.js -->
+        <script>if ( typeof window.JSON === 'undefined' ) { document.write('<script src="../js/json2.js"><\/script>'); }</script>
+        <script src="../js/history.js"></script>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-route.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-resource.js"></script>
+        <script type="text/javascript" src="../js/angular/app.js"></script>
+        <script type="text/javascript" src="../js/angular/controllers.js"></script>
+        <script type="text/javascript" src="../js/angular/filters.js"></script>
+        <script type="text/javascript" src="../js/angular/services.js"></script>
+
+        <script type="text/javascript">
+            $("a").data("role", "none");
+            $(document).bind("mobileinit", function() {
+                $.extend(  $.mobile , {
+                    //autoInitializePage: false
+                    pushStateEnabled: false
+                    //, ignoreContentEnabled: true
+                    , keepNative: "select,input#keywordsTB,input#shovelReadyCB,input#buildingsCB,input#manufacturersCB,input#internationalCB,input#latLonOnlyCB,input#latLonOnlyCB,input#latLonOnlyCB,input#communityFeaturesCB,input#demographicsCB,label,div,ul,li,a,span"
+                })
+                //$.mobile.keepNative = "select,input, div, ul, li, a, span";
+                 $.mobile.ajaxEnabled = false;
+            });
+            
+        </script>
+        
+        <!-- slabed menu -->
+        <link rel="stylesheet" href="../menu/accordion/styles.css">
+        <script src="../menu/accordion/script.js"></script>
+        
+        <!-- angular-ui/ui-calendar -->
+        <link rel="stylesheet" href="../bower_components/bootstrap-css/css/bootstrap.css" />
+        <link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.css">
+        <script type="text/javascript" src="../bower_components/jquery-ui/ui/jquery-ui.js"></script>
+        <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-ui-calendar/src/calendar.js"></script>
+        <script type="text/javascript" src="../bower_components/fullcalendar/dist/fullcalendar.js"></script>
+        <script type="text/javascript" src="../bower_components/fullcalendar/dist/gcal.js"></script>
+        
+</head>
+    <body>
+        
+        <div class="navigation" style="display:none">
+          <div id="headerTitle">Georgia Economic Development</div>
+        </div>
+        <div id="headerNav" class="headerNavTransparent">
+            <img src="/base/location/usa/ga/img/logo-sm.png" class="headerLogo">
+            
+            <div class='smartmenu smartmenu-responsive'>
+            <ul>
+               <li class='active has-sub'><a href='#'><span>Georgia Products</span></a>
+                    <ul>
+                        <!--
+                        <li><a href='#'><span>Consumer Products</span></a></li>
+                        -->
+                        <li><a href='?go=manufacturers'><span>Manufacturing</span></a></li>
+                        <!--
+                        <li><a href='#'><span>Locally Grown</span></a></li>
+                        -->
+                        <li class='last'><a href='?go=international'><span>International Headquarters</span></a></li>
+                     </ul>
+               </li>
+               <li class="has-sub"><a href='#'><span>locations</span></a>
+                    <ul>
+                        <li><a href='?go=buildings'><span>available buildings</span></a></li>
+                        <li><a href='http://www.georgia.org/business-resources/available-industrial-grad-sites/'><span>shovel ready sites</span></a></li>
+                        <li><a href='?go=places'><span>facebook places</span></a></li>
+                     </ul>
+
+               </li>
+               <li><a href='http://georgiafacts.org/counties?mode=m'><span>communities</span></a></li>
+               <li class='has-sub last'><a href='#'><span>volunteer</span></a>
+                    <ul>
+                        <li><a href='?go=allforgood'><span>find projects</span></a></li>
+                     </ul>
+
+               </li>
+            </ul>
+            </div>
+            <div style="clear:both"></div>
+            <!--
+            <ul class="items">
+              <li class="item">
+                <a id="headerLinkShovelReady" href="./?go=products">consumer Products</a>
+              </li>
+              <li class="item">
+                <a href="./?go=manufacturers">manufacturers</a>
+              </li>
+              <li class="item">
+                <a href="./?go=international">international</a>
+              </li>
+              <li class="item">
+                <a id="headerLinkBuildings" href="./?go=buildings">find buildings</a>
+              </li>
+              <li class="item">
+                <a id="headerLinkShovelReady" href="./?go=shovel-ready">shovel ready</a>
+              </li>
+              <li class="item">
+                <a href="/net/location/cities.aspx?mode=p">communities</a>
+            </li>
+
+          </ul>
+          -->
+
+          <div id="rightCornerIcons" style="float:right;margin-top:2px">
+            <div id="showMessage" class="menuRight entypo-info-circled" style="font-size:18px;padding-top:3px;"></div>
+            <div id="showSettings" style="font-size:20px;padding-top:2px" class="showSettings menuRight entypo-cog"></div>
+          </div>
+
+        </div>
+
+        <div id="iconHolder" style="display:none; float:left; min-width:28px">
+            <div style="font-size: 16pt; margin:14px 4px 0 0; color:#fff"><i class="entypo-menu"></i></div> 
+        </div>
+
+        
+
+        <div id="content">
+             
+            <div id="smartWidget">
+            
+                <!-- popups -->
+                <div style="position:fixed;z-index:99999;padding-top:80px;">
+                    <div id="modalPopupBkgd" style="display:none; position: fixed; left: 0px; top: 0px; width: 1229px; height: 2664px; " class="modalBackground"></div>
+
+                    <div id="settingsHolder"></div>
+                    <div id="moreOptions" style="display:none;">
+                        <div id="moreOptionsBox" class="modalBox">
+                            <div style="margin-bottom:8px; font-size:11pt">
+                                <b>Desktop Version</b><br>
+                                Our Desktop Version provides additional filters,  
+                                but is not formatted for mobile devices and tablets.
+                            </div>
+                            <div style="float: left; margin-right: 4px">
+                                <a href="#" id="fullWebsiteContinueLink" class="button">Continue</a></div>
+                            <div>
+                                <a href="#" id="fullWebsiteCancelLink" class="button">Cancel</a></div>
+                            <div style="clear: both"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /popups -->
+
+                <div id="footerBar" class="showOnLoad">
+                    <ul id="mapToggle" style="display: none;">
+                        <li class="esriLink">Esri Map</li>      
+                        <li class="googleLink active">Google Map</li>
+                        <li class="googleClusterLink">Google Cluster</li>
+                        <li class="bingLink">Bing Map</li>
+                        <li class="pdfLink" style="display:none;">PDF</li>
+                        <li class="bingStaticLink" style="display:none;">Static Map</li>
+                    </ul>
+                </div>
+                
+                <div id="smartSlideshow"></div>
+                
+                <div id="smartGallery"></div>
+                <div id="smartCalendar" ng-controller="CalendarCtrl">
+                    <div class="calendar" ui-calendar="uiConfig.calendar"  ng-model="eventSources"></div>
+                </div>
+                <!-- To do: Move scrolleranchor into .js and also remove from state/index.html -->
+                <div id="scrolleranchor"></div>
+
+                <div id="smartMap"></div>
+                
+                
+                
+
+                <!-- To do: change to use background to prevent loading -->
+                <img src="../location/usa/ga/img/consumer.jpg" style="display:none;width:100%;position:fixed" class="hideOnLoad" />
+
+                <!-- search -->
+                <div id="mySearchPH"></div>
+                <div id="mySearch" class="basicSearch" style="z-index:1;max-width:300px">
+                    <form>
+                        <div id="searchContainer">
+
+                            <div style="margin:0 8px 8px 0;position:relative;">
+                                <a class="searchButton goButton searchIcon entypo-search" href="#">&nbsp;</a>
+                                <input type="text" value="" id="keywordsTB" onblur="SearchFormTextCheck(this, 0)" onfocus="SearchFormTextCheck(this, 1)" maxlength="200" style="width:90%; max-width:250px; height:30px; padding-left: 32px;" onkeypress="return SearchEnter(event);" /> 
+                            </div>
+
+                            <div id="locationSectionBox" style="padding-bottom:0px; margin-bottom:10px"></div>
+                            <div style="clear:both"></div>
+
+                            <!-- Categories -->
+                            <div id="filterSection"></div>
+                            
+                        </div>
+
+                        </form>
+                    </div>
+                <!-- /search -->
+
+                <div id="smartDetailContainer" style="position: relative;">
+                   <div id="smartDetail" style="display:none;"></div>
+                   <div id="overlayDetail" class="overlay">Loading Details...</div>
+                </div>
+
+                <!-- driving directions -->
+                <div id="smartDirections" style="display:none;position:relative;">
+                    <div class="closeIcon closeDirectionMap entypo-cancel-squared entypo-cancel-squared" style="position:absolute;right:10px;margin:8px"></div>
+                    <div id="smartDirectionsDisplay" style="width:100%;background-color:aliceblue;">
+                        <div style="padding:10px">
+                            <p style="font-size:18pt">Total Distance: <span id="total"></span></p>
+                        </div>
+                    </div>
+                    <div id="smartDirectionsMap" style="width:100%; min-height:500px"></div>
+                    <div style="clear:both"></div>
+                </div>
+                <!-- /driving directions -->
+
+                <div id="listContainer">
+                    <div class="resultsBackground" style='position: relative;'>
+                        <div class="smartMessage"></div>
+
+                        <div class="infoDisplay">
+                            <div style="display:none;" class="adminMessage user-4"></div>
+
+                            <div>
+                                GeorgiaFacts is a service of the Georgia Department of Economic Development. Our manufacturing data and international listings are imported twice a year from our national data provider and combined with input from our local partners. Please <a href="/contact/" style="white-space:nowrap">contact us</a> if you have a change or correction.
+
+                                <!--
+                                <p>For Don to reactivate:
+                                <a href="javascript:$('#staticMap').attr('style','margin-left:0px;');$('#showStaticMap').hide();LoadStaticMap();$('#staticMap').append('<br>Bing static maps contain up to 18 points.<br>');return;" id="showStaticMap" target="staticMap">Show static map</a></p>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="smartList">smartList</div>
+                </div>
+
+            </div>
+        </div>
+        <div id="widgets"></div>
+        <div id="overlay">Loading Feed...</div>
+    
+
+    		<script src="/base/js/util.js" type="text/javascript"></script>
+            <script src="/base/js/smartWidget.1.0.ionic.js" type="text/javascript"></script>
+            <script src="/base/js/jquery.unveil.min.js" type="text/javascript"></script>
+            <script type="text/javascript" src="/base/js/markercluster.js"></script>
+            <script type="text/javascript" src="../js/recall.js"></script>
+            <script type="text/javascript" src="../js/facts.js"></script>
+            <script type="text/javascript">
+
+        </script>
+    </body>
+</html>

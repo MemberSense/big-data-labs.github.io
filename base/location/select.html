@@ -1,0 +1,596 @@
+<div class="tabs-content">
+<div class="active" id="panel1">
+    <div id="searchdrpdwn" style="margin-bottom:10px"></div>
+    <input type="hidden" name="locationDD" id="locationDD" />
+    <!-- smart filter starts here
+        <div class="filterText" style="margin-bottom:6px">
+            
+            <div class="filter"><span class="filterSelected" data-selected="all">Search Entire State</span><i class="entypo-down-open" style="font-size:13pt"></i></div>
+            <select style="display:none;" name="locationDD" id="locationDD">
+                <option value="all" selected="selected">Search Entire State</option>
+                <option value="current">My Current Location</option>
+                <option value="custom">Custom Lat/Lon</option>
+                <option value="zip">Search by Zip</option>
+                <option value="county">Search by County</option>
+                <option value="city">Search by City</option>
+            </select>
+            <div class="filterBubbleHolder" style="display:none;">
+                <div class="uparrow uparrow-grey" style="left: 100px;"></div>
+                <div class="uparrow uparrow-white" style="left: 100px;"></div>
+
+                <div class="filterBubble">
+                    <ul class="filterUL">
+                        <li class="selected" data-id="all"><a href="#">Search Entire State</a></li>
+                        <li data-id="current"><a style="white-space:nowrap" href="#">My Current Location</a></li>
+                        <li data-id="custom"><a href="#">Custom Lat/Lon</a></li>
+                        <li data-id="zip"><a href="#">Search by Zip</a></li>
+                        <li data-id="county"><a href="#">Search by County</a></li>
+                        <li data-id="city"><a href="#">Search by City</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         -->
+        
+        <!-- smart filter ends here -->
+
+    
+        
+
+    <div id="locationBar" style="cursor:pointer;">
+        <div id="locationStatus" class="sectionStatus" style="display:none;">
+            <div class="setLocation">
+
+                <table><tr><td>
+                    <div id="locText" style="margin:3px 4px 0 0; color:#999">Search Entire State</div>
+                </td><td>
+                    <div style="margin-right:10px">
+                        <img id="locationArrow" src="../img/icons/circle-next.png" style="width:20px;height:20px" />
+                    </div>
+                    </td></tr>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="latLonFields" style="display:none">
+
+        <div id="coordFields" style="float:left;min-height:40px">
+            <div style="float:left; margin-right: 6px">
+                Latitude<br>
+                <input id="lat" type="text" style="width: 66px; margin-top: 0px" /><br>
+                <input id="currentlat" type="text" style="display:none; width: 66px; margin-top: 0px" />
+            </div>
+            <div style="float:left; margin-right: 6px">
+                Longitude<br>
+                <input id="lon" type="text" style="width: 66px; margin-top: 0px" /><br>
+                <input id="currentlon" type="text" style="display:none; width: 66px; margin-top: 0px" />
+            </div>
+        </div>
+
+        <div id="distanceInNear" style="float: left;"></div>
+
+        <div id="distanceField" style="float: left; margin-right: 4px; min-height:50px">
+        Distance<br>
+            <select id="distance" style="margin-left: 0px">
+                <option value="">Distance...</option>
+                <option value="3">Within 3 Miles</option>
+                <option value="5">Within 5 Miles</option>
+                <option value="10">Within 10 Miles</option>
+                <option value="15">Within 15 Miles</option>
+                <option value="20">Within 20 Miles</option>
+                <option value="25">Within 25 Miles</option>
+                <option value="30" selected="selected">Within 30 Miles</option>
+                <option value="40">Within 40 Miles</option>
+                <option value="50">Within 50 Miles</option>
+                <option value="60">Within 60 Miles</option>
+                <option value="75">Within 75 Miles</option>
+                <option value="100">Within 100 Miles</option>
+                <option value="150">Within 150 Miles</option>
+                <option value="200">Within 200 Miles</option>
+                <option value="300">Within 300 Miles</option>
+                <option value="400">Within 400 Miles</option>
+                <option value="500">Within 500 Miles</option>
+            </select>
+        </div>
+        <div style="clear:both"></div>
+        <div id="loadingLatLon"></div>
+        <div id="currentButtons" style="float:left; margin: 18px 0 0 0">
+            <div id="doneLatLng" href="#"></div>
+            
+        </div>
+    </div>
+
+    <div id="zipFields" style="display:none">
+
+        <div style="float:left; margin-right:6px; min-height:50px">
+            Zip code<br>
+            <input id="zip" type="text" value="" style="width: 100px; margin-top: 0px" title="Enter zip code" />
+        </div>
+        <div id="distanceInZip" style="float: left;"></div>
+        
+        <div class="confirmationButtons" style="display:none;float:left; margin-top: 5px">
+            <a id="doneZip" class="button orangeButton" href="#">apply</a>
+            
+        </div>
+        
+    
+    </div>
+
+
+
+<div id="countyFields" style="display:none;">
+
+<select size="5" name="county" multiple="multiple" id="county" style="width:140px;font-size:14px;float:left;margin:0 8px 10px 0">
+    <option selected="selected" value="0">All Counties</option>
+    <option value="13001">Appling</option>
+    <option value="13003">Atkinson</option>
+    <option value="13007">Baker</option>
+    <option value="13009">Baldwin</option>
+    <option value="13013">Barrow</option>
+    <option value="13015">Bartow</option>
+    <option value="13019">Berrien</option>
+    <option value="13021">Bibb</option>
+    <option value="13023">Bleckley</option>
+    <option value="13025">Brantley</option>
+    <option value="13027">Brooks</option>
+    <option value="13029">Bryan</option>
+    <option value="13031">Bulloch</option>
+    <option value="13033">Burke</option>
+    <option value="13035">Butts</option>
+    <option value="13037">Calhoun</option>
+    <option value="13039">Camden</option>
+    <option value="13043">Candler</option>
+    <option value="13045">Carroll</option>
+    <option value="13047">Catoosa</option>
+    <option value="13051">Chatham</option>
+    <option value="13055">Chattooga</option>
+    <option value="13057">Cherokee</option>
+    <option value="13059">Clarke</option>
+    <option value="13063">Clayton</option>
+    <option value="13067">Cobb</option>
+    <option value="13069">Coffee</option>
+    <option value="13071">Colquitt</option>
+    <option value="13073">Columbia</option>
+    <option value="13075">Cook</option>
+    <option value="13077">Coweta</option>
+    <option value="13079">Crawford</option>
+    <option value="13081">Crisp</option>
+    <option value="13083">Dade</option>
+    <option value="13085">Dawson</option>
+    <option value="13087">Decatur</option>
+    <option value="13089">DeKalb</option>
+    <option value="13091">Dodge</option>
+    <option value="13093">Dooly</option>
+    <option value="13095">Dougherty</option>
+    <option value="13097">Douglas</option>
+    <option value="13099">Early</option>
+    <option value="13103">Effingham</option>
+    <option value="13105">Elbert</option>
+    <option value="13109">Evans</option>
+    <option value="13111">Fannin</option>
+    <option value="13113">Fayette</option>
+    <option value="13115">Floyd</option>
+    <option value="13117">Forsyth</option>
+    <option value="13119">Franklin</option>
+    <option value="13121">Fulton</option>
+    <option value="13123">Gilmer</option>
+    <option value="13125">Glascock</option>
+    <option value="13127">Glynn</option>
+    <option value="13129">Gordon</option>
+    <option value="13131">Grady</option>
+    <option value="13133">Greene</option>
+    <option value="13135">Gwinnett</option>
+    <option value="13137">Habersham</option>
+    <option value="13139">Hall</option>
+    <option value="13143">Haralson</option>
+    <option value="13147">Hart</option>
+    <option value="13149">Heard</option>
+    <option value="13151">Henry</option>
+    <option value="13153">Houston</option>
+    <option value="13155">Irwin</option>
+    <option value="13157">Jackson</option>
+    <option value="13161">Jeff Davis</option>
+    <option value="13163">Jefferson</option>
+    <option value="13165">Jenkins</option>
+    <option value="13167">Johnson</option>
+    <option value="13171">Lamar</option>
+    <option value="13173">Lanier</option>
+    <option value="13175">Laurens</option>
+    <option value="13177">Lee</option>
+    <option value="13179">Liberty</option>
+    <option value="13181">Lincoln</option>
+    <option value="13185">Lowndes</option>
+    <option value="13187">Lumpkin</option>
+    <option value="13193">Macon</option>
+    <option value="13195">Madison</option>
+    <option value="13197">Marion</option>
+    <option value="13189">McDuffie</option>
+    <option value="13191">McIntosh</option>
+    <option value="13199">Meriwether</option>
+    <option value="13205">Mitchell</option>
+    <option value="13207">Monroe</option>
+    <option value="13211">Morgan</option>
+    <option value="13213">Murray</option>
+    <option value="13215">Muscogee</option>
+    <option value="13217">Newton</option>
+    <option value="13219">Oconee</option>
+    <option value="13223">Paulding</option>
+    <option value="13225">Peach</option>
+    <option value="13227">Pickens</option>
+    <option value="13229">Pierce</option>
+    <option value="13233">Polk</option>
+    <option value="13235">Pulaski</option>
+    <option value="13237">Putnam</option>
+    <option value="13241">Rabun</option>
+    <option value="13245">Richmond</option>
+    <option value="13247">Rockdale</option>
+    <option value="13249">Schley</option>
+    <option value="13251">Screven</option>
+    <option value="13253">Seminole</option>
+    <option value="13255">Spalding</option>
+    <option value="13257">Stephens</option>
+    <option value="13259">Stewart</option>
+    <option value="13261">Sumter</option>
+    <option value="13267">Tattnall</option>
+    <option value="13269">Taylor</option>
+    <option value="13271">Telfair</option>
+    <option value="13273">Terrell</option>
+    <option value="13275">Thomas</option>
+    <option value="13277">Tift</option>
+    <option value="13279">Toombs</option>
+    <option value="13281">Towns</option>
+    <option value="13283">Treutlen</option>
+    <option value="13285">Troup</option>
+    <option value="13287">Turner</option>
+    <option value="13291">Union</option>
+    <option value="13293">Upson</option>
+    <option value="13295">Walker</option>
+    <option value="13297">Walton</option>
+    <option value="13299">Ware</option>
+    <option value="13303">Washington</option>
+    <option value="13305">Wayne</option>
+    <option value="13311">White</option>
+    <option value="13313">Whitfield</option>
+    <option value="13321">Worth</option>
+</select>
+<a id="doneCounty" style="display:none;" class="button orangeButton" href="#">apply</a>
+
+</div>
+
+
+<div id="cityFields" style="display:none;">
+
+<select size="5" name="city" multiple="multiple" id="city" style="width:140px;font-size:14px;float:left;margin:0 8px 10px 0">
+    <option selected="selected" value="">All Cities</option>
+    <option value="Acworth">Acworth</option>
+    <option value="Adairsville">Adairsville</option>
+    <option value="Adel">Adel</option>
+    <option value="Adrian">Adrian</option>
+    <option value="Albany">Albany</option>
+    <option value="Alpharetta">Alpharetta</option>
+    <option value="Americus">Americus</option>
+    <option value="Armuchee">Armuchee</option>
+    <option value="Ashburn">Ashburn</option>
+    <option value="Athens">Athens</option>
+    <option value="Atlanta">Atlanta</option>
+    <option value="Auburn">Auburn</option>
+    <option value="Augusta">Augusta</option>
+    <option value="Austell">Austell</option>
+    <option value="Bainbridge">Bainbridge</option>
+    <option value="Baldwin">Baldwin</option>
+    <option value="Baldwon">Baldwon</option>
+    <option value="Ball Ground">Ball Ground</option>
+    <option value="Barnesville">Barnesville</option>
+    <option value="Bethlehem">Bethlehem</option>
+    <option value="Bishop">Bishop</option>
+    <option value="Black Creek">Black Creek</option>
+    <option value="Blackshear">Blackshear</option>
+    <option value="Blairsville">Blairsville</option>
+    <option value="Blakely">Blakely</option>
+    <option value="Bloomingdale">Bloomingdale</option>
+    <option value="Blue Ridge">Blue Ridge</option>
+    <option value="Bogart">Bogart</option>
+    <option value="Bowman">Bowman</option>
+    <option value="Braselton">Braselton</option>
+    <option value="Bremen">Bremen</option>
+    <option value="Brunswick">Brunswick</option>
+    <option value="Buena Vista">Buena Vista</option>
+    <option value="Buford">Buford</option>
+    <option value="Butler">Butler</option>
+    <option value="Byron">Byron</option>
+    <option value="Cairo">Cairo</option>
+    <option value="Calhoun">Calhoun</option>
+    <option value="Camilla">Camilla</option>
+    <option value="Canton">Canton</option>
+    <option value="Carnesville">Carnesville</option>
+    <option value="Cartersville">Cartersville</option>
+    <option value="Chamblee">Chamblee</option>
+    <option value="Chatsworth">Chatsworth</option>
+    <option value="Chickamauga">Chickamauga</option>
+    <option value="Clarkesville">Clarkesville</option>
+    <option value="Claxton">Claxton</option>
+    <option value="Cleveland">Cleveland</option>
+    <option value="Cochran">Cochran</option>
+    <option value="Colbert">Colbert</option>
+    <option value="College Park">College Park</option>
+    <option value="Columbus">Columbus</option>
+    <option value="Comer">Comer</option>
+    <option value="Commerce">Commerce</option>
+    <option value="Conyers">Conyers</option>
+    <option value="Cordele">Cordele</option>
+    <option value="Cornelia">Cornelia</option>
+    <option value="Covington">Covington</option>
+    <option value="Cumming">Cumming</option>
+    <option value="Dahlonega">Dahlonega</option>
+    <option value="Dallas">Dallas</option>
+    <option value="Dalton">Dalton</option>
+    <option value="Darien">Darien</option>
+    <option value="Dawson">Dawson</option>
+    <option value="Dawsonville">Dawsonville</option>
+    <option value="Decatur">Decatur</option>
+    <option value="Denton">Denton</option>
+    <option value="Doerun">Doerun</option>
+    <option value="Donalsonville">Donalsonville</option>
+    <option value="Doraville">Doraville</option>
+    <option value="Douglas">Douglas</option>
+    <option value="Douglasville">Douglasville</option>
+    <option value="Dublin">Dublin</option>
+    <option value="Duluth">Duluth</option>
+    <option value="East Dublin">East Dublin</option>
+    <option value="East Point">East Point</option>
+    <option value="Eastanollee">Eastanollee</option>
+    <option value="Eastman">Eastman</option>
+    <option value="Eatonton">Eatonton</option>
+    <option value="Edison">Edison</option>
+    <option value="Elberton">Elberton</option>
+    <option value="Ellabell">Ellabell</option>
+    <option value="Ellaville">Ellaville</option>
+    <option value="Ellenwood">Ellenwood</option>
+    <option value="Ellijay">Ellijay</option>
+    <option value="Estanollee">Estanollee</option>
+    <option value="Eulonia">Eulonia</option>
+    <option value="Evans">Evans</option>
+    <option value="Fairburn">Fairburn</option>
+    <option value="Fairmount">Fairmount</option>
+    <option value="Fayetteville">Fayetteville</option>
+    <option value="Fleming">Fleming</option>
+    <option value="Flowery Branch">Flowery Branch</option>
+    <option value="Forest Park">Forest Park</option>
+    <option value="Forsyth">Forsyth</option>
+    <option value="Fort Oglethorpe">Fort Oglethorpe</option>
+    <option value="Fort Valley">Fort Valley</option>
+    <option value="Franklin">Franklin</option>
+    <option value="Gainesville">Gainesville</option>
+    <option value="Garden City">Garden City</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Gibson">Gibson</option>
+    <option value="Glennville">Glennville</option>
+    <option value="Gordon">Gordon</option>
+    <option value="Greensboro">Greensboro</option>
+    <option value="Griffin">Griffin</option>
+    <option value="Grovetown">Grovetown</option>
+    <option value="Hahira">Hahira</option>
+    <option value="Hampton">Hampton</option>
+    <option value="Hartwell">Hartwell</option>
+    <option value="Hawkinsville">Hawkinsville</option>
+    <option value="Hazlehurst">Hazlehurst</option>
+    <option value="Hiawassee">Hiawassee</option>
+    <option value="Hiram">Hiram</option>
+    <option value="Hogansville">Hogansville</option>
+    <option value="Hoschton">Hoschton</option>
+    <option value="Hoscton">Hoscton</option>
+    <option value="Jackson">Jackson</option>
+    <option value="Jasper">Jasper</option>
+    <option value="Jefferson">Jefferson</option>
+    <option value="Jesup">Jesup</option>
+    <option value="Johns Creek">Johns Creek</option>
+    <option value="Jonesboro">Jonesboro</option>
+    <option value="Kathleen">Kathleen</option>
+    <option value="Kennesaw">Kennesaw</option>
+    <option value="Kennessaw">Kennessaw</option>
+    <option value="Kensington">Kensington</option>
+    <option value="LaFayette">LaFayette</option>
+    <option value="LaGrange">LaGrange</option>
+    <option value="Lakeland">Lakeland</option>
+    <option value="Lavonia">Lavonia</option>
+    <option value="Lawrenceville">Lawrenceville</option>
+    <option value="Lilburn">Lilburn</option>
+    <option value="Lincolnton">Lincolnton</option>
+    <option value="Lithia Springs">Lithia Springs</option>
+    <option value="Lithonia">Lithonia</option>
+    <option value="Loganville">Loganville</option>
+    <option value="Louisville">Louisville</option>
+    <option value="Lula">Lula</option>
+    <option value="Lumber City">Lumber City</option>
+    <option value="Lyons">Lyons</option>
+    <option value="Mableton">Mableton</option>
+    <option value="Macon">Macon</option>
+    <option value="Madison">Madison</option>
+    <option value="Manchester">Manchester</option>
+    <option value="Marietta">Marietta</option>
+    <option value="Maysville">Maysville</option>
+    <option value="McDonough">McDonough</option>
+    <option value="McRae">McRae</option>
+    <option value="Metter">Metter</option>
+    <option value="Midway">Midway</option>
+    <option value="Miledgeville">Miledgeville</option>
+    <option value="Milledgeville">Milledgeville</option>
+    <option value="Millen">Millen</option>
+    <option value="Monroe">Monroe</option>
+    <option value="Montezuma">Montezuma</option>
+    <option value="Morrow">Morrow</option>
+    <option value="Moultrie">Moultrie</option>
+    <option value="Mt. Airy">Mt. Airy</option>
+    <option value="Nahunta">Nahunta</option>
+    <option value="Nashville">Nashville</option>
+    <option value="Newnan">Newnan</option>
+    <option value="Newton">Newton</option>
+    <option value="Norcross">Norcross</option>
+    <option value="Oakwood">Oakwood</option>
+    <option value="Ocilla">Ocilla</option>
+    <option value="Patterson">Patterson</option>
+    <option value="Peachtree City">Peachtree City</option>
+    <option value="Pearson">Pearson</option>
+    <option value="Pelham">Pelham</option>
+    <option value="Pembroke">Pembroke</option>
+    <option value="Pendergrass">Pendergrass</option>
+    <option value="Perry">Perry</option>
+    <option value="Pooler">Pooler</option>
+    <option value="Portal">Portal</option>
+    <option value="Powder Springs">Powder Springs</option>
+    <option value="Quitman">Quitman</option>
+    <option value="Rabun Gap">Rabun Gap</option>
+    <option value="Rex">Rex</option>
+    <option value="Richland">Richland</option>
+    <option value="Richmond Hill">Richmond Hill</option>
+    <option value="Rincon">Rincon</option>
+    <option value="Ringgold">Ringgold</option>
+    <option value="Roberta">Roberta</option>
+    <option value="Rockmart">Rockmart</option>
+    <option value="Rome">Rome</option>
+    <option value="Rossville">Rossville</option>
+    <option value="Roswell">Roswell</option>
+    <option value="Rutledge">Rutledge</option>
+    <option value="Sandersville">Sandersville</option>
+    <option value="Sardis">Sardis</option>
+    <option value="Savannah ">Savannah </option>
+    <option value="Smyrna">Smyrna</option>
+    <option value="Snellville">Snellville</option>
+    <option value="Social Circle">Social Circle</option>
+    <option value="Soperton">Soperton</option>
+    <option value="Springfield">Springfield</option>
+    <option value="St. Marys">St. Marys</option>
+    <option value="Statesboro">Statesboro</option>
+    <option value="Statham">Statham</option>
+    <option value="Stockbridge">Stockbridge</option>
+    <option value="Stone Mountain">Stone Mountain</option>
+    <option value="Summerville">Summerville</option>
+    <option value="Suwanee">Suwanee</option>
+    <option value="Sylvania">Sylvania</option>
+    <option value="Sylvester">Sylvester</option>
+    <option value="Tallapoosa">Tallapoosa</option>
+    <option value="Temple">Temple</option>
+    <option value="Thomaston">Thomaston</option>
+    <option value="Thomasville">Thomasville</option>
+    <option value="Thomson">Thomson</option>
+    <option value="Tifton">Tifton</option>
+    <option value="Toccoa">Toccoa</option>
+    <option value="Trenton">Trenton</option>
+    <option value="Tucker">Tucker</option>
+    <option value="Tunnel Hill">Tunnel Hill</option>
+    <option value="Tyrone">Tyrone</option>
+    <option value="Union City">Union City</option>
+    <option value="Union Point">Union Point</option>
+    <option value="Valdosta">Valdosta</option>
+    <option value="Vidalia">Vidalia</option>
+    <option value="Vienna">Vienna</option>
+    <option value="Villa Rica">Villa Rica</option>
+    <option value="Warner Robins">Warner Robins</option>
+    <option value="Watkinsville">Watkinsville</option>
+    <option value="Waycross">Waycross</option>
+    <option value="Waynesboro">Waynesboro</option>
+    <option value="West Point">West Point</option>
+    <option value="Wildwood">Wildwood</option>
+    <option value="Winder">Winder</option>
+    <option value="Winston">Winston</option>
+    <option value="Woodbine">Woodbine</option>
+    <option value="Woodstock">Woodstock</option>
+    <option value="Wrens">Wrens</option>
+    <option value="Wrightsville">Wrightsville</option>
+</select>
+
+<a id="doneCity" style="display:none;" class="button orangeButton" href="#">apply</a>
+
+</div>
+</div>
+</div>
+
+<script>
+$.cookie.json = true;
+var searchdrpdwn = null;
+searchParams = $.cookie('searchParams');
+if (typeof (searchParams) === 'undefined' || searchParams === null) {
+    searchParams = defaultSearchParams; // if cookies are not enabled or are corrupted, use the default
+}
+
+$(document).ready(function() {
+    searchdrpdwn = $("#searchdrpdwn").divBasedSelectBox({
+        selected : searchParams['locationDD'],
+        options : {
+            "all" : "Search Entire State",
+            "current" : "My Current Location",
+            "custom" : "Custom Lat/Lon",
+            "zip" : "Search by Zip",
+            "county" : "Search by County",
+            "city" : "Search by City"
+        }
+    }).change(function() {
+        $('#latLonFields').hide();
+        $("#zipFields").hide();
+        $("#countyFields").hide();
+        $("#cityFields").hide();
+        var selectedValue = searchdrpdwn.data("value");
+        $("#locationDD").val(selectedValue);
+        console.log(searchdrpdwn.data("value"));
+        if (selectedValue == 'all') { // its entire state
+            if(useCookies) {
+                $.cookie('searchParams', { 'useCurrent': null, 'locationDD': 'all' });
+            }
+            activateEntireState();
+            $("#zip").val('');
+        }
+
+        if (selectedValue == 'current') { // its My Current location, set cookie useCurrent=1 
+            activateMyLocation();
+            if(useCookies) {
+                $.cookie('searchParams', { 'useCurrent': '1', 'currentlat': $("#currentlat").val(), 'currentlon': $("#currentlon").val(), 'locationDD': selectedValue });
+            }
+            geoSelected();
+        }
+
+        if (selectedValue == 'custom') { // its other location, set cookie useCurrent=0
+            activateOtherLocation();
+            if(useCookies) {
+                $.cookie('searchParams', { 'useCurrent': '0', 'currentlat': $("#lat").val(), 'currentlon': $("#lon").val(), 'locationDD': selectedValue });
+            }
+            geoSelected();
+        }
+
+        if (selectedValue == 'zip') {
+            $("#zipFields").show();
+            if(useCookies) {
+                var cokSearchParam = $.cookie('searchParams');
+                if (typeof (cokSearchParam.zip) != 'undefined') {
+                    $("#zip").val(cokSearchParam.zip);
+                }
+                $.cookie('searchParams', { 'useCurrent': '0', 'currentlat': $("#lat").val(), 'currentlon': $("#lon").val(), 'locationDD': 'zip' });
+            }
+            zipSelected();
+        }
+        if (selectedValue == 'county') {
+            $("#countyFields").show();
+            if(useCookies) {
+                var cokSearchParam = $.cookie('searchParams');
+                if (typeof (cokSearchParam.county) != 'undefined') {
+                    console.log(cokSearchParam.county);
+                    $("#countyids").val(cokSearchParam.county.split(','))
+                }
+                $.cookie('searchParams', { 'useCurrent': '0', 'currentlat': $("#lat").val(), 'currentlon': $("#lon").val(), 'locationDD': 'county' });
+            }
+        }
+        if (selectedValue == 'city') {
+            $("#cityFields").show();
+            if(useCookies) {
+                var cokSearchParam = $.cookie('searchParams');
+                if (typeof (cokSearchParam.city) != 'undefined') {
+                    console.log(cokSearchParam.city);
+                    $("#cities").val(cokSearchParam.city.split(','))
+                }
+                $.cookie('searchParams', { 'useCurrent': '0', 'currentlat': $("#lat").val(), 'currentlon': $("#lon").val(), 'locationDD': 'city' });
+            }
+        }
+    });
+});
+</script>

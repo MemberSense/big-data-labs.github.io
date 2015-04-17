@@ -1,0 +1,59 @@
+#mainColumn {
+	float:left;
+}
+#keywordsTB {
+    color: #fff;
+    background-color:#777;
+    border:1px solid #fff;
+}
+#searchContainer {
+    background: #202224;
+    color:#eee;
+}
+#smartList {
+    background: #fff;
+}
+.optionSide {
+    color:#fff;
+}
+.regular-checkbox + label {
+    color: #ddd;
+    font-weight: normal;
+    font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, serif;
+    font-size: 17px;
+    margin-bottom: 3px;
+    color: #8c9392;
+    
+    /* BUGBUG - causes checkbox to have left margin */
+	background: url(../img/icons/checkbox-bkgd.png) no-repeat;
+}
+.regular-checkbox + label:hover {
+    color: #fff;
+}
+.filter {
+    color: #fff;
+    background: #333;
+}
+.filter:hover {
+    color: #333;
+    background: #fff;
+}
+.searchButtonGreen {
+    borderX: 0px;
+}
+.tabs dd {
+	border-left: 1px solid #777;
+}
+.goButton {
+	border:1px solid #777;
+}
+.addButton {
+	background: #007ba1;
+}
+.sectionBox {
+	background: #2d3e50;
+}
+.filterText {
+	color: #eee;
+}
+    

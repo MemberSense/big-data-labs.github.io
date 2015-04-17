@@ -1,0 +1,194 @@
+<!--
+<link rel="stylesheet" href="/base/slider/css/jquery.mobile-1.3.2.min.css">
+<div data-role="page" id="pageone">
+  <div data-role="content">
+      <form name="mSlider" id="mSlider">
+      <div data-role="fieldcontain" id="adminLevelCt">
+        <label for="adminLevel">Admin Level:</label>
+        <input type="range" name="adminLevel" id="adminLevel" value="0" min="0" max="10" data-highlight="true">
+      </div>
+      <div data-role="fieldcontain" id="distanceLevelCt">
+        <label for="distanceLevel">Distance Level</label>
+        <input type="range" name="distanceLevel" id="distanceLevel" value="0" min="0" max="10" data-highlight="true">
+      </div>
+      <div data-role="fieldcontain" id="verboseLevelCt">
+        <label for="verboseLevel">Verbose Level:</label>
+        <input type="range" name="verboseLevel" id="verboseLevel" value="0" min="0" max="10" data-highlight="true">
+      </div>
+      
+      <div data-role="fieldcontain">
+        <label for="fbPlace">Facebook Places:</label>
+        <select name="fbPlace" id="fbPlace" data-role="slider">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+      </div>
+      </form>
+  </div>
+</div>
+<script src="/base/slider/js/jquery-1.8.3.min.js"></script>
+<script src="/base/slider/js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src="/base/slider/js/jquery.cookie.js"></script>
+<script>
+    //.placesSelect
+$(document).ready(function() {
+    $.cookie.json = true;
+    if($.cookie('sliderValues') === undefined) {
+        $.cookie('sliderValues', JSON.stringify({'adminLevel': '', 'distanceLevel': '', 'verboseLevel': ''}));
+    } else {
+        sliderValues = JSON.parse($.cookie('sliderValues'));
+        for (val in sliderValues) {
+            console.log(val);
+            $("#" + val).val(sliderValues[val]).slider("refresh");
+        }
+    }
+    
+    $( "input, select" ).on( 'slidestop', function( event ) {
+        alert($(this).attr("name") + " value is: " + $(this).val())
+        console.log($(this).attr("name") + " value is: " + $(this).val())
+        sliderValues = JSON.parse($.cookie('sliderValues'));
+        sliderValues[$(this).attr("name")] = $(this).val();
+        $.cookie('sliderValues', JSON.stringify(sliderValues))
+        console.log($.cookie('sliderValues'))
+        
+    });
+});
+</script>
+-->
+
+<link rel="stylesheet" href="/base/slider2/mobile-range-slider.css" />
+<link rel="stylesheet" type="text/css" href="/base/slider/css/switch.css" media="screen" />
+
+<style type='text/css'>
+#settingControls {
+  padding:16px;
+}
+#settingControls > label
+{
+  display:block; 
+}
+#settingControls > input
+{
+  width: 26px;
+  float:left;
+  text-align: center;
+}
+
+#settingControls > .slider
+{
+  overflow:hidden; 
+}
+</style>
+
+<div id="settingControls">
+
+  <label for="adminLevel">Admin Level:</label>
+  <input type="text" name="adminLevel" id="adminLevel" value="0" min="0" max="10">
+  <div id="adminLevelCt" class="slider">
+    <div class="track"></div>
+    <div class="knob"></div>
+  </div>
+
+  <label for="distanceLevel">Default Distance (miles):</label>
+  <input type="text" name="distanceLevel" id="distanceLevel" value="3" min="0" max="10" data-highlight="true">
+  <div id="distanceLevelCt" class="slider">
+    <div class="track"></div>
+    <div class="knob"></div>
+  </div>
+  <!--
+  <label for="verboseLevel">Verbose Level:</label>
+  <input type="text" name="verboseLevel" id="verboseLevel" value="0" min="0" max="10" data-highlight="true">
+  <div id="verboseLevelCt" class="slider">
+    <div class="track"></div>
+    <div class="knob"></div>
+  </div>
+  -->
+  <div>
+  <label style="float:left">Show Facebook Places</label>
+  <div style="float:right" class="slider-frame">
+      <span class="slider-button">OFF</span>
+  </div>
+  </div>
+
+</div>
+
+
+
+<script type="text/javascript" src="/base/slider2/mobile-range-slider.js"></script>
+<script type="text/javascript" src="/base/slider/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+	
+        var adminLevel = document.getElementById('adminLevel'),
+            distanceLevel = document.getElementById('distanceLevel');
+            //verboseLevel = document.getElementById('verboseLevel');
+        
+        $.cookie.json = true;
+        //$.cookie('sliderValues', null);
+		if($.cookie('sliderValues') === null || $.cookie('sliderValues') === undefined) {
+			//$.cookie('sliderValues', JSON.stringify({'adminLevel': 0, 'distanceLevel': 0, 'verboseLevel': 0, 'fbPlace':'off'}));
+			$.cookie('sliderValues', JSON.stringify({'adminLevel': 0, 'distanceLevel': 0, 'fbPlace':'off'}));
+		}
+		
+		var sliderValues = JSON.parse($.cookie('sliderValues'));
+		
+        var slider1 = new MobileRangeSlider('adminLevelCt', {
+          value: sliderValues.adminLevel,
+          min: 0,
+          max: 10,
+          change: function(percentage) {
+            sliderValues['adminLevel'] = adminLevel.value = percentage;
+            $.cookie('sliderValues', JSON.stringify(sliderValues));
+          }
+        });
+        /*
+        var slider2 = new MobileRangeSlider('verboseLevelCt', {
+          value: sliderValues.verboseLevel,
+          min: 0,
+          max: 10,
+          change: function(percentage) {
+			sliderValues['verboseLevel'] = verboseLevel.value = percentage;
+			$.cookie('sliderValues', JSON.stringify(sliderValues));
+          }
+        });
+        */
+        var slider3 = new MobileRangeSlider('distanceLevelCt', {
+          value: sliderValues.distanceLevel,
+          min: 0,
+          max: 10,
+          change: function(percentage) {
+            sliderValues['distanceLevel'] = distanceLevel.value = percentage;
+			$.cookie('sliderValues', JSON.stringify(sliderValues));
+          }
+        });
+        
+        if(sliderValues.fbPlace === 'on') {
+            $(".placesSelect").show();
+            $('.slider-button').addClass('on').html('ON');
+        } else {
+            $(".placesSelect").hide();
+            $('.slider-button').removeClass('on').html('OFF');
+        }
+
+        
+        $('.slider-frame').toggle(function(){
+            console.log(sliderValues.fbPlace);
+            var flag;
+            $(this).find('.slider-button').addClass('on').html('ON');
+            sliderValues['fbPlace'] = flag = 'on';
+            $.cookie('sliderValues', JSON.stringify(sliderValues));
+            checkUncheckPlacesCB(flag);
+        },function(){
+            console.log(sliderValues.fbPlace);
+            var flag;
+            $(this).find('.slider-button').removeClass('on').html('OFF');
+            sliderValues['fbPlace'] = flag = 'off';
+            $.cookie('sliderValues', JSON.stringify(sliderValues));
+            checkUncheckPlacesCB(flag);
+        });
+
+
+                    
+    });
+</script>
+

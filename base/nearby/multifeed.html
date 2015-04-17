@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Smart API - Map, Calendar and Gallery Widget</title>
+    <!--
+    <link rel="stylesheet" type="text/css" href="css/foundation.css" />
+    -->
+    <link rel="stylesheet" type="text/css" href="/base/css/base-old.css" />
+    <link rel="stylesheet" type="text/css" href="/base/css/smartWidget.1.0.css" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?&sensor=false" type="text/javascript"></script>
+        <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+    <script type="text/javascript" src="/base/js/markercluster.js"></script>
+    <script type="application/javascript">
+        window.jQuery || document.write(unescape('%3Cscript src="/base/js/jquery.min.js"%3E%3C/script%3E'))
+    </script>
+    <script src="/base/js/smartWidget.1.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            // Event feed url for a specific Georgia State park. The id for Sweetwater Creek State Park is 80.
+            //var feedUrl = 'http://gastateparks.org/smart/api/eventfeed/80?callback=?';
+            // Event feed url for all Georgia State parks.
+            var feedUrl = 'http://gastateparks.org/smart/api/eventfeed?callback=?';
+            var feedType = 'events';
+
+            //var feedUrl2 = '../calendar/json/google.txt';
+            var feedUrl2 = 'https://www.googleapis.com/calendar/v3/calendars/theporchpress@gmail.com/events';
+            var feedType2 = 'events';
+
+            var detailsUrl = '/info/{0}?mode=a';
+            var detailsSelector = '#ItemInfoContentDiv';
+
+            var options = {
+                /*
+                // Handle addingListItem event - technique 1
+                addingListItem: function (event, data) {
+                var myHtml = $(data.html).first('div').append('<br><span>Hello</span>').end();
+                data.html = myHtml;
+                //event.preventDefault();
+                }
+                */
+                createContainers: false,
+                showNavigationMenu: true
+            };
+            options.feeds = [{
+                url: feedUrl,
+                type: feedType,
+                provider: '',
+                className: '',
+                detailsUrl: detailsUrl,
+                detailsSelector: detailsSelector
+            } ,
+            {
+                url: feedUrl2,
+                type: feedType2,
+                provider: 'Google',
+                className: '',
+                detailsUrl: '',
+                detailsSelector: ''
+            } ];
+
+            $('#smartWidget').smartWidget(options);
+            /*
+            // Handle addingListItem event - technique 2
+            $('#smartWidget').bind('addingListItem', function (event, data) {
+            var myHtml = $(data.html).first('div').append('<br><span>Hello Again</span>').end();
+            data.html = myHtml;
+            //event.preventDefault();
+            });
+            */
+        });
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="content">
+    <div id="smartWidget">
+        <div id="smartMap"></div>
+        <div id="smartList"></div>
+    </div>
+</div>
+</body>
+</html>

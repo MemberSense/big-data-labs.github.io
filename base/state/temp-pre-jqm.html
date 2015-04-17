@@ -1,0 +1,3770 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>GeorgiaFacts - Manufacturing Directory, Available Buildings, International Trade, County Data</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!-- iPad Setup -->
+<meta name="viewport" content="minimum-scale=1.0, maximum-scale=1.0,
+width=device-width, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!--
+More Bing map options to explore: http://www.bingmapsportal.com/ISDK/AjaxV7#CreateMap1
+-->
+<meta name="keywords" content="Georgia Manufacturers, International Businesses in Georgia, County Factsheets, Georgia Department of Economic Development, Industry and Trade, Georgia.org" />
+
+<!-- opg -->
+<meta property="og:title" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="" />
+<meta property="og:image" content="" />
+
+
+<link rel="shortcut icon" type="image/png" href="img/GeorgiaOrgFavicon.ico" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" media="all" type="text/css" rel="stylesheet">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+
+    <script type="application/javascript">
+        window.jQuery || document.write(unescape('%3Cscript src="../js/jquery.1.8.3.min.js"%3E%3C/script%3E'))
+    </script>
+
+    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+    <!-- This caused prevented slider/slider.html javascript from being executed. 
+    Also commented out this line below: $("#mainColumn").draggable...
+    -->
+    <!--
+    script src="../js/jquery-ui-1.10.4.custom-draggable.min.js"></script-->
+
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />-->
+
+    <!--<link rel="stylesheet" href="../css/jquery.mobile-1.4.2.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="../css/base-old.css" />
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/smartWidget.1.0.css" />
+    <link rel="stylesheet" type="text/css" href="../css/state.css" />
+    <link rel="stylesheet" type="text/css" href="../css/state-dark.css" />
+    <link rel="stylesheet" href="../fonts/entypo/entypo.css"  id="style-resource-2">
+
+    <style type='text/css'>
+    h1, h2, h3, h4 {
+        font-family: 'PT Sans', sans-serif;
+        font-weight: normal;
+        color: #539DC2;
+        color: #0168ab;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        line-height: 40px;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom:10px;
+      font-weight: normal;
+    }
+    #smartTop {
+        background:#666; color:#fff; 
+        border-radius: 16px 16px 0px 0px;
+        overflow:hidden;
+        z-index:9999999;
+        position: relative;
+        width:100%;
+    }
+    .menuTabBgColor { background-color: #333 !important; }
+    
+    /* Also impacts Map and Satellite links
+    .gm-style > div > div {
+        min-width:200px;
+    }
+    */
+    .menuList {
+        position: static;
+        
+    }
+    .menuList li {
+        float:left;
+    }
+    .typeCB {
+        white-space: nowrap;
+        float:left;
+        margin-right: 8px;
+    }
+    #headerLogo {
+        width:130px;
+    }
+    .lowerHolder {
+        margin-top: 6px;
+        padding-top: 8px;
+        clear:both;
+    }
+    #footerBar {
+        position: fixed;
+        bottom: 0px;
+        max-width: 997px;
+        margin: 0 auto;
+        z-index: 999999;
+    }
+    #mapToggle {
+        height:20px;
+        color:#fff;
+        overflow: visible;
+    }
+    #mapToggle li {
+        float:left;
+        font-size: 10pt;
+        padding:4px 8px 4px 8px;
+    }
+    #mapToggle li:hover {
+        background: #ccc;
+        cursor: pointer;
+    }
+    #mapToggle li.active {
+        background: #888;
+        color: #fff;
+        border-radius: 4px;
+    }
+    #mapToggle {
+        height:30px; 
+        background: #555;
+    }
+    #mapToggle li { height:22px; line-height: 21px}
+
+    .search1:before {
+      color: #666;
+      content: "\1F50D";
+      font-family: "entypo";
+      line-height: 0;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      z-index: 1;
+    }
+    #smartDirectionsXXX{display:none; opacity:1.8; background:rgba(0,0,0,0.5);color:#fff;font-size:18px;text-align:center;position: absolute;z-index:100;
+        left:0px; top:0px;width:100%;height:100%;
+    }
+    #sectionManufacturers {
+        position: relative;
+    }
+    #searchTextHolder {
+        /*float:left;*/
+        overflow: hidden;
+        display:none;
+        padding:7px 7px 7px 12px;
+        color: #333;
+        background: #fff;
+    }
+    #searchText {
+        overflow:hidden;
+        margin-right: 3px;
+        color: #333;
+    }
+
+    #rightCornerIcons > div {
+        float:left;
+        padding-right:8px;
+        color:#fff;
+        cursor:pointer; 
+    }
+    @media (max-width:950px){ /* 950 and less */
+        .searchTabs ul li { font-size: 10pt; }
+    }
+    bodyX{margin-top:0px;} /* Didn't fix.  Effort to prevent gap from appearing at top occasionally when resizing. */
+    /* Narrow > Map > Listings > Go wide */
+    body {
+        background: #444;
+    }
+    html{
+        padding-bottom:32px;
+    }
+    #twoColumns {
+        position:relative;
+        background:#fff;
+        min-height:400px;
+    }
+    #mapColumn {
+        overflow:hidden;
+        position:absolute;
+        /*z-index: -1;*/
+    }
+    #mainColumn {
+        float:right;
+        min-width:40%;
+        max-width:35%;
+        position:relative;
+        /*
+        position: absolute;
+        right:20px;
+        */
+        z-index:2;
+        margin-top:10px;
+        margin-right:20px;
+        -webkit-transition-duration: 0.5s;
+        -moz-transition-duration: 0.5s;
+        -o-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+    }
+    #smallIconLI {
+        display:none;
+        cursor: auto;
+    }
+    #smallIconLI:hover {
+        background: transparent;
+    }
+    .menuLink { display:none;}
+    /* #widgetTabs li { width:25%;} */
+    .rowMapLink { display:none; }
+    .mapHeight {
+        height:100%;
+    }
+    #moreOptions {
+        display:none; position:fixed; top:40%; z-index:100001; width:100%;
+    }
+    #settingsHolder {
+        display:none; z-index:99999999; position:fixed; width:100%; top:60px; right:0px; left:0px;
+        /*
+        top:40%; width:100%; max-width: 300px;
+        */
+    }
+    @media (min-width:801px){ /* 801 and more */
+      #mainColumn {
+        margin-top: 40px;
+        margin-bottom: 40px; /* Allows for overlap by footer */
+      }
+    }
+
+    @media (max-width:800px){ /* 800 and less */
+        #typeTabHolder { display:none; }
+        /*
+        #mapColumn { position:relative;width:100%;max-width:100%;margin-left:0px; }
+        */
+        #mainColumn { width:100%;max-width:100%; position:relative; margin:0px; }
+        #twoColumns {background:transparent; min-height:0px; }
+        #mapColumn { display:none;} /* removes blank top since map is appended to bottom */
+        #smartTop { position:fixed; z-index:9999999; top:0; left:0; right:0; border-radius:0px; }
+        body{margin-top:90px;}
+        #content{ padding:0px;}
+        #closeSmartSearch { display:none;}
+        .menuLink { display:inline; }
+        .rowMapLink { display:inline; }
+        #widgetTabs li { width:20%; }
+        #searchTextHolder {
+            float:none;
+            overflow: hidden;
+            width:100%;
+            margin:0px;
+            padding-bottom: 4px;
+            border-radius: 0px;
+        }
+        #searchTextButtons {
+            margin-right:20px;
+        }
+    }
+
+    /* smart filter css starts here */
+
+	.filterText {
+		font-family: 'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+		font-size: 16px;
+		font-style: normal;
+		font-variant: normal;
+		overflow:visible;
+		position: relative;
+	}
+	.filter {
+		display: inline-block;
+		cursor: pointer;
+		border-radius: 6px;
+		border: 1px solid #d0d5cb;
+		display: inline-block;
+		line-height: 1.5em;
+		padding: 5px 10px 5px 10px;
+		vertical-align: baseline;
+        background-color: #fff;
+		color: #121a0d;
+		font-weight: bold;
+	}
+	.filter:hover {
+		background: #f6f6f6;
+	}
+	.filterBubbleHolder {
+		position:relative;
+		overflow:visible;
+		margin-topXX:12px;
+	}
+	.filterBubble {
+		-webkit-transition: 0.3s ease-in-out;
+		-moz-transition: 0.3s ease-in-out;
+		-o-transition: 0.3s ease-in-out;
+		transition: 0.3s ease-in-out;
+		-webkit-transition-property: width;
+		-moz-transition-property: width;
+		-o-transition-property: width;
+		transition-property: width;
+		display: block;
+		-webkit-box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+		-moz-box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+		box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+		border-radius: 6px;
+		border: 1px solid #d0d5cb;
+		position: absolute;
+        top:10px;
+        left:-10px;
+        z-index: 2;
+		background: #fff;
+		padding: 15px;
+		vertical-align: baseline;
+        min-width: 324px;
+	}
+	.filterUL {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		list-style: none;
+		padding-left: 0;
+	}
+	.filterUL li.selected a {
+		color: #76cc1e;
+		font-weight: bold;
+	}
+	.filterUL li {
+		padding: 8px;
+	}
+	.filterUL li:hover {
+		background-color: #f6f6f6;
+        cursor: pointer;
+	}
+    .filterUL li a:hover {
+        text-decoration: none;
+    }
+	.uparrow {
+		width: 0;
+		height: 0;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		position: absolute;
+		margin-left: -10px;
+	}
+	.uparrow-grey {
+		border-bottom: 10px solid #d0d5cb;
+		z-index: 100;
+	}
+	.uparrow-white {
+		border-bottom: 10px solid #fff;
+		margin-top: 1px;
+		z-index: 101;
+	}
+
+    #doneLatLng {
+        display:none; /* seems okay to remove this arrow now that text floats over map */
+        background: url('../img/icons/circle-down.png');
+        width:19px;
+        height:19px;
+        cursor: pointer;
+    }
+    .slideshowLink {
+        /* display:none; */
+    }
+    #smartSlideshow {
+        overflow:hidden;
+        display:none;
+    }
+    
+    #shovelReadyTab { display:none; }
+
+    /* setting holder css */
+    /* No effect: min-height: 200px; */
+    .below_mapColumn { position: relative !important; }
+    .smartMapAboveList { position: relative !important; }
+    .below_mainColumn { float: none !important; max-width: 100% !important; margin: 0px !important; }
+    .below_widgetTabs_li_span { float: left !important; }
+    
+	</style>
+    <!-- smart filter css ends here -->
+<script type="text/javascript">
+        // TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
+        // Courtesy of PADILICIOUS.COM and MACOSXAUTOMATION.COM
+        
+        // this script can be used with one or more page elements to perform actions based on them being swiped with a single finger
+    
+        var triggerElementID = null; // this variable is used to identity the triggering element
+        var fingerCount = 0;
+        var startX = 0;
+        var startY = 0;
+        var curX = 0;
+        var curY = 0;
+        var deltaX = 0;
+        var deltaY = 0;
+        var horzDiff = 0;
+        var vertDiff = 0;
+        var minLength = 72; // the shortest distance the user may swipe
+        var swipeLength = 0;
+        var swipeAngle = null;
+        var swipeDirection = null;
+        
+        // The 4 Touch Event Handlers
+        
+        // NOTE: the touchStart handler should also receive the ID of the triggering element
+        // make sure its ID is passed in the event call placed in the element declaration, like:
+        // <div id="picture-frame" ontouchstart="touchStart(event,'picture-frame');"  ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);">
+    
+        function touchStart(event,passedName) {
+            // disable the standard ability to select the touched object
+            event.preventDefault();
+            // get the total number of fingers touching the screen
+            fingerCount = event.touches.length;
+            // since we're looking for a swipe (single finger) and not a gesture (multiple fingers),
+            // check that only one finger was used
+            if ( fingerCount == 1 ) {
+                // get the coordinates of the touch
+                startX = event.touches[0].pageX;
+                startY = event.touches[0].pageY;
+                // store the triggering element ID
+                triggerElementID = passedName;
+            } else {
+                // more than one finger touched so cancel
+                touchCancel(event);
+            }
+        }
+    
+        function touchMove(event) {
+            event.preventDefault();
+            if ( event.touches.length == 1 ) {
+                curX = event.touches[0].pageX;
+                curY = event.touches[0].pageY;
+            } else {
+                touchCancel(event);
+            }
+        }
+        
+        function touchEnd(event) {
+            event.preventDefault();
+            // check to see if more than one finger was used and that there is an ending coordinate
+            if ( fingerCount == 1 && curX != 0 ) {
+                // use the Distance Formula to determine the length of the swipe
+                swipeLength = Math.round(Math.sqrt(Math.pow(curX - startX,2) + Math.pow(curY - startY,2)));
+                // if the user swiped more than the minimum length, perform the appropriate action
+                if ( swipeLength >= minLength ) {
+                    caluculateAngle();
+                    determineSwipeDirection();
+                    processingRoutine();
+                    touchCancel(event); // reset the variables
+                } else {
+                    touchCancel(event);
+                }	
+            } else {
+                touchCancel(event);
+            }
+        }
+    
+        function touchCancel(event) {
+            // reset the variables back to default values
+            fingerCount = 0;
+            startX = 0;
+            startY = 0;
+            curX = 0;
+            curY = 0;
+            deltaX = 0;
+            deltaY = 0;
+            horzDiff = 0;
+            vertDiff = 0;
+            swipeLength = 0;
+            swipeAngle = null;
+            swipeDirection = null;
+            triggerElementID = null;
+        }
+        
+        function caluculateAngle() {
+            var X = startX-curX;
+            var Y = curY-startY;
+            var Z = Math.round(Math.sqrt(Math.pow(X,2)+Math.pow(Y,2))); //the distance - rounded - in pixels
+            var r = Math.atan2(Y,X); //angle in radians (Cartesian system)
+            swipeAngle = Math.round(r*180/Math.PI); //angle in degrees
+            if ( swipeAngle < 0 ) { swipeAngle =  360 - Math.abs(swipeAngle); }
+        }
+        
+        function determineSwipeDirection() {
+            if ( (swipeAngle <= 45) && (swipeAngle >= 0) ) {
+                swipeDirection = 'left';
+            } else if ( (swipeAngle <= 360) && (swipeAngle >= 315) ) {
+                swipeDirection = 'left';
+            } else if ( (swipeAngle >= 135) && (swipeAngle <= 225) ) {
+                swipeDirection = 'right';
+            }/* else if ( (swipeAngle > 45) && (swipeAngle < 135) ) {
+                swipeDirection = 'down';
+            } else {
+                swipeDirection = 'up';
+            }*/
+        }
+        
+        function processingRoutine() {
+            var swipedElement = document.getElementById(triggerElementID);
+            if ( swipeDirection == 'left' ) {
+                // REPLACE WITH YOUR ROUTINES
+                //swipedElement.style.backgroundColor = 'orange';
+                $(".next").trigger("click");
+            } else if ( swipeDirection == 'right' ) {
+                // REPLACE WITH YOUR ROUTINES
+                //swipedElement.style.backgroundColor = 'green';
+                $(".prev").trigger("click");
+            }/* else if ( swipeDirection == 'up' ) {
+                // REPLACE WITH YOUR ROUTINES
+                swipedElement.style.backgroundColor = 'maroon';
+            } else if ( swipeDirection == 'down' ) {
+                // REPLACE WITH YOUR ROUTINES
+                swipedElement.style.backgroundColor = 'purple';
+            }*/
+        }
+    
+    </script>
+        <!--link rel="stylesheet" href="../../kickstarter/fonts/font-awesome-4.0.3/css/font-awesome.min.css"  id="style-resource-2"-->
+
+</head>
+
+<body>
+
+<div id="MasterAll">
+
+<div id="wrapHolder"></div>
+
+<header>
+    <div id="headerHolder"></div>
+    <div id="georgiaMenu"></div>
+</header>
+
+<div id="smartWidget">
+
+<div id="mySearchLeft"></div>
+
+<div id="footerBar">
+    <ul id="mapToggle">            
+        <li class="googleLink active">Google Map</li>
+        <li class="googleClusterLink">Cluster</li>
+        <li class="bingLink">Bing Map</li>
+        <li class="pdfLink" style="display:none;">PDF</li>
+        <li class="bingStaticLink" style="display:none;">Static Map</li>
+    </ul>
+</div>
+
+<div id="typeTabHolder" style="display:none">
+    <div class="searchTabs siteTabs">
+        
+        <div style="float:left; background:#555;height:30px" id="welcomeTab" onclick="location.href='./';"><div style="font-size:14pt; padding:4px 4px 0 2px; color:#fff;cursor:pointer"><i class="entypo-home"></i></div></div>
+
+        <nav style="overflow:hidden;">
+            <ul>
+                
+                <li id="shovelReadyTab" data-historyurl="shovelready" data-checkbox="#shovelReadyCB">Find Sites</li>
+                <li id="buildingsTab" data-historyurl="buildings" data-checkbox="#buildingsCB">Find Buildings</li>
+                <li id="manufacturersTab" data-historyurl="manufacturers" data-checkbox="#manufacturersCB">Manufacturers</li>
+                <li id="internationalTab" data-historyurl="international" data-checkbox="#internationalCB">International</li>
+                <!-- data-checkbox="#placesCB" -->
+                <li id="countiesTab" onclick="location.href='/counties';">Communities</li>
+                <li id="smallIconLI" style="padding-top:0px"><div id="rightIconsTop"></div></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <div id="content">
+
+        <!-- widget header -->
+            <div id="smartTop">
+
+                <div style="float:left; margin:4px 0 -1px 7px">
+                    <a href="/"><img id="headerLogo" alt="" /></a>
+                </div>
+
+                
+                <div id="rightIconsPosition"></div>
+
+                <div id="rightCornerIcons" style="float:right;margin-top:2px">
+                    
+                    <div id="showSettings" style="font-size:20px;padding-top:2px" class="showSettings menuRight entypo-cog"></div>
+                    <div id="printPage" style="font-size:20px;padding-top:2px;display:none" class="showSettings menuRight entypo-print user-9"></div>
+                    <div id="showMessage" class="menuRight entypo-info-circled" style="font-size:18px;padding-top:3px;"></div>
+                    <div id="closeSmartSearch" class="entypo-cancel-squared" style="font-size:20px;padding-top:2px"></div>
+
+                    <div id="showWidgetTabs" class="whiteRect" style="margin-top:4px;display:none">
+                        <div class="entypo-down-dir entypo-remove-margin" style="font-size:20px;padding:0px;color:#555;width:10px"></div>
+                    </div>
+
+                </div>
+
+                <div id="mySearchHandle"></div>
+
+                <div style="clear:both"></div>
+
+                <div id="widgetTabsPosition"></div>
+                <div style="clear:both" id="widgetTabsHolder">
+                    <nav style="overflow:hidden;">
+                        <ul id="widgetTabs">
+                            <li class="menuLink"><span class="entypo-menu" style="font-size: 34px; padding-top:2px; padding-bottom:0px;"></span><div>Menu</div></li>
+                            <li class="searchLink active"><span class="entypo-search" style="font-size: 30px; padding-top: 5px;"></span><div>Search</div></li>
+                            <li class="mapLink"><b><span class="entypo-location" style="font-size: 32px; padding-top: 3px;"></span></b><div>Map</div></li>
+                            <li class="listingsLink"><span class="entypo-doc-text" style="font-size: 27px; padding-top: 4px;"></span><div>List</div></li>
+                            <!--
+                            <li class="detailsLink"><span class="entypo-newspaper" style="font-size: 27px; padding-top: 4px;"></span><div>Details</div></li>
+                            -->
+                            <li class="slideshowLink"><span class="entypo-picture" style="font-size: 28px; padding-top: 4px;"></span><div>Slideshow</div></li>
+                            <!--
+                            <li class="galleryLink"><span class="entypo-layout" style="font-size: 28px; padding-top: 4px;"></span><div>Gallery</div></li>
+                            -->
+                            <li class="directionsLink" style="display:none"><div>Directions</div></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        <!-- /widget header -->
+
+        <!-- Overlaps map sometimes -->
+        <!-- div id="smartGallery" style="overflow:hidden"></div -->
+
+        <div id="iconHolder" style="display:none; float:left; min-width:28px">
+            <div style="font-size: 16pt; margin:14px 4px 0 0; color:#fff"><i class="entypo-menu"></i></div> 
+        </div>
+
+        <div id="modalPopupBkgd" style="display:none; position: fixed; left: 0px; top: 0px; z-index: 10000; width: 1229px; height: 2664px; " class="modalBackground">
+        </div>
+        <div id="settingsHolder"></div>
+        <div id="moreOptions">
+            <div id="moreOptionsBox" class="modalBox">
+                <div style="margin-bottom:8px; font-size:11pt">
+                    <b>Desktop Version</b><br>
+                    Our Desktop Version provides additional filters,  
+                    but is not formatted for mobile devices and tablets.
+                </div>
+                <div style="float: left; margin-right: 4px">
+                    <a href="#" id="fullWebsiteContinueLink" class="button">Continue</a></div>
+                <div>
+                    <a href="#" id="fullWebsiteCancelLink" class="button">Cancel</a></div>
+                <div style="clear: both">
+                </div>
+                <!--
+                <hr />
+                If you have a request for a new filter on the mobile search page, <a style="color: #afa;"
+                    href="http://dreamstudio.com/account/write/8" target="contact" style="white-space: nowrap">
+                    Let us know</a>.
+                -->
+            </div>
+        </div>
+
+        <!-- 2 columns -->
+        <div id="twoColumns">
+
+            <div id="mapColumn" style="width:100%;" class="mapHeight">
+                <div id="scrolleranchor"></div>
+                <div id="smartMap" style="display:none;" class="mapHeight"></div>
+            </div>
+
+            <div id="mainColumn">
+
+                <div id="menuHolder" style="display:none; text-align:center">
+                    
+                    <div class="menuButtons" style="padding:14px;">
+                        <div class="closeMenu closeIcon entypo-cancel-squared"></div>
+                        <div style="clear:both"></div>
+
+                        <a class="button searchButtonGreen" href="./">New Search</a><br>
+                        <a class="button" id="showAboutText" href="">About Our Data</a><br>
+                        <a class="button" href="http://georgiafacts.org/counties">County Factsheets</a><br>        
+                        <a class="button" href="http://georgiafacts.org/account">My Account</a><br>
+                        <div style="font-size:13pt;margin-bottom:8px">Search in Full Site:</div>
+                        <a class="button burgandy" href="http://georgiafacts.org/manufacturers">Manufacturers</a><br>
+                        <a class="button burgandy" href="http://georgiafacts.org/buildings">Available Buildings</a><br>
+                        <a class="button burgandy" href="http://georgiafacts.org/international">International Companies</a><br>
+                        <a class="button" href="http://georgia.org">Georgia.org</a>
+                    </div>
+                </div>
+
+                <div id="mySearchTop"></div>
+
+                <div class="resultsBackground">
+                    <div class="smartMessage"></div>
+
+                    <div class="infoDisplay">
+                        <div style="display:none;" class="adminMessage user-4"></div>
+
+                        <div>
+                            GeorgiaFacts is a service of the Georgia Department of Economic Development. Our manufacturing data and international listings are imported twice a year from our national data provider and combined with input from our local partners. Please <a href="/contact/" style="white-space:nowrap">contact us</a> if you have a change or correction.
+
+                            <!--
+                            <p>For Don to reactivate:
+                            <a href="javascript:$('#staticMap').attr('style','margin-left:0px;');$('#showStaticMap').hide();LoadStaticMap();$('#staticMap').append('<br>Bing static maps contain up to 18 points.<br>');return;" id="showStaticMap" target="staticMap">Show static map</a></p>
+                            -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- driving directions -->
+                <div id="smartDirections" style="display:none;position:relative;">
+                    <div class="closeIcon closeDirectionMap entypo-cancel-squared entypo-cancel-squared" style="position:absolute;right:10px;margin:8px"></div>
+                    <div id="smartDirectionsDisplay" style="width:100%;background-color:aliceblue;">
+                        <div style="padding:10px">
+                            <p style="font-size:18pt">Total Distance: <span id="total"></span></p>
+                        </div>
+                    </div>
+                    <div id="smartDirectionsMap" style="width:100%; min-height:500px"></div>
+                    <div style="clear:both"></div>
+                </div>
+
+                <!-- /driving directions -->
+
+
+                <!-- search -->
+                <div id="mySearchPH"></div>
+                <div id="mySearch" class="basicSearch" style="position:relative">
+                    <form>
+                        <div id="searchContainer">
+
+                            <div style="margin-bottom:8px;">
+                                <a class="searchButton goButton searchIcon entypo-search" href="#">&nbsp;</a>
+
+                                <div style="overflow:hidden;" >
+                                    
+                                    <input type="text" value="" id="keywordsTB" onblur="SearchFormTextCheck(this, 0)" onfocus="SearchFormTextCheck(this, 1)" maxlength="200" style="width:100%; height:32px; " onkeypress="return SearchEnter(event);" /> 
+                                    
+                                </div>
+                            </div>
+
+                             <div class="sectionTitle">Categories...</div>  
+
+                            <div class="sectionTitle"></div>                            
+                            <div id="dimensionStatus" style="display:none; position:relative" class="user-4">
+                                    <div style="display:none;float:right" class="button smallButton addButton addShovelReady user-4">add</div>
+                                    <input id="shovelReadyCB" type="checkbox" class="regular-checkbox checkbox-shovel-ready">
+                                    <label for="shovelReadyCB">
+                                    Shovel Ready Sites
+                                    </label>
+                                    <div style="clear:both"></div>
+                            </div>
+       
+                            <div id="dimensionStatus" style="position:relative">
+                                    <div style="display:none;float:right" class="button smallButton addButton addBuilding user-4">add</div>
+                                    <input id="buildingsCB" type="checkbox" class="regular-checkbox checkbox-buildings">
+                                    <label for="buildingsCB">
+                                    Available Buildings
+                                    </label>
+                                    <div style="clear:both"></div>
+                            </div>
+                            
+                            <div id="sectionDimension" style="display:none">
+                                <div style="font-size:10pt">
+                                Excludes buildings less than 20,000 sq ft in Metro Atlanta.</div>
+                                <div class="sectionBox">
+
+                                    <div class="sectionContent">
+                                        <div class="fieldtitle">
+                                        Minimum Size:</div>
+                                        <input name="minsize" type="text" maxlength="10" id="minsize" style="width: 100px;" />
+                                        square feet<br />
+                                        <span class="fieldtitle">Maximum Size:</span>
+                                        <input name="maxsize" type="text" maxlength="10" id="maxsize" style="width: 100px;" />
+                                        square feet<br />
+                                        <span class="fieldtitle">Ceiling Height:&nbsp;</span>
+                                        <input name="ceiling" type="text" maxlength="4" id="ceiling" style="width: 60px;" />
+                                        feet<br />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="manufacturersPanel" style="position:relative">
+                                <div style="display:none;float:right" class="button smallButton addButton addManufacturer user-4">add</div>
+                                <input id="manufacturersCB" type="checkbox" class="regular-checkbox checkbox-manufacturers">
+                                <label for="manufacturersCB">Manufacturing Directory</label> 
+
+                                <div style="clear:both"></div>
+
+                            </div>
+
+                            <div style="position:relative">
+                                <div style="display:none;float:right" class="button smallButton addButton addInternational user-4">add</div>
+                                <input id="internationalCB" type="checkbox" class="regular-checkbox checkbox-international">
+                                <label for="internationalCB">International</label>
+                            </div>
+
+                            <div style="clear:both"></div>
+
+                            <div class="sectionBox" id="sectionManufacturers">
+                                <div class="sectionContent" style="overflow:auto; margin-top:8px">
+                                    <div style="margin-bottom:8px"><b>Type of production:</b> <span class='nowrap'>(Applies to both maufacturers and international)</span></div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_0" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$0"
+                                        value="3364,481,4881" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_0">Aerospace</label>
+                                    </div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_1" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$1"
+                                        value="325411,3391" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_1">Biomedical</label>
+                                    </div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_2" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$2"
+                                        value="322" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_2">Paper</label>
+                                    </div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_3" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$3"
+                                        value="321" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_3">Wood Products</label>
+                                    </div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_4" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$4"
+                                        value="334,335" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_4">Computers and
+                                            Electronics</label>
+                                    </div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_5" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$5"
+                                        value="3361,3362,3363" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_5">Motor
+                                            Vehicles</label>
+                                    </div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_6" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$6"
+                                        value="337" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_6">Furniture</label>
+                                    </div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_7" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$7"
+                                        value="323" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_7">Printing</label>
+                                    </div>
+                                    <div class="typeCB">
+                                    <input id="ctl00_ContentPlaceHolder1_CategoriesCBL_8" type="checkbox" name="ctl00$ContentPlaceHolder1$CategoriesCBL$8"
+                                        value="311" /><label for="ctl00_ContentPlaceHolder1_CategoriesCBL_8">Food</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="clear:both;"></div> 
+
+                            <div class="optionAround placesSelect" style="display:none; position:relative">
+                                
+                                    <input id="placesCB" type="checkbox" class="regular-checkbox">
+                                    <label for="placesCB">
+                                    Nearby Places (FB)
+                                </label>
+                            </div><div style="clear:both"></div>
+
+
+                            <!-- Location -->
+                            
+
+                            <div class="sectionBox" id="locationSectionBox" style="padding-bottom:0px; margin-bottom:10px">
+                                
+
+                                <!--
+                                <dl class="tabs" id="locTabs" data-tab>
+                                  <dd class="active" id="nearTab"><a href="#panel1">Location</a></dd>
+                                  <dd><a href="#panel2" id="zipTab">Zip</a></dd>
+                                  <dd><a href="#panel3">County</a></dd>
+                                  <dd><a href="#panel4">City</a></dd>
+                                </dl>
+                                -->
+
+                                <div class="tabs-content" style="border-top:1px solid #ccc; margin-top:4px; padding-top:10px">
+
+                                  
+                                  <div class="active" id="panel1">
+                                      
+                                        <!-- smart filter starts here -->
+                                            <div class="filterText">
+                                                Where
+                                                <div class="filter"><span class="filterSelected" data-selected="all">Entire State</span><i class="entypo-down-open" style="font-size:13pt"></i></div>
+                                                <select style="display:none;" name="locationDD" id="locationDD">
+                                                    <option value="all" selected="selected">Entire State</option>
+                                                    <option value="current">My Current Location</option>
+                                                    <option value="custom">Custom Lat/Lon</option>
+                                                    <option value="zip">Search by Zip</option>
+                                                    <option value="county">Search by County</option>
+                                                    <option value="city">Search by City</option>
+                                                </select>
+                                                <div class="filterBubbleHolder" style="display:none;">
+                                                    <div class="uparrow uparrow-grey" style="left: 100px;"></div>
+                                                    <div class="uparrow uparrow-white" style="left: 100px;"></div>
+
+                                                    <div class="filterBubble">
+                                                        <ul class="filterUL">
+                                                            <li class="selected" data-id="all"><a href="#">Entire State</a></li>
+                                                            <li data-id="current"><a style="white-space:nowrap" href="#">My Current Location</a></li>
+                                                            <li data-id="custom"><a href="#">Custom Lat/Lon</a></li>
+                                                            <li data-id="zip"><a href="#">Search by Zip</a></li>
+                                                            <li data-id="county"><a href="#">Search by County</a></li>
+                                                            <li data-id="city"><a href="#">Search by City</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <br style="clear:both">
+                                            <!-- smart filter ends here -->
+
+                                        <!--<span class="ksr-select ksr-select-light has-options filter location" id="location_filter">
+                                            <span class="ss-icon ss-navigatedown"></span>
+                                            <span class="ss-icon ss-delete hide ksr-popover-excluded"></span>-->
+
+                                            <!--
+                                            Adding data-native-menu="false" seemed to mostly resolve occasionaly opening on Android S4. But still occasionally flaky.  One person found 
+                                            $("#container").show().
+                                            $("#container").append("<select><option value="1">Option1</option></select>"); 
+                                            https://code.google.com/p/android/issues/detail?id=10280
+
+                                            <select class="normal_type" name="locationDD" id="locationDD" data-native-menu="false">
+                                                <optgroup label="Location">
+                                                    <option value="1" selected="selected">Entire State</option>
+                                                    <option value="2">Near My Current Location</option>
+                                                    <option value="3">Custom Latitude/Longitude</option>
+                                                    <option value="zip">Search by Zip</option>
+                                                    <option value="county">Search by County</option>
+                                                    <option value="city">Search by City</option>
+                                                </optgroup>
+                                                <optgroup label="Major Cities">
+                                                    <option value="">Atlanta, GA</option>
+                                                    <option value="">Savannah, GA</option>
+                                                    <option value="">Athens, GA</option>
+                                                    <option value="">Macon, GA</option>
+                                                    <option value="">Marietta, GA</option>
+                                                    <option value="">Augusta, GA</option>
+                                                    <option value="">Decatur, GA</option>
+                                                </optgroup>
+                                            </select>
+                                            -->
+                                            <!--
+                                            <select class="normal_type" name="locationDD" id="locationDD" data-native-menu="false">
+                                                <option value="1" selected="selected">Entire State</option>
+                                                <option value="2">Near My Current Location</option>
+                                                <option value="3">Custom Latitude/Longitude</option>
+                                                <option value="zip">Search by Zip</option>
+                                                <option value="county">Search by County</option>
+                                                <option value="city">Search by City</option>
+                                            </select>-->
+                                            
+                                        <!--</span><br><br>-->
+                                        <!--
+                                        <div id="currentLoc" style="float: left;">
+                                            <a id="entireState" class="button active" href="#">Entire State</a>
+                                            <a id="useCurrent" class="button" href="#">My Current Location</a>
+                                            <a id="useCustomLatLon" class="button" href="#">Other</a>
+                                        </div>
+                                        -->
+                                        <!--<div style="clear:both"></div>-->
+
+                                        <div id="locationBar" style="cursor:pointer;">
+                                            <div id="locationStatus" class="sectionStatus" style="display:none;">
+                                                <div class="setLocation">
+
+                                                    <table><tr><td>
+                                                        <div id="locText" style="margin:3px 4px 0 0; color:#999">Search Entire State</div>
+                                                    </td><td>
+                                                        <div style="margin-right:10px">
+                                                            <img id="locationArrow" src="../img/icons/circle-next.png" style="width:20px;height:20px" />
+                                                        </div>
+                                                        </td></tr>
+                                                    </table>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="latLonFields" style="display:none">
+
+                                            <div id="coordFields" style="float:left;min-height:40px">
+                                                <div style="float:left; margin-right: 6px">
+                                                    Latitude<br>
+                                                    <input id="lat" type="text" style="width: 66px; margin-top: 0px" /><br>
+                                                    <input id="currentlat" type="text" style="display:none; width: 66px; margin-top: 0px" />
+                                                </div>
+                                                <div style="float:left; margin-right: 6px">
+                                                    Longitude<br>
+                                                    <input id="lon" type="text" style="width: 66px; margin-top: 0px" /><br>
+                                                    <input id="currentlon" type="text" style="display:none; width: 66px; margin-top: 0px" />
+                                                </div>
+                                            </div>
+
+                                            <div id="distanceInNear" style="float: left;"></div>
+
+                                            <div id="distanceField" style="float: left; margin-right: 4px; min-height:50px">
+                                            Distance<br>
+                                                <select id="distance" style="margin-left: 0px">
+                                                    <option value="">Distance...</option>
+                                                    <option value="3">Within 3 Miles</option>
+                                                    <option value="5">Within 5 Miles</option>
+                                                    <option value="10">Within 10 Miles</option>
+                                                    <option value="15">Within 15 Miles</option>
+                                                    <option value="20">Within 20 Miles</option>
+                                                    <option value="25">Within 25 Miles</option>
+                                                    <option value="30" selected="selected">Within 30 Miles</option>
+                                                    <option value="40">Within 40 Miles</option>
+                                                    <option value="50">Within 50 Miles</option>
+                                                    <option value="60">Within 60 Miles</option>
+                                                    <option value="75">Within 75 Miles</option>
+                                                    <option value="100">Within 100 Miles</option>
+                                                    <option value="150">Within 150 Miles</option>
+                                                    <option value="200">Within 200 Miles</option>
+                                                    <option value="300">Within 300 Miles</option>
+                                                    <option value="400">Within 400 Miles</option>
+                                                    <option value="500">Within 500 Miles</option>
+                                                </select>
+                                            </div>
+                                            <div id="loadingLatLon" style="float:left"></div>
+                                            <div id="currentButtons" style="float:left; margin: 18px 0 0 0">
+                                                <div id="doneLatLng" href="#"></div>
+                                                
+                                            </div>
+                                        </div>
+                                    
+                                        <div id="zipFields" style="display:none">
+                                    
+                                            <div style="float:left; margin-right:6px; min-height:50px">
+                                                Zip code<br>
+                                                <input id="zip" type="text" value="" style="width: 100px; margin-top: 0px" title="Enter zip code" />
+                                            </div>
+                                            <div id="distanceInZip" style="float: left;"></div>
+                                            
+                                            <div class="confirmationButtons" style="display:none;float:left; margin-top: 5px">
+                                                <a id="doneZip" class="button orangeButton" href="#">apply</a>
+                                                
+                                            </div>
+                                            
+                                        
+                                        </div>
+                                  
+                                  
+                                  <!--
+                                  <div class="content" id="panel2">
+                                    
+                                        <div style="float:left; margin-right:6px; min-height:50px">
+                                            Zip code<br>
+                                            <input id="zip" type="text" value="" style="width: 100px; margin-top: 0px" title="Enter zip code" />
+                                        </div>
+                                        <div id="distanceInZip" style="float: left;"></div>
+                                        <div class="confirmationButtons" style="float:left; margin-top: 5px">
+                                            <a id="doneZip" class="button orangeButton" href="#">apply</a>
+                                            
+                                        </div>
+                                    
+                                  </div>-->
+                                  <div id="countyFields" style="display:none;">
+                                    
+                                    <select size="5" name="countyids" multiple="multiple" id="countyids" style="width:140px;font-size:14px;float:left;margin:0 8px 10px 0">
+                                        <option selected="selected" value="0">All Counties</option>
+                                        <option value="13001">Appling</option>
+                                        <option value="13003">Atkinson</option>
+                                        <option value="13007">Baker</option>
+                                        <option value="13009">Baldwin</option>
+                                        <option value="13013">Barrow</option>
+                                        <option value="13015">Bartow</option>
+                                        <option value="13019">Berrien</option>
+                                        <option value="13021">Bibb</option>
+                                        <option value="13023">Bleckley</option>
+                                        <option value="13025">Brantley</option>
+                                        <option value="13027">Brooks</option>
+                                        <option value="13029">Bryan</option>
+                                        <option value="13031">Bulloch</option>
+                                        <option value="13033">Burke</option>
+                                        <option value="13035">Butts</option>
+                                        <option value="13037">Calhoun</option>
+                                        <option value="13039">Camden</option>
+                                        <option value="13043">Candler</option>
+                                        <option value="13045">Carroll</option>
+                                        <option value="13047">Catoosa</option>
+                                        <option value="13051">Chatham</option>
+                                        <option value="13055">Chattooga</option>
+                                        <option value="13057">Cherokee</option>
+                                        <option value="13059">Clarke</option>
+                                        <option value="13063">Clayton</option>
+                                        <option value="13067">Cobb</option>
+                                        <option value="13069">Coffee</option>
+                                        <option value="13071">Colquitt</option>
+                                        <option value="13073">Columbia</option>
+                                        <option value="13075">Cook</option>
+                                        <option value="13077">Coweta</option>
+                                        <option value="13079">Crawford</option>
+                                        <option value="13081">Crisp</option>
+                                        <option value="13083">Dade</option>
+                                        <option value="13085">Dawson</option>
+                                        <option value="13087">Decatur</option>
+                                        <option value="13089">DeKalb</option>
+                                        <option value="13091">Dodge</option>
+                                        <option value="13093">Dooly</option>
+                                        <option value="13095">Dougherty</option>
+                                        <option value="13097">Douglas</option>
+                                        <option value="13099">Early</option>
+                                        <option value="13103">Effingham</option>
+                                        <option value="13105">Elbert</option>
+                                        <option value="13109">Evans</option>
+                                        <option value="13111">Fannin</option>
+                                        <option value="13113">Fayette</option>
+                                        <option value="13115">Floyd</option>
+                                        <option value="13117">Forsyth</option>
+                                        <option value="13119">Franklin</option>
+                                        <option value="13121">Fulton</option>
+                                        <option value="13123">Gilmer</option>
+                                        <option value="13125">Glascock</option>
+                                        <option value="13127">Glynn</option>
+                                        <option value="13129">Gordon</option>
+                                        <option value="13131">Grady</option>
+                                        <option value="13133">Greene</option>
+                                        <option value="13135">Gwinnett</option>
+                                        <option value="13137">Habersham</option>
+                                        <option value="13139">Hall</option>
+                                        <option value="13143">Haralson</option>
+                                        <option value="13147">Hart</option>
+                                        <option value="13149">Heard</option>
+                                        <option value="13151">Henry</option>
+                                        <option value="13153">Houston</option>
+                                        <option value="13155">Irwin</option>
+                                        <option value="13157">Jackson</option>
+                                        <option value="13161">Jeff Davis</option>
+                                        <option value="13163">Jefferson</option>
+                                        <option value="13165">Jenkins</option>
+                                        <option value="13167">Johnson</option>
+                                        <option value="13171">Lamar</option>
+                                        <option value="13173">Lanier</option>
+                                        <option value="13175">Laurens</option>
+                                        <option value="13177">Lee</option>
+                                        <option value="13179">Liberty</option>
+                                        <option value="13181">Lincoln</option>
+                                        <option value="13185">Lowndes</option>
+                                        <option value="13187">Lumpkin</option>
+                                        <option value="13193">Macon</option>
+                                        <option value="13195">Madison</option>
+                                        <option value="13197">Marion</option>
+                                        <option value="13189">McDuffie</option>
+                                        <option value="13191">McIntosh</option>
+                                        <option value="13199">Meriwether</option>
+                                        <option value="13205">Mitchell</option>
+                                        <option value="13207">Monroe</option>
+                                        <option value="13211">Morgan</option>
+                                        <option value="13213">Murray</option>
+                                        <option value="13215">Muscogee</option>
+                                        <option value="13217">Newton</option>
+                                        <option value="13219">Oconee</option>
+                                        <option value="13223">Paulding</option>
+                                        <option value="13225">Peach</option>
+                                        <option value="13227">Pickens</option>
+                                        <option value="13229">Pierce</option>
+                                        <option value="13233">Polk</option>
+                                        <option value="13235">Pulaski</option>
+                                        <option value="13237">Putnam</option>
+                                        <option value="13241">Rabun</option>
+                                        <option value="13245">Richmond</option>
+                                        <option value="13247">Rockdale</option>
+                                        <option value="13249">Schley</option>
+                                        <option value="13251">Screven</option>
+                                        <option value="13253">Seminole</option>
+                                        <option value="13255">Spalding</option>
+                                        <option value="13257">Stephens</option>
+                                        <option value="13259">Stewart</option>
+                                        <option value="13261">Sumter</option>
+                                        <option value="13267">Tattnall</option>
+                                        <option value="13269">Taylor</option>
+                                        <option value="13271">Telfair</option>
+                                        <option value="13273">Terrell</option>
+                                        <option value="13275">Thomas</option>
+                                        <option value="13277">Tift</option>
+                                        <option value="13279">Toombs</option>
+                                        <option value="13281">Towns</option>
+                                        <option value="13283">Treutlen</option>
+                                        <option value="13285">Troup</option>
+                                        <option value="13287">Turner</option>
+                                        <option value="13291">Union</option>
+                                        <option value="13293">Upson</option>
+                                        <option value="13295">Walker</option>
+                                        <option value="13297">Walton</option>
+                                        <option value="13299">Ware</option>
+                                        <option value="13303">Washington</option>
+                                        <option value="13305">Wayne</option>
+                                        <option value="13311">White</option>
+                                        <option value="13313">Whitfield</option>
+                                        <option value="13321">Worth</option>
+                                    </select>
+                                    <a id="doneCounty" style="display:none;" class="button orangeButton" href="#">apply</a>
+                                    
+                                  </div>
+                                  
+                                  
+                                  <div id="cityFields" style="display:none;">
+                                    
+                                    <select size="5" name="cities" multiple="multiple" id="cities" style="width:140px;font-size:14px;float:left;margin:0 8px 10px 0">
+                                        <option selected="selected" value="">All Cities</option>
+                                        <option value="Acworth">Acworth</option>
+                                        <option value="Adairsville">Adairsville</option>
+                                        <option value="Adel">Adel</option>
+                                        <option value="Adrian">Adrian</option>
+                                        <option value="Albany">Albany</option>
+                                        <option value="Alpharetta">Alpharetta</option>
+                                        <option value="Americus">Americus</option>
+                                        <option value="Armuchee">Armuchee</option>
+                                        <option value="Ashburn">Ashburn</option>
+                                        <option value="Athens">Athens</option>
+                                        <option value="Atlanta">Atlanta</option>
+                                        <option value="Auburn">Auburn</option>
+                                        <option value="Augusta">Augusta</option>
+                                        <option value="Austell">Austell</option>
+                                        <option value="Bainbridge">Bainbridge</option>
+                                        <option value="Baldwin">Baldwin</option>
+                                        <option value="Baldwon">Baldwon</option>
+                                        <option value="Ball Ground">Ball Ground</option>
+                                        <option value="Barnesville">Barnesville</option>
+                                        <option value="Bethlehem">Bethlehem</option>
+                                        <option value="Bishop">Bishop</option>
+                                        <option value="Black Creek">Black Creek</option>
+                                        <option value="Blackshear">Blackshear</option>
+                                        <option value="Blairsville">Blairsville</option>
+                                        <option value="Blakely">Blakely</option>
+                                        <option value="Bloomingdale">Bloomingdale</option>
+                                        <option value="Blue Ridge">Blue Ridge</option>
+                                        <option value="Bogart">Bogart</option>
+                                        <option value="Bowman">Bowman</option>
+                                        <option value="Braselton">Braselton</option>
+                                        <option value="Bremen">Bremen</option>
+                                        <option value="Brunswick">Brunswick</option>
+                                        <option value="Buena Vista">Buena Vista</option>
+                                        <option value="Buford">Buford</option>
+                                        <option value="Butler">Butler</option>
+                                        <option value="Byron">Byron</option>
+                                        <option value="Cairo">Cairo</option>
+                                        <option value="Calhoun">Calhoun</option>
+                                        <option value="Camilla">Camilla</option>
+                                        <option value="Canton">Canton</option>
+                                        <option value="Carnesville">Carnesville</option>
+                                        <option value="Cartersville">Cartersville</option>
+                                        <option value="Chamblee">Chamblee</option>
+                                        <option value="Chatsworth">Chatsworth</option>
+                                        <option value="Chickamauga">Chickamauga</option>
+                                        <option value="Clarkesville">Clarkesville</option>
+                                        <option value="Claxton">Claxton</option>
+                                        <option value="Cleveland">Cleveland</option>
+                                        <option value="Cochran">Cochran</option>
+                                        <option value="Colbert">Colbert</option>
+                                        <option value="College Park">College Park</option>
+                                        <option value="Columbus">Columbus</option>
+                                        <option value="Comer">Comer</option>
+                                        <option value="Commerce">Commerce</option>
+                                        <option value="Conyers">Conyers</option>
+                                        <option value="Cordele">Cordele</option>
+                                        <option value="Cornelia">Cornelia</option>
+                                        <option value="Covington">Covington</option>
+                                        <option value="Cumming">Cumming</option>
+                                        <option value="Dahlonega">Dahlonega</option>
+                                        <option value="Dallas">Dallas</option>
+                                        <option value="Dalton">Dalton</option>
+                                        <option value="Darien">Darien</option>
+                                        <option value="Dawson">Dawson</option>
+                                        <option value="Dawsonville">Dawsonville</option>
+                                        <option value="Decatur">Decatur</option>
+                                        <option value="Denton">Denton</option>
+                                        <option value="Doerun">Doerun</option>
+                                        <option value="Donalsonville">Donalsonville</option>
+                                        <option value="Doraville">Doraville</option>
+                                        <option value="Douglas">Douglas</option>
+                                        <option value="Douglasville">Douglasville</option>
+                                        <option value="Dublin">Dublin</option>
+                                        <option value="Duluth">Duluth</option>
+                                        <option value="East Dublin">East Dublin</option>
+                                        <option value="East Point">East Point</option>
+                                        <option value="Eastanollee">Eastanollee</option>
+                                        <option value="Eastman">Eastman</option>
+                                        <option value="Eatonton">Eatonton</option>
+                                        <option value="Edison">Edison</option>
+                                        <option value="Elberton">Elberton</option>
+                                        <option value="Ellabell">Ellabell</option>
+                                        <option value="Ellaville">Ellaville</option>
+                                        <option value="Ellenwood">Ellenwood</option>
+                                        <option value="Ellijay">Ellijay</option>
+                                        <option value="Estanollee">Estanollee</option>
+                                        <option value="Eulonia">Eulonia</option>
+                                        <option value="Evans">Evans</option>
+                                        <option value="Fairburn">Fairburn</option>
+                                        <option value="Fairmount">Fairmount</option>
+                                        <option value="Fayetteville">Fayetteville</option>
+                                        <option value="Fleming">Fleming</option>
+                                        <option value="Flowery Branch">Flowery Branch</option>
+                                        <option value="Forest Park">Forest Park</option>
+                                        <option value="Forsyth">Forsyth</option>
+                                        <option value="Fort Oglethorpe">Fort Oglethorpe</option>
+                                        <option value="Fort Valley">Fort Valley</option>
+                                        <option value="Franklin">Franklin</option>
+                                        <option value="Gainesville">Gainesville</option>
+                                        <option value="Garden City">Garden City</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Gibson">Gibson</option>
+                                        <option value="Glennville">Glennville</option>
+                                        <option value="Gordon">Gordon</option>
+                                        <option value="Greensboro">Greensboro</option>
+                                        <option value="Griffin">Griffin</option>
+                                        <option value="Grovetown">Grovetown</option>
+                                        <option value="Hahira">Hahira</option>
+                                        <option value="Hampton">Hampton</option>
+                                        <option value="Hartwell">Hartwell</option>
+                                        <option value="Hawkinsville">Hawkinsville</option>
+                                        <option value="Hazlehurst">Hazlehurst</option>
+                                        <option value="Hiawassee">Hiawassee</option>
+                                        <option value="Hiram">Hiram</option>
+                                        <option value="Hogansville">Hogansville</option>
+                                        <option value="Hoschton">Hoschton</option>
+                                        <option value="Hoscton">Hoscton</option>
+                                        <option value="Jackson">Jackson</option>
+                                        <option value="Jasper">Jasper</option>
+                                        <option value="Jefferson">Jefferson</option>
+                                        <option value="Jesup">Jesup</option>
+                                        <option value="Johns Creek">Johns Creek</option>
+                                        <option value="Jonesboro">Jonesboro</option>
+                                        <option value="Kathleen">Kathleen</option>
+                                        <option value="Kennesaw">Kennesaw</option>
+                                        <option value="Kennessaw">Kennessaw</option>
+                                        <option value="Kensington">Kensington</option>
+                                        <option value="LaFayette">LaFayette</option>
+                                        <option value="LaGrange">LaGrange</option>
+                                        <option value="Lakeland">Lakeland</option>
+                                        <option value="Lavonia">Lavonia</option>
+                                        <option value="Lawrenceville">Lawrenceville</option>
+                                        <option value="Lilburn">Lilburn</option>
+                                        <option value="Lincolnton">Lincolnton</option>
+                                        <option value="Lithia Springs">Lithia Springs</option>
+                                        <option value="Lithonia">Lithonia</option>
+                                        <option value="Loganville">Loganville</option>
+                                        <option value="Louisville">Louisville</option>
+                                        <option value="Lula">Lula</option>
+                                        <option value="Lumber City">Lumber City</option>
+                                        <option value="Lyons">Lyons</option>
+                                        <option value="Mableton">Mableton</option>
+                                        <option value="Macon">Macon</option>
+                                        <option value="Madison">Madison</option>
+                                        <option value="Manchester">Manchester</option>
+                                        <option value="Marietta">Marietta</option>
+                                        <option value="Maysville">Maysville</option>
+                                        <option value="McDonough">McDonough</option>
+                                        <option value="McRae">McRae</option>
+                                        <option value="Metter">Metter</option>
+                                        <option value="Midway">Midway</option>
+                                        <option value="Miledgeville">Miledgeville</option>
+                                        <option value="Milledgeville">Milledgeville</option>
+                                        <option value="Millen">Millen</option>
+                                        <option value="Monroe">Monroe</option>
+                                        <option value="Montezuma">Montezuma</option>
+                                        <option value="Morrow">Morrow</option>
+                                        <option value="Moultrie">Moultrie</option>
+                                        <option value="Mt. Airy">Mt. Airy</option>
+                                        <option value="Nahunta">Nahunta</option>
+                                        <option value="Nashville">Nashville</option>
+                                        <option value="Newnan">Newnan</option>
+                                        <option value="Newton">Newton</option>
+                                        <option value="Norcross">Norcross</option>
+                                        <option value="Oakwood">Oakwood</option>
+                                        <option value="Ocilla">Ocilla</option>
+                                        <option value="Patterson">Patterson</option>
+                                        <option value="Peachtree City">Peachtree City</option>
+                                        <option value="Pearson">Pearson</option>
+                                        <option value="Pelham">Pelham</option>
+                                        <option value="Pembroke">Pembroke</option>
+                                        <option value="Pendergrass">Pendergrass</option>
+                                        <option value="Perry">Perry</option>
+                                        <option value="Pooler">Pooler</option>
+                                        <option value="Portal">Portal</option>
+                                        <option value="Powder Springs">Powder Springs</option>
+                                        <option value="Quitman">Quitman</option>
+                                        <option value="Rabun Gap">Rabun Gap</option>
+                                        <option value="Rex">Rex</option>
+                                        <option value="Richland">Richland</option>
+                                        <option value="Richmond Hill">Richmond Hill</option>
+                                        <option value="Rincon">Rincon</option>
+                                        <option value="Ringgold">Ringgold</option>
+                                        <option value="Roberta">Roberta</option>
+                                        <option value="Rockmart">Rockmart</option>
+                                        <option value="Rome">Rome</option>
+                                        <option value="Rossville">Rossville</option>
+                                        <option value="Roswell">Roswell</option>
+                                        <option value="Rutledge">Rutledge</option>
+                                        <option value="Sandersville">Sandersville</option>
+                                        <option value="Sardis">Sardis</option>
+                                        <option value="Savannah ">Savannah </option>
+                                        <option value="Smyrna">Smyrna</option>
+                                        <option value="Snellville">Snellville</option>
+                                        <option value="Social Circle">Social Circle</option>
+                                        <option value="Soperton">Soperton</option>
+                                        <option value="Springfield">Springfield</option>
+                                        <option value="St. Marys">St. Marys</option>
+                                        <option value="Statesboro">Statesboro</option>
+                                        <option value="Statham">Statham</option>
+                                        <option value="Stockbridge">Stockbridge</option>
+                                        <option value="Stone Mountain">Stone Mountain</option>
+                                        <option value="Summerville">Summerville</option>
+                                        <option value="Suwanee">Suwanee</option>
+                                        <option value="Sylvania">Sylvania</option>
+                                        <option value="Sylvester">Sylvester</option>
+                                        <option value="Tallapoosa">Tallapoosa</option>
+                                        <option value="Temple">Temple</option>
+                                        <option value="Thomaston">Thomaston</option>
+                                        <option value="Thomasville">Thomasville</option>
+                                        <option value="Thomson">Thomson</option>
+                                        <option value="Tifton">Tifton</option>
+                                        <option value="Toccoa">Toccoa</option>
+                                        <option value="Trenton">Trenton</option>
+                                        <option value="Tucker">Tucker</option>
+                                        <option value="Tunnel Hill">Tunnel Hill</option>
+                                        <option value="Tyrone">Tyrone</option>
+                                        <option value="Union City">Union City</option>
+                                        <option value="Union Point">Union Point</option>
+                                        <option value="Valdosta">Valdosta</option>
+                                        <option value="Vidalia">Vidalia</option>
+                                        <option value="Vienna">Vienna</option>
+                                        <option value="Villa Rica">Villa Rica</option>
+                                        <option value="Warner Robins">Warner Robins</option>
+                                        <option value="Watkinsville">Watkinsville</option>
+                                        <option value="Waycross">Waycross</option>
+                                        <option value="Waynesboro">Waynesboro</option>
+                                        <option value="West Point">West Point</option>
+                                        <option value="Wildwood">Wildwood</option>
+                                        <option value="Winder">Winder</option>
+                                        <option value="Winston">Winston</option>
+                                        <option value="Woodbine">Woodbine</option>
+                                        <option value="Woodstock">Woodstock</option>
+                                        <option value="Wrens">Wrens</option>
+                                        <option value="Wrightsville">Wrightsville</option>
+                                    </select>
+                                    
+                                    <a id="doneCity" style="display:none;" class="button orangeButton" href="#">apply</a>
+                                    
+                                  </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- /Location -->
+
+                            <div style="position:relative">
+                                <input id="latLonOnlyCB" type="checkbox" class="regular-checkbox checkbox-latlononly" />
+                                <label for="latLonOnlyCB" style="font-weight:400">Limit to listings with map points</label>
+                            </div>
+                            <div style="clear:both;"></div>
+
+                            <div class="lowerHolder">
+                                <div style="float:left; margin-right:20px">
+                                    <a id="searchButton" class="button basicSearch searchButton searchButtonGreen" style="padding: 9px 20px 11px; margin:0 0 14px 0;" href="#">GO</a>
+                                </div>
+                                <div style="overflow:hidden; font-size:11pt; margin-bottom:6px">
+                                    <a href="" class="button fullWebsiteLink desktopText" style="float:right;">More Options</a>
+                            </div>
+
+
+                            </div>
+                        </div>
+
+                        </form>
+                        <!-- hr class="hideWide showMobile" / -->
+                    </div>
+                <!-- /search -->
+
+                <div id="searchTextHolder">
+                    
+                    <div id="searchTextButtons" style="float:right">
+                        <div class="closeIcon entypo-cancel toggleSearchText" id="sliderX"></div>
+                        <div class="button smallButton changeButton">change</div>
+                    </div>
+                    
+                    <div id="searchText"></div>
+                </div>
+                <div style="clear:both"></div>
+
+                <div id="smartSlideshow"></div>
+
+                <div id="smartList" style="position:relative"></div>
+                <div id="mapInMain"></div>
+            </div>
+            
+            <div id="contentHolder"></div>
+
+        </div>
+        <!--/ 2 columns -->
+
+        
+
+    </div>
+    <div id="print">
+    </div>
+    <div id="overlay" >
+        Loading Data Feed...
+    </div>
+   </div>  <!-- End smartWidget -->
+    <script type="text/javascript">
+        var userObj = null;
+    </script>
+    
+    <script src="../js/util.js" type="text/javascript"></script>
+    <script src="../js/smartWidget.1.0.js" type="text/javascript"></script>
+    <script src="../js/jquery.unveil.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/markercluster.js"></script>
+    
+    <!-- history.js -->
+    <script>if ( typeof window.JSON === 'undefined' ) { document.write('<script src="../js/json2.js"><\/script>'); }</script>
+    <script src="../js/history.js"></script>
+    <!--<script src="../js/jquery.mobile-1.4.2.min.js"></script>-->
+    <script type="text/javascript">
+        //$(document).bind("mobileinit", function(){
+          //apply overrides here
+          //$.mobile.ajaxEnabled = false;
+          //$.mobile.pushStateEnabled = false;
+        //});
+        var display_results = $.cookie('display_results');
+    function fixSmartTop() {
+        // Was 'overflow':'hidden'
+        //$("#smartTop").css({"width":$('#mainColumn').width(), 'overflow':'visible', 'position':'fixed','top':'0px','border-radius':'0px'});
+
+        // Adding 'left':'0px' causes wide-screen version to be at far left.
+        $("#smartTop").css({'width':$('#mainColumn').width(), 'position':'fixed', 'top':'0px', 'border-radius':'0px', 'z-index':'9999999'});
+
+        // position:fixed; z-index:9999999; top:0; left:0; right:0; border-radius:0px;    
+
+        //alert('done fixSmartTop');
+    }
+    function unfixSmartTop() {
+        $("#smartTop").css({"margin-top":"0px","width":"100%","position":'relative','border-radius':'8px 8px 0px 0px'});
+    }
+	function feedScroll(){
+		var b = $(window).scrollTop();
+		//var d = $("#scrolleranchor").offset({scroll:false}).top;
+		//var d = $("#scrolleranchor").offset({"scroll":false}).top;
+		var d = $("#scrolleranchor").offset().top;
+		var c=$("#smartMap");
+        //console.log(b + "==" + d)
+		if (b>d) {
+            if ($(window).width() > 800) { // Fixed position map
+                //alert('Fixed position map');
+                // "margin-top":"10px",
+                if(typeof(display_results) != 'undefined' && display_results["selected"] == "below") {
+                    c.css({"width":$('#mapColumn').width(), "top":"0px","bottom":"20px"});
+                } else {
+                    c.css({"width":$('#mapColumn').width(), "position":'fixed',"top":"0px","bottom":"20px"});
+                }
+            }
+            //console.log("if");
+            if(b>d+35) {
+                fixSmartTop();
+            }
+            
+			////c.css({position:"fixed",top:"0px"})
+		} else {
+		  if (b<=d) {
+			////c.css({position:"relative",top:""})
+            //alert('reset map');
+			//c.css({"margin-top":"","width":"","position":'relative',"top":""});
+            c.css({"margin-top":"0px","width":"100%","position":'relative',"top":"0px"});
+            if ($(window).width() > 800) {
+                unfixSmartTop();
+            }
+		  }
+		}
+	}
+	
+	$(window).load(function(){
+		$(function() {
+		  var a = function() {
+			 if($(".closeList:visible").length >= 1) {
+				feedScroll();
+			 }
+			
+		  };
+		  $(window).scroll(a);a()
+		});
+	});
+
+    // Global variables
+    var sliderValues;
+    // var defaultSliderValues = { 'adminLevel': 0, 'distanceLevel': 0, 'verboseLevel': 0, 'fbPlace': 'off' };
+    var defaultSliderValues = { 'adminLevel': 0, 'distanceLevel': 0, 'fbPlace': 'off' };
+    var userObj = null;
+    var historyHash = null, flgLoadAboutData = true, ClickDetailsLink = false;
+    var ignoreHistoryStateChange = false;
+    var chkGeoPosition = true;
+    var checkedItems = [];
+    var searchParams;
+    var defaultSearchParams = { 'useCurrent': null, 'locationDD': 'all' };
+    var offsetTop = 90;
+    var useCookies = true;
+
+    $(function () {    // document.ready event handler
+
+        // Variables
+        var urlValues = loadUrlValues();
+        var urlValue;
+        var distanceSearchType = '';
+        var useGoogleMap = true;
+        var previousWidth = 1000;
+        var $smartList = $('#smartList');
+        // End Variables
+
+        //$("#mainColumn").draggable({handle: "#mySearchHandle", refreshPositions: false, delay: 0});
+
+        // Functions
+        function activateMyLocation() {
+            $('#latLonFields').show();
+            getLatLonFromBrowser();
+        }
+
+        function activateEntireState() {
+            $('#latLonFields').hide();
+            //$('#currentLoc .active').removeClass("active");
+            //$('#entireState').addClass("active");
+        }
+
+        function activateOtherLocation() {
+            $('#latLonFields').show();
+            
+            //$('#currentLoc .active').removeClass("active");
+            //$('#useCustomLatLon').addClass("active");
+        }
+
+        function geoSelected() {
+            $('#distanceField').insertAfter($('#distanceInNear'));
+        }
+        function zipSelected() {
+            $('#distanceField').insertAfter($('#distanceInZip'));
+        }
+
+        function closeMenu() {
+            $('#menuHolder').hide();
+            $('.menuLink').css('color', '#fff');
+            $('.menuLink').css('background', 'transparent');
+            $('#widgetTabsHolder').insertAfter($('#widgetTabsPosition'));
+            $('body').css('margin-top', '90px');
+        }
+        function restoreIcons() {
+            $('#showWidgetTabs').hide();
+            $('#rightCornerIcons').appendTo($('#rightIconsPosition'));
+            if ($(window).width() > 800) {
+                $('#closeSmartSearch').show();
+            }
+            $("#smallIconLI").hide();
+            $(".siteTabs ul li").css({ "width": "20%" });
+            $('#widgetTabsHolder').insertAfter($('#mySearchTop'));
+            //$('body').css('margin-top', '58px');
+            scrollToTop($('#mainColumn'), offsetTop);
+            $("#mainColumn").show();
+        }
+
+        function showAbout() {
+            $('#contentHolder').show();
+            $('#contentHolder').load('about.html', function () { 
+                if (location.host == 'localhost' || location.host.indexOf('review.') >= 0) {
+                    $("#shovelReadyLink").show();
+                }
+            });
+        }
+        function showGeorgiaMenu(urlValues) {
+            if ((location.host.toLowerCase().indexOf("georgia") >= 0 || 
+                    (typeof(urlValues.localhost) != "undefined" && urlValues.localhost == '1'))
+                && $(window).width() > 800) {
+                $('#wrapHolder').load('wrap.html', function () {
+                    userObj = new userInfo();
+                    userObj.done(function (userState) {
+                        loadUserAccess(userState); // util.js
+                        if (userState.userAccess == 9) {
+                            $("#showSettings").show();
+                        }
+                    });
+                });
+                $('#headerHolder').load('../../facts/assets/header.htm', function () { });
+                $('#georgiaMenu').show();
+                //$('#georgiaMenu').load('../../facts/assets/menu.htm', function () { });
+            }
+        }
+
+        function hideMain() {
+            // Retains map for background
+            $("#settingsHolder").hide();
+            $(".infoDisplay").hide();
+            $("#mySearch").hide();
+            $("#contentHolder").hide();
+            $("#smartList").hide();
+            $("#smartSlideshow").hide();
+            //$("#smartGallery").hide();
+            $("#smartDirections").hide();
+        }
+        function hideOthers() {
+            $("#smartDirections").hide();
+            $(".infoDisplay").hide();
+            $("#settingsHolder").hide();
+            $("#searchTextHolder").hide();
+            $("#smartSlideshow").hide();
+            //$("#smartGallery").hide();
+            if ($(window).width() <= 800) {
+                //alert("hideOthers");
+                $("#mySearch").hide();
+                $("#contentHolder").hide();
+                $("#smartMap").hide();
+            }
+        }
+
+        function submitPage(pageLoadParams) {
+            //console.log("received");
+            //event.preventDefault(); comment bcz event is not defined
+
+            var fieldValue = '';
+            var index = 0;
+            var params = null;
+            
+            // pageLoadParams: url params to use for the initial page load. If not defined,
+            // pull from search fields and cookies
+            if(typeof(pageLoadParams) == 'undefined') {
+
+                params = loadUrlValues();
+        
+                // Clear any values from the querystring so that they aren't included in the updated search.
+                for(var key in params) {
+                   if(key != 's' && key != 'db' && key != 'localhost') {
+                      delete params[key];
+                   }
+                }
+                var selectedSearchType = $("#locationDD").val();
+                switch(selectedSearchType) {
+                    case 'zip':
+                        //if (distanceSearchType == 'zip') {
+                            params.zip = $('#zip').val();
+                            params.distance = $("#distance").val();
+                        //}
+                        break;
+
+                    case 'current':
+                    case 'custom':
+                        //if (distanceSearchType == 'latlon') {
+                            //params.lat = Number($("#lat").val()).toFixed(3).toString();
+                            //params.lon = Number($("#lon").val()).toFixed(3).toString();
+                            if (selectedSearchType == 'custom') {
+                                if ($.trim($("#lat").val()) == '' || $.trim($("#lon").val()) == '') {
+                                    $("#lat").val('34.397');
+                                    $("#lon").val('-83.644');
+                                }
+                            }
+                            params.lat = $("#lat").val();
+                            params.lon = $("#lon").val();
+                            params.distance = $("#distance").val();
+                        //}
+                        break;
+
+                    case 'county':
+                        if ($("#countyids option:selected").length > 1) {
+                            $("#countyids option:first").prop("selected", false);
+                        }
+                        fieldValue = $('#countyids').val(); // multi-select
+                        if (fieldValue != null) {
+                            index = fieldValue.indexOf("0");
+                            if (index >= 0) {
+                                fieldValue.splice(index, 1); // remove the default value if selected
+                            }
+                            if (fieldValue.length > 0) {
+                                params.countyids = fieldValue.join(',');
+                            }
+                            if(useCookies) {
+                                var cokSearchParam = $.cookie('searchParams');
+                                cokSearchParam.county = params.countyids;
+                                $.cookie('searchParams', cokSearchParam);
+                            }
+                        }
+                        break;
+
+                    case 'city':
+                        if ($("#cities option:selected").length > 1) {
+                            $("#cities option:first").prop("selected", false);
+                        }
+                        fieldValue = $('#cities').val(); // multi-select
+                        if (fieldValue != null) {
+                            index = fieldValue.indexOf("");
+                            if (index >= 0) {
+                                fieldValue.splice(index, 1); // remove the default value if selected
+                            }
+                            if (fieldValue.length > 0) {
+                                params.cities = fieldValue.join(',');
+                            }
+                            if(useCookies) {
+                                var cokSearchParam = $.cookie('searchParams');
+                                cokSearchParam.city = params.cities;
+                                $.cookie('searchParams', cokSearchParam);
+                            }
+                        }
+                        break;
+
+                    default:
+
+                } // end locationSearchType switch
+
+                params.tid = '';
+                if ($('#shovelReadyCB').prop('checked')) {
+                    params.tid += '16470,';
+                }
+                if ($('#buildingsCB').prop('checked')) {
+                    params.tid += '16400,';
+                }
+                if ($('#manufacturersCB').prop('checked')) {
+                    params.tid += '31030,';
+                }
+                if ($('#internationalCB').prop('checked')) {
+                    params.tid += '30080,';
+                }
+                if (params.tid.length > 0) {
+                    params.tid = params.tid.substr(0, params.tid.length - 1); // remove trailing comma
+                }
+                else if (!$('#placesCB').prop('checked')) { // Nothing checked
+                    // If images tab is active, search for Available Buildings
+                    if ($('.slideshowLink').hasClass("active")) {
+                        $('#buildingsCB').prop('checked', true);
+                        params.tid += "16400";
+                    } else {
+                        // Search for mfg companies.
+                        $('#manufacturersCB').prop('checked', true);
+                        $("#sectionManufacturers").show();
+                        params.tid = "31030";
+                    }
+                }
+                if ($('#latLonOnlyCB').prop('checked')) {
+                    params.latlononly = '1';
+                }
+
+                if ($('#buildingsCB').prop('checked')) {
+                    fieldValue = $('#minsize').val();
+                    if (fieldValue != '') {
+                        params.minsize = fieldValue;
+                    }
+                    fieldValue = $('#maxsize').val();
+                    if (fieldValue != '') {
+                        params.maxsize = fieldValue;
+                    }
+                    fieldValue = $('#ceiling').val();
+                    if (fieldValue != '') {
+                        params.ceiling = fieldValue;
+                    }
+                }
+                
+                if ($('#manufacturersCB').prop('checked') || $('#internationalCB').prop('checked')) {
+                    $('#sectionManufacturers input[type="checkbox"]:checked').each(function (index, item) {
+                        if (typeof (params.naics) == 'undefined') {
+                            params.naics = '';
+                        }
+                        params.naics += $(this).val() + ',';
+                    });
+                    if(typeof(params.naics) != 'undefined' && params.naics.length > 1) {
+                        params.naics = params.naics.substr(0, params.naics.length - 1); // remove trailing comma
+                    }
+                }
+
+                fieldValue = $('#keywordsTB').val();
+                if (fieldValue == 'Search') {
+                    fieldValue = '';
+                }
+                if (fieldValue != '') {
+                    params.keywords = fieldValue;
+                }
+
+                var searchTitle = displayLocText();
+
+                // create a copy of the params for the history so the history version can be customized while
+                // leaving the params unchanged.
+                var historyParams = $.extend({}, params);
+                if(typeof(historyParams.tid) != 'undefined' && historyParams.tid.indexOf(',') == -1) {
+                    var go = '';
+                    switch(historyParams.tid) {
+                        case '16470':
+                            go = 'shovel-ready';
+                            break;
+                        case '16400':
+                            go = 'buildings';
+                            break;
+                        case '31030':
+                            go = 'manufacturers';
+                            break;
+                        case '30080':
+                            go = 'international';
+                            break;
+                    }
+                    if(go.length > 0) {
+                        historyParams.go = go;
+                        delete historyParams.tid;
+                    }
+                }
+
+                var querystring = '';
+                if (location.host == 'localhost') {
+                    queryString = buildLocalhostQueryString(historyParams);
+                }
+                else {
+                    queryString = "?" + $.param(historyParams);
+                }
+                ignoreHistoryStateChange = true;
+                History.pushState(historyParams, searchTitle, queryString);
+                ignoreHistoryStateChange = false;
+
+            } // end if - pageLoadParams is undefined
+            else {
+               params = pageLoadParams; // url params from the initial page load
+               displayLocText();
+            }
+
+            var feeds = [];
+            var feed = null;
+
+            feed = getLocationAndBuildingFeed(params);
+            if (feed != null) {
+                feeds.push(feed);
+            }
+
+            if (typeof(sliderValues) != 'undefined' && sliderValues.fbPlace == 'on') {
+                feed = getFacebookFeed(params);
+                if (feed != null) {
+                    feeds.push(feed);
+                }
+            }
+
+            $("#mySearch").hide();
+            //$('#mainColumn').css('margin-top', '40px');
+            $("#contentHolder").hide();
+            $('#twoColumns').css('background', 'transparent');
+
+            $("#searchTextHolder").show();
+            checkedItems.length = 0;
+            $('.pdfLink').hide().html('PDF');
+            loadWidget(feeds);
+        }
+
+
+        function getLocationAndBuildingFeed(params) {
+            var feed = null;
+            var headerText = '';
+            if (typeof(params.tid) != 'undefined' && params.tid.length > 0) {
+                var typeIDs = params.tid.split(',');
+                var joinText = '';
+                if (typeIDs.length <= 2) {
+                    if (typeIDs.length == 2) {
+                        joinText = ' and ';
+                    }
+                    for (var index in typeIDs) {
+                        if (typeIDs[index] == '16470') {
+                            headerText += 'Shovel Ready Sites';
+                        }
+                        else if (typeIDs[index] == '16400') {
+                            headerText += 'Available Buildings';
+                        }
+                        else if (typeIDs[index] == '31030') {
+                            headerText += 'Manufacturers';
+                        }
+                        else if (typeIDs[index] == '30080') {
+                            headerText += 'International Companies';
+                        }
+                        if (index < typeIDs.length - 1) {
+                            headerText += joinText;
+                        }
+                    }
+                }
+                else {
+                    // All 3 or 4 types are checked.
+                    headerText = 'Search Results';
+                }
+            }
+            var feedUrl = '/smart/api/itemfeed?dynamic=1';
+            var feedType = 'locations';
+            var detailsUrl = '/info/{0}?mode=a';
+            var detailsSelector = '#ItemInfoContentDiv';
+
+            //var feedUrl2 = 'calendar/json/google.txt';
+            //var feedType2 = 'events';
+            if (location.host == 'localhost') {
+                feedUrl = getLocalhostFeedUrl(feedUrl, 'http://georgiafacts.org', params);
+                detailsUrl = getLocalhostDetailsUrl(detailsUrl, 'http://georgiafacts.org', params);
+            }
+            else if ($.isEmptyObject(params) == false) {
+                feedUrl += feedUrl.indexOf('?') > 0 ? '&' : '?';
+                feedUrl += $.param(params);
+            }
+            //alert(feedUrl);
+            
+            feed = {
+                url: feedUrl,
+                type: feedType,
+                provider: '',
+                headerText: headerText,
+                className: '',
+                detailsUrl: detailsUrl,
+                detailsSelector: detailsSelector
+            };
+
+            return feed;
+        }
+
+        function getFacebookFeed(params) {
+            var feed = null;
+
+            if ($('#placesCB').prop('checked')) {
+
+                // if not miles not entered default to 3000 meters else convert miles to meters
+                var 
+                // Default to Georgia Capital
+                    fblat = params.lat ? params.lat : '33.749',
+                    fblon = params.lon ? params.lon : '-84.387',
+                    fbdistance = params.distance ? +params.distance * 1609.344 : 3000, // if not miles not entered default to 3000 meters else convert miles to meters
+                    fql_place_page = '{"q1": "SELECT checkin_count, content_age, description, display_subtext, geometry, is_city, is_unclaimed, latitude, longitude, name, page_id, pic, pic_big, pic_crop, pic_large, pic_small, pic_square, search_type, type, distance(latitude, longitude, \'' + fblat + '\', \'' + fblon + '\') FROM place WHERE distance(latitude, longitude, \'' + fblat + '\', \'' + fblon + '\') < \'' + (fbdistance > 50000 ? 50000 : fbdistance) + '\' AND type=\'PLACE\' ORDER BY distance(latitude, longitude, \'' + fblat + '\', \'' + fblon + '\')", "q2": "select page_id, location from page where page_id in (select page_id from #q1)"}';
+
+                feedUrlPlaces = 'https://graph.facebook.com/fql?q=' + encodeURIComponent(fql_place_page) + '&format=json&suppress_http_code=1&access_token=117370968285365%7C5XkqBE8fUp29ZaTRAMTmAAfCFvk',
+	            console.log(feedUrlPlaces);
+                //feedUrlPlaces = 'https://graph.facebook.com/fql?q=SELECT%20checkin_count%2C%20content_age%2C%20description%2C%20display_subtext%2C%20geometry%2C%20is_city%2C%20is_unclaimed%2C%20latitude%2C%20longitude%2C%20name%2C%20page_id%2C%20pic%2C%20pic_big%2C%20pic_crop%2C%20pic_large%2C%20pic_small%2C%20pic_square%2C%20search_type%2C%20type%2C%20distance(latitude%2C%20longitude%2C%20%22' + fblat + '%22%2C%20%22' + fblon + '%22)%0AFROM%20place%0AWHERE%20distance(latitude%2C%20longitude%2C%20%22' + fblat + '%22%2C%20%22' + fblon + '%22)%20%3C%3D%20%22' + (fbdistance > 50000 ? 50000 :  fbdistance )+ '%22%0AAND%20type%3D%22PLACE%22%0AORDER%20BY%20distance(latitude%2C%20longitude%2C%20%22' + fblat + '%22%2C%20%22' + fblon + '%22)&format=json&suppress_http_code=1&access_token=117370968285365%7C5XkqBE8fUp29ZaTRAMTmAAfCFvk',
+                feedTypePlaces = 'places',
+                //console.log(feedUrlPlaces);
+
+
+	            feed = {
+	                url: feedUrlPlaces,
+	                type: feedTypePlaces,
+	                provider: 'Facebook',
+	                className: '',
+	            };
+            }
+
+            return feed;
+        }
+        
+        function loadWidget(feeds) {
+            if (feeds == null || feeds.length == 0) {
+                return;
+            }
+
+            var browserHeight = $(window).height();
+            // Allows map to reach bottom of screen.
+            $('#smartWidget').css('min-height',browserHeight - 90);
+            $('.mapHeight').css('min-height',browserHeight); // Setting 100% here does not work.
+
+            var hasImages = false;
+            var locationFeedCount = 0;
+            var locationID = 0;
+
+            var lat = parseFloat($("#lat").val());
+            var lon = parseFloat($("#lon").val());
+            if (isNaN(lat) || isNaN(lon) || lat < 0 || lon > 0) {
+                lat = 33.7490;  // default "206 Washington St Sw Atlanta, GA 30334, USA" location assumed
+                lon = -84.3892;
+            }
+            
+            var showPositionIconOnMapLoad = false;
+            if(useCookies) {
+                var searchParams = $.cookie('searchParams');
+                showPositionIconOnMapLoad = ((searchParams["locationDD"] == "current" || searchParams["locationDD"] == "custom") ? true : false)
+            }
+
+            var options = {
+                showMenuIcon: false,
+                showVerticalMenu: false,
+                showListThumbnail: false,
+                updateBrowserHash: true,
+                bingMapPointX: 300,
+                googleMapPanbyX: 250,
+                latitude: lat != 0 ? lat : 34.397,
+                longitude: lon != 0 ? lon : -83.644,
+                useGoogleMap: useGoogleMap,
+                showPositionIconOnMapLoad: showPositionIconOnMapLoad,
+
+                // Handle addedListItem event
+
+                addingListItem: function (event, data) {
+                    //console.log(data);
+                    var leftBorderColor = '';
+                    var feedType = data.feed.type;
+                    var rowMappointImg = null;
+                    if (feedType == 'locations') {
+                        locationFeedCount++;
+                        locationID = data.item.id;
+                        rowMappointImg = "../img/icons/mappoint.png";
+                        var isManufacturer = false;
+                        var isInternational = false;
+                        if (data.item.categories != null) {
+                            $.each(data.item.categories, function (index, category) {
+                                switch (category.id) {
+                                    case 16470:
+                                        leftBorderColor = 'purple'; //  #9ccd51'; // Shovel Ready
+                                        break;
+                                    case 16400:
+                                        leftBorderColor = '#7cbd41'; // Buildings
+                                        break;
+                                    case 31030:
+                                        isManufacturer = true;
+                                        break;
+                                    case 30080:
+                                        isInternational = true;
+                                        break;
+                                }
+                            });
+                        }
+
+                        if (leftBorderColor == '') {
+                            if (isManufacturer) {
+                                leftBorderColor = '#4b8df7'; // Mfg and Intl/Mfg
+                            }
+                            //Later we might globe icon when international
+                            if (isInternational) {
+                                leftBorderColor = '#f1a350';
+                                if (isManufacturer) { // Darker orange
+                                    leftBorderColor = '#d87a14'; // Mfg and Intl/Mfg
+                                }
+                            }
+                        }
+                    }
+                    else if (feedType == 'places') {
+                        rowMappointImg = '../img/icons/blue-dot1.png';
+                        leftBorderColor = 'blue'; // Facebook
+                    }
+
+                    if (leftBorderColor != '') {
+                        data.html = $(data.html).first().css('border-left', '3px solid ' + leftBorderColor).end();
+                        /*
+                        if(data.item.venue.latitude != null && data.item.venue.longitude != null) {
+                            data.html = $(data.html).prepend("<div style='float:left;margin-right:4px;padding: 0 4px 0 4px;' ><a class='gmapDirectionLink' data-location='{\"lat\" : \""+data.item.venue.latitude+"\", \"lang\":\""+data.item.venue.longitude+"\"}'><img src='"+rowMappointImg+"'/></a></div>");
+                        }
+                        data.html = $(data.html).prepend("<div style='background:"+leftBorderColor+";float:left;margin-right:4px;padding: 0 4px 0 4px;color:#fff;'>"+ ++data.index +"</div>");
+                        */
+                    }
+                },
+
+
+                // Handle addedListItem event
+                addedListItem: function (event, data) {
+                    if (data.item.images != null) {
+                        hasImages = true;
+                    }
+                },
+
+                // Handle addedListItemDetail event
+                addedListItemDetail: function (event, data) {
+                    if(userObj != null) {
+                        userObj.done(function (userState) {
+                            loadUserAccess(userState); // util.js
+                            var $eventTarget = $(event.target);
+
+                            if(userState.userAccess >= 4) {
+                                $('#manageSuite', $eventTarget).click( function (event) {
+                                    showManagmentSuite($eventTarget);
+                                    event.preventDefault();
+                                });
+                                $('#manageSuiteHide', $eventTarget).click( function (event) {
+                                    hideManagementSuite($eventTarget);
+                                    event.preventDefault();
+                                });
+
+                                $('#manageSuite', $eventTarget).hover( function () {
+                                    if( $('#manageSuite', $eventTarget).is(':visible') ) { // Because button hover fires twice.
+                                        showManagmentSuite($eventTarget);
+                                    }
+                                }, function() { //the handlerOut
+                                    if( $('#manageSuite', $eventTarget).is(':visible') ) {
+                                        hideManagementSuite($eventTarget);
+                                    }
+                                });
+                                $('#managementSuite', $eventTarget).hover( function () {
+                                    // Already open.
+                                }, function() { //the handlerOut
+                                    hideManagementSuite($eventTarget);
+                                });
+
+                            }
+                        });
+                    }
+                },
+
+                displayingItemDetails: function(event, data) {
+                    if(!data.showHideAll) { // indicates whether showing/hiding this row or all of them.
+                        var historyState = History.getState();
+                        if(typeof(historyState.data.id) == 'undefined' || 
+                           (typeof(historyState.data.id) != 'undefined' && historyState.data.id != data.item.id)) {
+                            /*
+                                18 When clicking a "Details" link, have the triggered event append the id to the URL.  Use the format: ?id=[id] by using history.js. You'll need to append the id to the link.  You can see the id in the "Page" link.
+                            */
+                            var queryString = '';
+                            //var params = {id: $link.data("id")};
+                            var params = {id: data.item.id};
+                            if (location.host == 'localhost') {
+                                queryString = buildLocalhostQueryString(params);
+                            }
+                            else {
+                                queryString = "?" + $.param(params);
+                            }
+                            ignoreHistoryStateChange = true;
+                            History.pushState({id: data.item.id}, data.item.title, queryString);
+                            ignoreHistoryStateChange = false;
+                        }
+                        //console.log(data);
+                        $("meta[property='og:title']").attr("content", data.item.title);
+                        $("meta[property='og:url']").attr("content", window.location.href);
+                        
+                        if (data.item.images != null) {
+                            $("meta[property='og:image']").attr("content", data.item.images[0]["large"]);
+                        }
+
+                        // Project 7.13 When "Details" is clicked, hide the other listing rows and show only the current row.
+                                        
+                        $(".eventRow").hide();
+                        $(".listHeader").hide();
+                        if(locationFeedCount > 1) {
+                            $(".showAllResults").show();
+                        }
+                        $(event.target).closest(".eventRow").show();
+
+                        data.scrollOffset = $("#smartTop").css('position') == 'fixed' ? 104 : 194;
+                    }
+                },
+
+                displayingDirections: function(event, data) {
+                    $(".infoDisplay").hide();
+                    $("#settingControls").hide();
+                    $("#smartDirections").show();
+
+                    if ($(window).width() <= 800) {
+                        //$("#smartMap").hide();
+                    }
+
+                    $("#smartDirectionsMap").show();
+                    $("#smartDirectionsDisplay").show();
+                    $("#widgetTabs").find('li').removeClass("active");
+                    $(".directionsLink").addClass("active").show();
+
+                    scrollToTop($('#mainColumn'), offsetTop);
+                    $("#smartSlideshow").hide();
+                },
+
+                displayedDirections: function(event, data) {
+                    var miles = data.totalDistance * 0.621371192;
+                    miles = miles.toFixed(1);
+                    $('#total').html(miles.toString() + ' miles');
+                }, 
+
+                listItemChecked: function(event, data) {
+                   // alert('index: ' + data.item.index + ' checked: ' + data.checked);
+                   var checkedItemIndex = checkedItems.indexOf(data.item.id);
+                   if(checkedItemIndex >= 0 && data.checked == false) {
+                      checkedItems.splice(checkedItemIndex, 1); // remove from the array
+                   }
+                   else if(checkedItemIndex < 0 && data.checked == true) {
+                      checkedItems.push(data.item.id); // add to the array
+                   }
+
+                   if(checkedItems.length > 0) {
+                        $('.pdfLink').html('Download PDF');
+                   }
+                   else {
+                        $('.pdfLink').html('PDF');
+                   }
+                },
+
+                beginLoadingFeeds: function (event, data) {
+                    $('#overlay').show().css('height', $('document').height()).html("Loading Items...<br><br><br><img src='../img/icons/loading.gif' alt='' style='border:1px solid #fff; padding:4px' />"); // http://preloaders.net/
+                    
+                    /*$.mobile.loading( 'show', {
+                      text: "Loading Items...",
+                      textVisible: true,
+                      theme: "b",
+                    });*/
+                    
+                },
+                loadedFeed: function (event, data) {
+                    var feed = data.feed;
+                    if (feed.headerText != '') {
+                        $('#overlay').html("Loading " + feed.headerText + "...");
+                        //$.mobile.loading({ text: "Loading " + feed.headerText + "..." });
+                    }
+                    else {
+                        if (feed.type == 'locations') {
+                            $('#overlay').html("Loading Locations...");
+                            //$.mobile.loading({ text: "Loading Locations..." });
+                            $('.pdfLink').show();
+                        } else if (feed.type == 'events') {
+                            $('#overlay').html("Loading Events...");
+                            //$.mobile.loading({ text: "Loading Events..." });
+                        } else if (feed.type == 'organizations') {
+                            $('#overlay').html("Loading Organizations...");
+                            //$.mobile.loading({ text: "Loading Organizations..." });
+                        } else if (feed.type == 'places') {
+                            $('#overlay').html("Loading Places...");
+                            //$.mobile.loading({ text: "Loading Places..." });
+                        }
+                        else {
+                            $('#overlay').html("Loading Items...");
+                            //$.mobile.loading({ text: "Loading Items..." });
+                        }
+                    }
+
+                    if (feed.type == 'locations') {
+                        $('.pdfLink').show();
+                    }
+                },
+                endLoadingFeeds: function (event, data) {
+                    $('#overlay').hide();
+                    $('.slideshowLink').toggle(hasImages);
+                    if (hasImages) {
+                        $("#widgetTabs li").removeClass("active");
+                        $("li.slideshowLink").addClass("active");
+                        if ($(window).width() <= 800) { // Always show on mobile
+                            //$slideshowContainer.find('.prev').show();
+                            //$slideshowContainer.find('.next').show();
+                            $('#slideshowContainer .prev').show();
+                            $('#slideshowContainer .next').show();
+                        }
+                    } else {
+                        //$("li.mapLink").addClass("active"); // Caused 2 tabs to appear, Details is also active.
+                    }
+                    setTimeout(function() {
+                        /*
+                        if (ClickDetailsLink) {
+                            console.log($(".detailsLink[data-id='"+ClickDetailsLink+"']").html());
+                            $(".detailsLink[data-id='"+ClickDetailsLink+"']").click();
+                        }
+                        */
+                        // Give the maps time to load before displaying the details.
+                        if(feeds.length == 1 && locationFeedCount == 1 && locationID > 0) {
+                             $('#smartWidget').smartWidget('detail', locationID, 'locations');
+                        }
+
+                    }, 1000);
+                    
+                }
+            };
+
+            options.feeds = feeds;
+
+            widget = $('#smartWidget').smartWidget(options);
+
+            /*
+            8. If the feed takes more than 10 seconds to load, append "Initiating App." below the "Loading Data Feed..." text.  If another 10 seconds passes, append "Almost Done." on the same line.  If an additional 15 seconds passes, display "Sorry for the delay. Requesting feed again."  Wait 2 seconds then reinitiate that feed.
+            */
+            setTimeout(function () {
+                if (flgFeedLoaded == false) {
+                    $("#overlay").append('<br/>Initiating App. ');
+                    //$.mobile.loading({ text: "Initiating App. " });
+                }
+            }, 11000);
+
+            setTimeout(function () {
+                if (flgFeedLoaded == false) {
+                    $("#overlay").append('Almost Done. ');
+                    //$.mobile.loading({ text: "Almost Done. '" });
+                }
+            }, 21000);
+
+            setTimeout(function () {
+                if (flgFeedLoaded == false) {
+                    $("#overlay").html('Sorry for the delay. Requesting feed again. ');
+                    //$.mobile.loading({ text: "Sorry for the delay. Requesting feed again.  "});
+                }
+
+                setTimeout(function () {
+                    if (flgFeedLoaded == false) {
+                        $("#overlay").html('Loading Data Feed...');
+                        //$.mobile.loading({ text: "Loading Data Feed..." });
+                        submitPage();
+                    }
+                }, 2000);
+            }, 36000);
+        }
+
+        function updateLayout() {
+            var browserWidth = $(window).width();
+            if (browserWidth <= 800 && previousWidth > 800) {
+                fixSmartTop();
+                $("#smartTop").css({ 'width': '100%' });
+                $('#smartMap').insertAfter($('#mapInMain'));
+                $('#mapColumn').hide();
+                $('#mapColumn').css('min-height','0px');
+                // Force size since not visible - no effect here
+                $('#smartMap').css('min-width',browserWidth,'min-height',$(window).height());
+
+                $('#closeSmartSearch').hide(); /* since shown using script */
+                $('#mainColumn').show();
+                if (!$('.mapLink').hasClass("active")) {
+                    // Neither
+                    $(".smartMap").hide();
+                    $("#smartMap").hide();
+                }
+                $('.desktopText').html("Desktop Version");
+            } else if (browserWidth > 800 && previousWidth <= 800) {
+                $('.desktopText').html("More Options");
+                //$("body").css({'margin-top':'0px'});
+                $("#smartMap").show();
+                $('#mapColumn').show();
+                $('#smartMap').insertAfter($('#scrolleranchor'));
+                feedScroll(); // Also checks up-down position.
+            }
+            previousWidth = $(window).width();
+
+            // Limit to when height changes.
+            // Prevents white gap under map
+            //$('.mapHeight').css('min-height',browserHeight-90);
+        }
+
+        function loadSearchFields(urlValues) {
+            var searchShovelReady = false;
+            var searchBuildings = false;
+            var searchInternational = false;
+            var searchManufacturers = false;
+            var lat = 0;
+            var lon = 0;
+            var $checkbox = null;
+            var loadedField = false;
+
+            useCookies = false; // Disable loading and saving of cookies
+
+            var typeIDs = [];
+            if (typeof(urlValues.tid) != 'undefined' && urlValues.tid.length > 0) {
+                typeIDs = urlValues.tid.split(',');
+                for (var index in typeIDs) {
+                    if (typeIDs[index] == '16470') {
+                        searchShovelReady = true;
+                    }
+                    else if (typeIDs[index] == '16400') {
+                        searchBuildings = true;
+                    }
+                    else if (typeIDs[index] == '31030') {
+                        searchManufacturers = true;
+                    }
+                    else if (typeIDs[index] == '30080') {
+                        searchInternational = true;
+                    }
+                }
+            }
+
+            if (typeof(urlValues.naics) != 'undefined' && urlValues.naics.length > 0) {
+                var urlNaicsArray = urlValues.naics.split(',');
+                $('#sectionManufacturers input[type="checkbox"]').each(function(index, element) {
+                    var $checkbox = $(element);
+                    var checkboxNaicsArray = $checkbox.val().split(','); // checkbox values could be a comma separated list of naics codes
+                    $.each(checkboxNaicsArray, function(j, naics) {
+                       // see if the naics code in the url matches the checkbox values. If so, then check the checkbox.
+                       if($.inArray(naics, urlNaicsArray) >= 0 && $checkbox.prop('checked') == false) {
+                            $checkbox.prop('checked', true);
+                            loadedField = true;
+                       }
+                    });
+                });
+            }
+
+            if (typeof (urlValues.keywords) != 'undefined' && urlValues.keywords.length > 0) {
+               urlValue = urlValues.keywords;
+               $('#keywordsTB').val(urlValue);
+               loadedField = true;
+            }
+
+            if (typeof (urlValues.minsize) != 'undefined' && urlValues.minsize.length > 0) {
+                urlValue = parseInt(urlValues.minsize, 10);
+                if (urlValue >= 0) {
+                    $('#minsize').val(urlValue);
+                    searchBuildings = true;
+                    loadedField = true;
+                }
+            }
+            if (typeof (urlValues.maxsize) != 'undefined' && urlValues.maxsize.length > 0) {
+                urlValue = parseInt(urlValues.maxsize, 10);
+                if (urlValue >= 0) {
+                    $('#maxsize').val(urlValue);
+                    searchBuildings = true;
+                    loadedField = true;
+                }
+            }
+            if (typeof (urlValues.ceiling) != 'undefined' && urlValues.ceiling.length > 0) {
+                urlValue = parseInt(urlValues.ceiling, 10);
+                if (urlValue >= 0) {
+                    $('#ceiling').val(urlValue);
+                    searchBuildings = true;
+                    loadedField = true;
+                }
+            }
+
+            if (typeof (urlValues.countyids) != 'undefined' && urlValues.countyids.length > 0) {
+                urlValue = urlValues.countyids.split(','); // multi-select
+                for (var i in urlValue) {
+                    urlValue[i] = urlValue[i].trim();
+                }
+                $('#countyids').val(urlValue);
+                loadedField = true;
+                $(".filterUL li[data-id='county']").trigger("click");
+            }
+
+            if (typeof (urlValues.cities) != 'undefined' && urlValues.cities.length > 0) {
+                urlValue = urlValues.cities.split(','); // multi-select
+                for (var i in urlValue) {
+                    urlValue[i] = urlValue[i].trim();
+                }
+                $('#cities').val(urlValue);
+                loadedField = true;
+                $(".filterUL li[data-id='city']").trigger("click");
+            }
+
+            if (typeof (urlValues.zip) != 'undefined' && urlValues.zip.length > 0) {
+                urlValue = parseInt(urlValues.zip, 10);
+                if (urlValue >= 0) {
+                    $('#zip').val(urlValue);
+                    loadedField = true;
+                    $(".filterUL li[data-id='zip']").trigger("click");
+                }
+            }
+
+            if (typeof (urlValues.distance) != 'undefined' && urlValues.distance.length > 0) {
+                urlValue = parseInt(urlValues.distance, 10);
+                if (urlValue >= 0) {
+                    $('#distance').val(urlValue);
+                    loadedField = true;
+                }
+            }
+
+            if (typeof (urlValues.lat) != 'undefined' && urlValues.lat.length > 0 
+                && typeof (urlValues.lon) != 'undefined' && urlValues.lon > 0) {
+                lat = parseFloat(urlValues.lat);
+                lon = parseFloat(urlValues.lon);
+                if (!isNAN(lat) && !isNAN(lon)) {
+                    $('#lat').val(lat);
+                    $('#lon').val(lon);
+                    loadedField = true;
+                    $(".filterUL li[data-id='custom']").trigger("click");
+                }
+            }
+
+           if (typeof (urlValues.latlononly) != 'undefined' && urlValues.latlononly.length > 0) {
+                urlValue = urlValues.latlononly;
+                $checkbox = $('#latLonOnlyCB');
+                loadedField = true;
+                // Using click() doesn't work completely since the actual checkbox is hidden. The checkbox 
+                // appears checked but the handler doesn't see that the actual checkbox is checked.
+                $checkbox.prop('checked', (urlValue == '1')).triggerHandler('click');
+            }
+
+            if(typeof(urlValues.go) != 'undefined' && urlValues.go.length > 0) {
+               var go = urlValues.go.toLowerCase();
+               if(go == 'all') {
+                    searchBuildings = true;
+                    searchManufacturers = true;
+                    searchInternational = true;
+               }
+               if(go == 'shovel-ready') {
+                    searchShovelReady = true;
+                    if($.inArray('16470', typeIDs) < 0) {
+                        typeIDs.push('16470');
+                    }
+                    loadedField = true;
+               }
+               if(go == 'buildings') {
+                    searchBuildings = true;
+                    if($.inArray('16400', typeIDs) < 0) {
+                        typeIDs.push('16400');
+                    }
+                    loadedField = true;
+               }
+               if(go == 'manufacturers') {
+                    searchManufacturers = true;
+                    if($.inArray('31030', typeIDs) < 0) {
+                        typeIDs.push('31030');
+                    }
+                    loadedField = true;
+               }
+               if(go == 'international') {
+                    searchInternational = true;
+                    if($.inArray('30080', typeIDs) < 0) {
+                        typeIDs.push('30080');
+                    }
+                    loadedField = true;
+               }
+
+               delete urlValues.go; // no need to pass this on to the feed since it doesn't use it.
+            }
+
+            // Set or update the typeids. Note that this does NOT update the actual url but just updates the
+            // urlValues object. This object should then be passed to submitPage to load the feeds.
+            urlValues.tid = typeIDs.join(',');
+
+            if(loadedField && urlValues.tid.length == 0) {
+               searchManufacturers = true;
+               urlValues.tid = '31030';  // Set a default typeid if nothing is set.
+            }
+
+            // Using click() doesn't work completely since the actual checkbox is hidden. The checkbox 
+            // appears checked but the handler doesn't see that the actual checkbox is checked.
+            $checkbox = $('#shovelReadyCB');
+            $checkbox.prop('checked', searchShovelReady).triggerHandler('click');
+
+            $checkbox = $('#buildingsCB');
+            $checkbox.prop('checked', searchBuildings).triggerHandler('click');
+
+            $checkbox = $('#internationalCB');
+            $checkbox.prop('checked', searchInternational).triggerHandler('click');
+
+            $checkbox = $('#manufacturersCB');
+            $checkbox.prop('checked', searchManufacturers).triggerHandler('click');
+
+            if (typeof (urlValues.id) != 'undefined' && urlValues.id.length > 0) {
+                loadedField = true; // no actual field load but submit the page to fetch the item with this id.
+            }
+
+            useCookies = true; // Enable loading and saving of cookies
+
+            return loadedField;
+
+        } // End loadSearchFields
+
+        // End Functions
+
+
+        // Event Handlers
+        $(".filter").click(function (event) {
+            event.stopPropagation();
+            console.log("filter clicked");
+            $(".filterBubbleHolder").toggle();
+            $(".filter").css({ "background-color": "#f9f9f9" });
+        });
+        $(document).click(function () {
+            $(".filterBubbleHolder").hide();
+        });
+        $(".filterUL li").click(function (e) {
+            e.preventDefault();
+            $(".filterUL li").removeClass("selected");
+            $(this).addClass("selected");
+            //$(".filterSelected").html($(this).text() + '<i class="entypo-down-open" style="font-size:13pt"></i>');
+            $(".filterSelected").html($(this).text()).data('selected', $(this).data('id'));
+            $("#locationDD option[value='" + $(this).data('id') + "']").prop("selected", true).trigger("change");
+            $(".filterBubbleHolder").hide();
+            $("#locationStatus").hide();
+        });
+        
+        
+
+        /*
+        * smartDirections
+        
+        $(".gmapDirectionLink").on("click", function(e) {
+        $("#overlay").show().html($("#smartDirections"));
+            
+        e.preventDefault();
+        });
+        */
+
+        $(".closeDirectionMap").click(function () {
+            $("#smartDirections").hide();
+            $(".listingsLink").trigger("click");
+        });
+
+
+
+        $("#locationDD").change(function () {
+            //hide all sections
+            $('#latLonFields').hide();
+            $("#zipFields").hide();
+            $("#countyFields").hide();
+            $("#cityFields").hide();
+
+            console.log($(this).val());
+            var selectedValue = $(this).val();
+
+            if (selectedValue == 'all') { // its entire state
+                if(useCookies) {
+                    $.cookie('searchParams', { 'useCurrent': null, 'locationDD': 'all' });
+                }
+                activateEntireState();
+                $("#zip").val('');
+            }
+
+            if (selectedValue == 'current') { // its My Current location, set cookie useCurrent=1 
+                activateMyLocation();
+                if(useCookies) {
+                    $.cookie('searchParams', { 'useCurrent': '1', 'currentlat': $("#currentlat").val(), 'currentlon': $("#currentlon").val(), 'locationDD': selectedValue });
+                }
+                geoSelected();
+            }
+
+            if (selectedValue == 'custom') { // its other location, set cookie useCurrent=0
+                activateOtherLocation();
+                if(useCookies) {
+                    $.cookie('searchParams', { 'useCurrent': '0', 'currentlat': $("#lat").val(), 'currentlon': $("#lon").val(), 'locationDD': selectedValue });
+                }
+                geoSelected();
+            }
+
+            if (selectedValue == 'zip') {
+                $("#zipFields").show();
+                if(useCookies) {
+                    var cokSearchParam = $.cookie('searchParams');
+                    if (typeof (cokSearchParam.zip) != 'undefined') {
+                        $("#zip").val(cokSearchParam.zip);
+                    }
+                    $.cookie('searchParams', { 'useCurrent': '0', 'currentlat': $("#lat").val(), 'currentlon': $("#lon").val(), 'locationDD': 'zip' });
+                }
+                zipSelected();
+            }
+            if (selectedValue == 'county') {
+                $("#countyFields").show();
+                if(useCookies) {
+                    var cokSearchParam = $.cookie('searchParams');
+                    if (typeof (cokSearchParam.county) != 'undefined') {
+                        console.log(cokSearchParam.county);
+                        $("#countyids").val(cokSearchParam.county.split(','))
+                    }
+                    $.cookie('searchParams', { 'useCurrent': '0', 'currentlat': $("#lat").val(), 'currentlon': $("#lon").val(), 'locationDD': 'county' });
+                }
+            }
+            if (selectedValue == 'city') {
+                $("#cityFields").show();
+                if(useCookies) {
+                    var cokSearchParam = $.cookie('searchParams');
+                    if (typeof (cokSearchParam.city) != 'undefined') {
+                        console.log(cokSearchParam.city);
+                        $("#cities").val(cokSearchParam.city.split(','))
+                    }
+                    $.cookie('searchParams', { 'useCurrent': '0', 'currentlat': $("#lat").val(), 'currentlon': $("#lon").val(), 'locationDD': 'city' });
+                }
+            }
+
+        });
+        
+        $('.addShovelReady').click(function (event) {
+            event.preventDefault();
+            location.href = '/core/item/add.aspx?tid=16470&golast=%2fdirectory%2fstate%2f';
+        });
+        $('.addBuilding').click(function (event) {
+            event.preventDefault();
+            location.href = '/buildings/add';
+        });
+        $('.addManufacturer').click(function (event) {
+            event.preventDefault();
+            location.href = '/net/org/add.aspx?glid=139731&typeid=30000&sectortypeid=31000&selecttypeids=31030,31007&titletypeid=31030';
+        });
+        $('.addInternational').click(function (event) {
+            event.preventDefault();
+            location.href = '/international/add';
+        });
+
+        $('.fullWebsiteLink').click(function (event) {
+            event.preventDefault();
+            if ($(window).width() <= 800) {
+                $('#modalPopupBkgd').show();
+                $('#moreOptions').show();
+            } else {
+                $('#fullWebsiteContinueLink').trigger("click", ["ce"]);
+            }
+        });
+
+        $('#fullWebsiteContinueLink').click(function (event) {
+            event.preventDefault();
+            var params = loadUrlValues();
+            var $checkboxes = $('#buildingsCB, #manufacturersCB, #internationalCB').filter(':checked');
+            var url = '/buildings';
+            if ($checkboxes.length == 1) {
+                if ($checkboxes[0].id == 'shovelReadyCB') {
+                    url = '/grad';
+                }
+                else if ($checkboxes[0].id == 'manufacturersCB') {
+                    url = '/manufacturers';
+                }
+                else if ($checkboxes[0].id == 'internationalCB') {
+                    url = '/international';
+                }
+            }
+            else { // none are checked or more than one are checked.
+                url = '/manufacturers';
+            }
+            if (location.host == 'localhost') {
+                location.href = getLocalhostUrl(url, 'http://georgiafacts.org', params, false);
+            }
+            else {
+                // $(this).attr('href', url); // Doesn't work when "More Options" link bypasses dialogue popup.
+                location.href = url;
+            }
+        });
+
+        $('#fullWebsiteCancelLink').click(function (event) {
+            $('#moreOptions').hide();
+            $('#modalPopupBkgd').hide();
+            event.preventDefault();
+        });
+
+        // Stick map on scroll
+        //var itemsTop = $('#mapColumn').position().top;
+        //var itemTypeHeight = $('#smartMap').height();
+        //var itemTypeBottom = itemsTop + itemTypeHeight;
+        $(document).on("click", '#closeSmartSearch', function (event) {
+
+            $("#mainColumn").hide();
+            $("#closeSmartSearch").hide();
+            $("#showWidgetTabs").show();
+            $(".siteTabs ul li").css({ "width": "16.66%" });
+            $("#smallIconLI").show();
+            $('#rightCornerIcons').appendTo($('#rightIconsTop'));
+            event.preventDefault();
+        });
+
+        $(document).on("click", '.closeList', function (event) {
+            var $this = $(this), closeFeedType = $this.data('feedtype');
+
+            if ($(".closeList:visible").length == 1) {
+                $smartList.hide();
+            }
+            else {
+                $('.' + closeFeedType).hide();
+                $this.parent().hide();
+            }
+
+            feedScroll();
+
+            //if($(this).scrollTop() > itemsTop) {
+            //$('#smartMap').css({position:'fixed',top:10,width:$('#mapColumn').width()});
+            //} else {
+            //$('#smartMap').removeAttr('style');
+            //}
+
+        });
+
+        //start here
+
+        /*
+        $(document).click(function (e) {
+
+        if (e.target.class != 'menuLink' && !$('#menuHolder').find(e.target).length) {
+        $("#menuHolder").hide();
+        $('.menuLink').css('color', '#fff');
+        scrollToTop($('#mainColumn'), offsetTop); // Prevents search fields from going offscreen when menu is automatically hidden.
+        // To Do: When more form fields are added, adjust scroll to avoid going all the way to top.
+        }
+
+        });*/
+
+        $(document).on('click', '.optionSide', function () {
+
+            setTabBackgroudColor();
+
+        });
+
+        //end here bade lal
+
+        $('.homeLink').click(function (event) {
+            if ($('#menuHolder').is(':visible')) {
+                closeMenu();
+            } else {
+                //restoreIcons();
+                hideOthers();
+                showAbout();
+                //$('#menuHolder').show();
+                $("#mainColumn").show();
+                $('.menuLink').css('color', '#ccc');
+                $('#settingsHolder').hide();
+                $('#modalPopupBkgd').hide();
+            }
+            event.preventDefault();
+        });
+
+        $('#showSettings').click(function (event) {
+            // Close #sliderX resides in base/slider/slider.html.
+            if ($('#settingsHolder').is(':visible')) {
+                $('#settingsHolder').hide();
+                $('#modalPopupBkgd').hide();
+                closeMenu(); // Moves tabs back to fixed position.
+            } else {
+                //restoreIcons(); // Creates gap at top.
+                $('#modalPopupBkgd').show();
+                $('#settingsHolder').show();
+                $("#mainColumn").show();
+                //$('#searchContainer').hide();
+                // To do: Adjust so this only loads once.
+                if ($("#settingsHolder").html() == '') {
+                    $('#settingsHolder').load('../slider/slider.html?t=' + Math.random(), function () {
+                        
+                        var display_results = $.cookie('display_results');
+                        if (typeof(display_results) != 'undefined') {
+                            $("#display_results_selected").data("selected", display_results["selected"]);
+                            $("#display_results_selected").html(display_results["html"]);
+                            setMapPosition(display_results);
+                        } else {
+                            display_results = {"selected" : "", "html" : ""};
+                        }
+                    
+                    });
+                }
+            }
+            event.preventDefault();
+        });
+        $("#printPage").click(function(e) {
+            w = window.open(window.location.href);
+            w.print();
+        });
+        $('.toggleSearchText').click(function (event) {
+            if ($('#searchTextHolder').is(':visible')) {
+                $('#searchTextHolder').hide();
+            } else {
+                $('#searchTextHolder').show();
+            }
+            event.preventDefault();
+        });
+        $('#showMessage').click(function (event) {
+            //restoreIcons();
+            scrollToTop($('#mainColumn'), offsetTop);
+            if ($('.infoDisplay').is(':visible')) {
+                $('.infoDisplay').hide();
+            } else {
+                $('.infoDisplay').show();
+            }
+            event.preventDefault();
+        });
+        $('#showWidgetTabs').click(function (event) {
+            restoreIcons();
+        });
+
+        $('#showAboutText').click(function (event) {
+            hideOthers();
+            $("#smartMap").hide();
+            showAbout();
+            closeMenu();
+            event.preventDefault();
+        });
+
+        $('#nearTab').click(function (event) {
+            geoSelected();
+            event.preventDefault();
+        });
+
+        $('#lat, #lon').click(function (event) {
+            $('#currentLoc .active').removeClass("active");
+            //$('#useCustomLatLon').addClass("active").show();
+            event.preventDefault();
+        });
+        $("#lat, #lon").change(function() {
+            $(".filterUL li[data-id='custom']").trigger("click");
+        });
+        $("#lat, #lon").focusout(function() {
+            if ($.trim($("#lat").val()) != '' && $.trim($("#lon").val())) {
+                
+                if($(".googleMapsHolder").is(":visible")) {
+                    setGmapPositionMarker($("#lat").val(), $("#lon").val());
+                }
+                if ($('.bingMapsHolder').is(":visible")) {
+                    setBingMapPositionMarker($("#lat").val(), $("#lon").val());
+                }
+            }
+        });
+        $('#newSearchLink').click(function (event) {
+            $('.basicSearch').show();
+            $('#newSearchLink').hide();
+            event.preventDefault();
+        });
+
+
+        /*
+        $('#zipTab').click(function (event) {
+        zipSelected();
+        event.preventDefault();
+        });*/
+
+        $('#locationStatus').click(function (event) {
+            if ($('#locationSectionBox').is(':visible')) {
+                $('#locationArrow').attr("src", "../img/icons/circle-next.png");
+                $('#locationStatus').hide();
+                $(".filterUL li.selected").trigger("click");
+            } else {
+                $('#locationArrow').attr("src", "../img/icons/circle-down.png");
+                //$('#locationSectionBox').show();
+            }
+            //return false;
+            event.preventDefault();
+        });
+
+        $( "#zip" ).blur(function() {
+            if(useCookies) {
+                var cokSearchParam = $.cookie('searchParams');
+                cokSearchParam.zip = $('#zip').val();
+                $.cookie('searchParams', cokSearchParam);
+            }
+        });
+        $('#doneZip, #doneLatLng, #doneCounty, #doneCity').click(function (event) {
+
+            var $this = $(this);
+            var $distance = $('#distance');
+            distanceSearchType = '';
+            if ($distance.val() != '') {
+                if ($this.attr('id') == 'doneZip') {
+                    var zipValue = $('#zip').val();
+                    // var pattern = /^\d{5}$/;
+                    // if (pattern.test(zipValue)) {
+                        distanceSearchType = 'zip';
+                    // } else {
+                    //     alert("Enter zip.");
+                    //     return false;
+                    // }
+                }
+                else if ($this.attr('id') == 'doneCounty') {
+                    distanceSearchType = 'county';
+                }
+                else if ($this.attr('id') == 'doneCity') {
+                    distanceSearchType = 'city';
+                }
+                else {
+                    var latValue = $('#lat').val();
+                    var lonValue = $('#lon').val();
+                    if (!isNaN(parseFloat(latValue)) && !isNaN(parseFloat(lonValue))) {
+                        distanceSearchType = 'latlon';
+                    }
+                }
+            }
+            displayLocText();
+            $('#locationArrow').attr("src", "../img/icons/circle-next.png");
+            $('#locationStatus').show();
+            $('#latLonFields,#zipFields,#cityFields,#countyFields').hide();
+            event.preventDefault();
+        });
+        
+        
+
+        $("li#welcomeTab").click(function (e) {
+            // Project List 4.3
+            $("#smartDirections").hide();
+            $(".directionsLink").removeClass("active");
+        });
+        $("li#shovelReadyTab, li#buildingsTab, li#manufacturersTab, li#internationalTab").click(function (e) {
+            e.preventDefault();
+            $($("li#shovelReadyTab").data("checkbox")).prop('checked', false);
+            $($("li#buildingsTab").data("checkbox")).prop('checked', false);
+            $($("li#manufacturersTab").data("checkbox")).prop('checked', false);
+            $($("li#internationalTab").data("checkbox")).prop('checked', false);
+            $($(this).data("checkbox")).prop('checked', true);
+            setTabBackgroudColor();
+            // Project List 4.3 - starts
+            $("#smartDirections").hide();
+            $(".directionsLink").removeClass("active");
+            // Project List 4.3 - ends
+            $('#searchButton').trigger("click", ["ce"]);
+        });
+
+        $('.menuLink').click(function (event) {
+            $("#widgetTabs li").removeClass("active");
+            $(this).addClass("active");
+            //restoreIcons();
+            hideOthers();
+            showAbout();
+            
+            //$("#mainColumn").show();
+            //$('.menuLink').css('color', '#ccc');
+            $('#settingsHolder').hide();
+            $('#modalPopupBkgd').hide();
+            scrollToTop($('#contentHolder'), offsetTop);
+            event.preventDefault();
+        });
+
+        $("li.listingsLink, li.slideshowLink, a.menuLinkListings").click(function (e) {
+            $("#smartDirections").hide();
+            if ($(this).is('li')) {
+                $("#widgetTabs li").removeClass("active");
+            }
+            $("#widgetTabs li").removeClass("active");
+            $(this).addClass("active");
+
+            if (flgFeedLoaded == false) {
+                e.preventDefault();
+                $('#searchButton').trigger("click", ["ce"]); // calls hideOthers
+            } else {
+                scrollToTop($('#mainColumn'), offsetTop);
+            }
+        });
+        $("li.listingsLink, a.menuLinkListings").click(function (e) {
+            //alert('listingsLink');
+            //$("#smartSlideshow").hide(); // Didn't work
+            // $("#mapColumn").hide(); // Causes map to be too narrow.
+            // $("#smartMap").hide(); // Causes map to be too narrow.
+            if ($(window).width() <= 800) {
+                $('#smartMap').insertAfter($('#mapInMain')); // To render tiles correctly.
+                //$("#smartMap").hide();
+            }
+
+            $(".slideshowContainer").hide();
+        });
+        $("li.slideshowLink").click(function (e) {
+            hideMain(); // Includes hiding mySearch when wide, but omits hiding map.
+            if ($(window).width() <= 800) {
+                // hideOthers(); // No effect on hiding map at present.  To use later.
+                $('#smartMap').insertAfter($('#mapInMain')); // To render tiles correctly.
+                $('#smartMap').show(); // Always show so rotating location is visible.
+                //alert('map insertAfter');
+                // Hide map because it scrolls on mobile. Also seems to lock screen.
+                // Didn't work, 3000 too soon
+                //setTimeout(function () { $('#smartMap').hide() }, 3000); // Allow time to load tiles
+            }
+            $(".slideshowContainer").show();
+            $(".smartSlideshow").show();
+        });
+        
+        $("li.mapLink").click(function (e) {
+            e.preventDefault();
+
+            $("#widgetTabs li").removeClass("active");
+            $(this).addClass("active");
+            hideOthers();
+
+            // No effect on displaying tiles after resize.
+            //$('.mapHeight').css('min-height',$(window).height()-90);
+            //$('.mapHeight').css('height',$(window).height()-90);
+
+            $("#searchTextHolder").show();
+            if ($("#smartMap").children().length > 0) {
+                hideMain();
+            } else {
+                if (!$("#overlay").is(':visible')) {
+                    //$("li.searchLink, li.listingsLink, li.slideshowLink, a.menuLinkListings").removeClass("active");
+                    $("#widgetTabs li").removeClass("active");
+                    //$(this).addClass("active");
+                    $('#searchButton').trigger("click", ["ce"]);
+                }
+            }
+            if ($(window).width() <= 800) {
+                $('#mainColumn').css('height', '1px'); // HACK to close 2000px height gap when internal div's (like smartList) are hidden. 0px did not fix.
+                // Alterative solution will likely be to insert smartMap into mainColumn.
+            }
+            $("#smartMap").show();
+
+            if ($(window).width() <= 800) {
+                $("#smartList").hide();
+                $('#smartMap').insertAfter($('#mapInMain')); // Since map needs to rendered to correctly span 
+            }
+        });
+        $("li.googleLinkHideOthers").click(function (e) {
+            // Since googleLink is called by smartWidget.cs
+            if ($(window).width() <= 800) {
+                hideOthers();
+            }
+        });
+        $("li.googleLink, li.googleClusterLink").click(function (e) {
+            
+            // To Fix: Triggered by loadMaps() regardless of if map is needed.
+            //alert("googleLink");
+            e.preventDefault();
+            useGoogleMap = true;
+            
+            
+            $("#mapToggle li").removeClass("active");
+            $("#smartMap").show(); // This causes map to always appear on mobile, which user can not scroll beyond.
+            // But it's needed, or map tiles don't load.
+
+            if ($("#smartMap").children().length > 0) {
+            } else {
+                if (!$("#overlay").is(':visible')) {
+                    //$("li.searchLink, li.googleLink, li.listingsLink, li.slideshowLink, a.menuLinkListings").removeClass("active");
+                    $("#widgetTabs li").removeClass("active");
+                    $(this).addClass("active");
+                    $('#searchButton').trigger("click", ["ce"]);
+                }
+            }
+            
+        });
+        $("li.bingLink").click(function (e) {
+            e.preventDefault();
+            useGoogleMap = false;
+            $("#mapToggle li").removeClass("active");
+            $("#smartMap").show();
+            if ($(window).width() <= 800) {
+                hideMain();
+            }
+            if ($("#smartMap").children().length > 0) {
+                //alert('smartMap div already populated.');
+            } else {
+                if (!$("#overlay").is(':visible')) {
+                    // li.mapLink instead of li.googleLink?
+                    //$("li.searchLink, li.googleLink, li.listingsLink, li.slideshowLink, a.menuLinkListings").removeClass("active");
+                    $("#widgetTabs li").removeClass("active");
+                    $(this).addClass("active");
+                    $('#searchButton').trigger("click", ["ce"]);
+                }
+            }
+        });
+        $("li.pdfLink").click(function(event) {
+            var $this = $(this);
+            if($this.text() == 'PDF') {
+                $('#smartWidget').smartWidget('checkBoxes', 'show', 'locations');
+            }
+            else {
+                var targetUrl = '/info/{0}?mode=p&pdf=1';
+                var params = loadUrlValues();
+                for(var x in params) {
+                   if(x != 's' && x != 'db' && x != 'localhost') {
+                      delete params[x];
+                   }
+                }
+
+                if (location.host == 'localhost') {
+                    targetUrl = getLocalhostUrl(targetUrl, 'http://georgiafacts.org', params, false);
+                }
+                else if ($.isEmptyObject(params) == false) {
+                    targetUrl += targetUrl.indexOf('?') > 0 ? '&' : '?';
+                    targetUrl += $.param(params);
+                }
+                params.u = targetUrl;
+                params.ids = checkedItems.join(',');
+
+                var pdfUrl = '/net/content/pdf.aspx';
+
+                if (location.host == 'localhost') {
+                    pdfUrl = getLocalhostUrl(pdfUrl, 'http://georgiafacts.org', params, false);
+                }
+                else if ($.isEmptyObject(params) == false) {
+                    pdfUrl += pdfUrl.indexOf('?') > 0 ? '&' : '?';
+                    pdfUrl += $.param(params);
+                }
+
+                window.open(pdfUrl, 'smartPDF');
+            }
+        });
+
+        $('.searchButton').click(function (event, ce) {
+            
+            // Pause the slide show if search button is clicked.
+            !!$('.pause').length && $('.pause').trigger("click");
+            
+            //alert('.searchButton');
+            event.preventDefault();
+            //$('#doneZip, #doneLatLng, #doneCounty, #doneCity')
+            
+            if($("#locationDD").val() == 'zip') {
+                $('#doneZip').trigger("click");
+                
+            }
+            if($("#locationDD").val() == 'county') {
+                $('#doneCounty').trigger("click");
+            }
+            if($("#locationDD").val() == 'city') {
+                $('#doneCity').trigger("click");
+            }
+            if($("#locationDD").val() == 'custom' || $("#locationDD").val() == 'current') {
+                $('#doneLatLng').trigger("click");
+            }
+            //return false;
+            if (ce != "ce") {
+
+                /*
+                if($("#countyids option:selected").length > 1) {
+                $("#countyids option:first").prop("selected", false);
+                }
+                var cokSearchParam = $.cookie('searchParams');
+                cokSearchParam.county = DOMoptionsToJSArray($("#countyids option:selected"), 'val').join(', ');
+                $.cookie('searchParams', cokSearchParam);
+                
+                if($("#cities option:selected").length > 1) {
+                $("#cities option:first").prop("selected", false);
+                }
+                var cokSearchParam = $.cookie('searchParams');
+                cokSearchParam.city = DOMoptionsToJSArray($("#cities option:selected"), 'val').join(', ');
+                $.cookie('searchParams', cokSearchParam);
+                */
+                //$("li.searchLink, li.mapLink, li.listingsLink, li.slideshowLink, a.menuLinkListings").removeClass("active");
+                $("#widgetTabs li").removeClass("active");
+                if ($(window).width() <= 800) {
+                    //$("li.mapLink").addClass("active"); // We're forced to default to the map tab so tiles load.  Mobile users can't have the map on the same page with list because map scrolls instead of page, even when scroll turned off.
+                } else {
+                    $("li.listingsLink").addClass("active");
+                }
+            }
+            $("#widgetTabs").show();
+            
+            submitPage();
+
+            if ($(window).width() <= 800) {
+                // No effect because smartMap is shown again later when click is sent asynchronously to li.googleLink.  It's needed there to load the tiles.
+                $("#smartMap").hide();
+            }
+
+        });
+        $('.searchLink').click(function (e) {
+            e.preventDefault();
+            //$("#smartDirections").hide();
+            //$("#smartSlideshow").hide();
+            hideOthers();
+            $("#widgetTabs li").removeClass("active");
+            $(this).addClass("active");
+            $("#mySearch").show();
+            scrollToTop($('#mainColumn'), offsetTop);
+        });
+
+        $("#placesCB").click(function () {
+            if ($(this).is(':checked')) {
+                $('.slider-button').addClass('on').html('ON');
+                sliderValues['fbPlace'] = flag = 'on';
+                if(useCookies) {
+                    $.cookie('sliderValues', sliderValues);
+                }
+            } else {
+                $('.slider-button').removeClass('on').html('OFF');
+                sliderValues['fbPlace'] = flag = 'off';
+                if(useCookies) {
+                    $.cookie('sliderValues', sliderValues);
+                }
+            }
+        });
+
+
+        $("#buildingsCB").click(function () {
+            if ($(this).is(':checked')) {
+                $("#sectionDimension").show();
+            } else {
+                $("#sectionDimension").hide();
+            }
+            setTabBackgroudColor();
+        });
+        
+        $("#manufacturersCB, #internationalCB").click(function () {
+            if ($("#manufacturersCB").is(':checked') || $("#internationalCB").is(':checked')) {
+                $("#sectionManufacturers").show();
+            } else {
+                $("#sectionManufacturers").hide();
+            }
+            setTabBackgroudColor();
+        });
+
+        $(window).resize(function (e) {
+            updateLayout();
+        });
+        
+        $(".gmapDirectionLinkIcon").click(function() {
+            if($(window).width() <= 800) {
+                hideOthers();
+                $("#smartMap").show();
+            }
+        });
+        // End Event Handlers
+
+        // Initial Load Code - This is executed after the functions and event handlers are set up.
+
+        /*
+        if (typeof (historyState.data.id) != 'undefined') {
+            console.log("id in url exist.");
+            ClickDetailsLink = historyState.data.id;
+            setTimeout(function () {
+                $("#searchButton").click();
+            }, 1000);
+
+        } else {
+            //
+        }
+        */
+        $.cookie.json = true;
+        if (typeof ($.cookie('sliderValues')) === 'undefined' || $.cookie('sliderValues') === null) {
+            $.cookie('sliderValues', defaultSliderValues);
+        }
+
+        sliderValues = $.cookie('sliderValues');
+        if (typeof (sliderValues) === 'undefined' || sliderValues === null) {
+            sliderValues = defaultSliderValues; // if cookies are not enabled or are corrupted, use the default
+        }
+
+
+        if (typeof ($.cookie('searchParams')) === 'undefined' || $.cookie('searchParams') === null) {
+            $.cookie('searchParams', defaultSearchParams);
+        }
+
+        searchParams = $.cookie('searchParams');
+        if (typeof (searchParams) === 'undefined' || searchParams === null) {
+            searchParams = defaultSearchParams; // if cookies are not enabled or are corrupted, use the default
+        }
+
+                  
+            var html = [];
+            //for (var key in sliderValues) {
+        
+            hs = '<a href="javascript:void(0)" id="cookieConsole">Loaded Cookie</a><br><div style="display:none;" id=viewCookie>'+JSON.stringify(sliderValues)+'</div>';
+            html.push(timeStamp() + hs);
+            //html.push(timeStamp() + JSON.stringify(searchParams) + '<br>');
+            //html.push(timeStamp() + String(sliderValues) + '<br>');
+            //}
+            //var html = timeStamp() + text + '<br>';
+            var $selector = $('.adminMessage');
+            if ($selector.length != 0) {
+                $('#showMessage').show();
+                $selector.append(html.join(''));
+                //return;
+            }
+        
+
+        if (sliderValues['fbPlace'] == 'on') {
+            $("#placesCB").attr("checked", "true");
+        }
+        //hidding Facebook Places checkbox if fbPlace value is off
+        /*
+        $.cookie.json = true;
+        if(typeof($.cookie('sliderValues')) !== 'undefined') {
+        sliderValues = JSON.parse($.cookie('sliderValues'));
+        console.log(sliderValues);
+        console.log(sliderValues['fbPlace']);
+        if(sliderValues['fbPlace'] == 'off') {
+        $(".placesSelect").hide();
+        }
+        }
+        */
+
+        checkUncheckPlacesCB(sliderValues.fbPlace);
+
+        console.log(searchParams['useCurrent']);
+        $("#locationDD").val(searchParams['locationDD']);
+        /* smart filter code starts */
+        $(".filterSelected").data("selected", $("#locationDD").val()).html($("#locationDD option:selected").text());
+        $(".filterUL li").removeClass("selected");
+        //alert($("#locationDD").val());
+        $(".filterUL li[data-id='" + $("#locationDD").val() + "']").addClass("selected");
+        /* smart filter code ends */
+        if (searchParams['useCurrent'] == '1') {
+            activateMyLocation();
+            if(useCookies) {
+                $.cookie('searchParams', { 'useCurrent': '1', 'currentlat': $("#currentlat").val(), 'currentlon': $("#currentlon").val(), 'locationDD': 'current' });
+            }
+            geoSelected();
+        }
+        //else if (searchParams['useCurrent'] == '0') { // Wanted this to work with '3', but it didn't.
+        //else if ($.cookie('locationDD') == 'custom') { // Not working
+        else if ($("#locationDD").val() == 'custom') {
+            activateOtherLocation();
+            $("#lat").val(searchParams['currentlat']);
+            $("#lon").val(searchParams['currentlon']);
+            geoSelected();
+        }
+        else if (searchParams['useCurrent'] == '0' && $("#lat").val() != '' && $("#lon").val() != '') {
+            activateOtherLocation();
+            geoSelected();
+        } else if(searchParams['locationDD'] == 'zip') {
+            zipSelected();
+            $("#zipFields").show();
+            if (typeof (searchParams.zip) != 'undefined') {
+                $("#zip").val(searchParams.zip);
+            }
+       
+        } else if(searchParams['locationDD'] == 'county') {
+            $("#countyFields").show();
+            if (typeof (searchParams.county) != 'undefined') {
+                $("#countyids").val(searchParams.county.split(','));
+            }
+        
+        } else if(searchParams['locationDD'] == 'city') {
+            $("#cityFields").show();
+            if (typeof (searchParams.city) != 'undefined') {
+                $("#cities").val(searchParams.city.split(','));
+            }
+        }
+
+        $('#headerLogo').attr("src", "img/header-title.png");
+        /*
+        if (location.host == 'georgiafacts.org' || location.host == 'locations.georgia.org') {
+        $('#headerLogo').attr("src", "img/facts.png");
+        } else {
+        $('#headerLogo').attr("src", "../img/logo/SmartWidgetLogo.png");
+        $('#headerLogo').css('width', '200px');
+        // src="" width="200"
+        }
+        */
+        
+        $smartList.hide();
+
+        /*
+        $(window).scroll(function(){
+
+        //if ($('#smartMap').position().top <= 0) {
+        //$('#smartMap').css({position:'fixed',top:itemsTop,width:$('#mapColumn').width()});
+        //$('#smartMap').css({ top:$('#typeTabHolder').height(), width:$('#mapColumn').width()});
+        if($('#mainColumn').is(':visible')) {
+                
+        if($(this).scrollTop() > itemsTop) {
+        $('#smartMap').css({position:'fixed',top:10,width:$('#mapColumn').width()});
+        } else {
+        $('#smartMap').removeAttr('style');
+        }
+        }
+                
+                
+        //}
+        });
+        */
+        if (location.host == 'localhost') {
+            //$("#showSettings").show();
+            $(".adminMessage").show(); // Since user-4 class is not available without local database.
+        }
+        if (location.host == 'localhost' || location.host.toLowerCase().indexOf('review.') >= 0) {
+            $("#dimensionStatus").show();
+            $("#shovelReadyTab").show();
+            $(".addButton").show();
+        }
+        // Populate input fields from the querystring values if there are any.
+        var loadedField = loadSearchFields(urlValues); // returns true if a field was loaded from the url, otherwise false
+
+        setTabBackgroudColor(); // function depends on the states of the checkboxes
+
+        // After populating the search fields from the url (if there is anything to populate), submit the page
+        // with those url values.
+        if (loadedField) {
+            flgLoadAboutData = false;
+            $("#widgetTabs li").removeClass("active");
+            $("li.listingsLink").addClass("active");
+            submitPage(urlValues); // initial page load - load the feeds from url values only.
+        } else {
+            // Show the images tab. Search has not run yet.
+            $("li.slideshowLink").show();
+        }
+        showGeorgiaMenu(urlValues); // Initial load
+        if (flgLoadAboutData) {
+            showAbout(); // Initial load
+        }
+        updateLayout();
+        //loadWidget(urlValues);
+        //$("#sectionManufacturers").hide();
+       
+        // End Initial Load Code
+        
+        $("#cookieConsole").click(function(e) {
+            if ($('#viewCookie').is(':visible')) {
+                $("#viewCookie").hide();
+            } else {
+                $("#viewCookie").show();
+            }
+        });
+        
+        // KickStarter slider setting style dropdown code;
+        function setMapPosition(display_results)
+        {
+            if (display_results["selected"] == "below") {
+                $("#mapColumn").addClass("below_mapColumn");
+                $("#smartMap").addClass("smartMapAboveList");
+                $("#mainColumn").addClass("below_mainColumn");
+                $("#widgetTabs li span").addClass("below_widgetTabs_li_span"); // No effect, attempt to move tab logo beside text.
+            } else {
+                $("#mapColumn").removeClass("below_mapColumn");
+                $("#smartMap").removeClass("smartMapAboveList");
+                $("#mainColumn").removeClass("below_mainColumn");
+                $("#widgetTabs li span").removeClass("below_widgetTabs_li_span"); // No effect, attempt to move tab logo beside text.
+            }
+
+            if (display_results["selected"] == "search-left") {
+                alert("search-left");
+                $('#mySearch').insertAfter($('#mySearchLeft'));
+            }
+        }
+        var display_results = $.cookie('display_results');
+        
+        if (typeof(display_results) != 'undefined') {
+            $("#display_results_selected").data("selected", display_results["selected"]);
+            $("#display_results_selected").html(display_results["html"]);
+            setMapPosition(display_results);
+        } else {
+            display_results = {"selected" : "", "html" : ""};
+        }
+        
+        
+        $(document).on("click", "#display_results_drpdown", function(e) {
+            e.stopPropagation();
+            $("#display_results_drpdown > .filterBubbleHolder").toggle();
+        });
+        
+        $(document).on("click", "#settingControls-filterUL li", function(e) {
+            e.stopPropagation();
+            var $this = $(this);
+            display_results["selected"] = $this.data("value");
+            display_results["html"] = $this.children().html();
+            $.cookie('display_results', display_results);
+            $("#display_results_selected").data("selected", display_results["selected"]);
+            $("#display_results_selected").html(display_results["html"]);
+            setMapPosition(display_results);
+            $("#display_results_drpdown").click();
+        });
+        
+        // Bind to StateChange Event
+        History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+            if(!ignoreHistoryStateChange) {
+                var historyState = History.getState(); // Note: We are using History.getState() instead of event.state
+                if(typeof(historyState.data.id) != 'undefined' ) {
+                   var foundID = $('#smartWidget').smartWidget('detail', historyState.data.id, 'locations');
+                   if(foundID == false) {
+                      location.href = historyState.url;
+                   }
+                }
+            }
+        });
+
+    }); // end document.ready event handler
+    
+    function showManagmentSuite($context) {
+        $('#manageSuite', $context).hide();
+        $('#manageSuiteHide, #managementSuite', $context).show();
+        return false;
+    }
+    function hideManagementSuite($context) {
+        $('#manageSuiteHide, #managementSuite', $context).hide();
+        $('#manageSuite', $context).show();
+    }
+
+    function DOMoptionsToJSArray(selector, valType) {
+        var optionArray = [];
+        selector.each(function () {
+
+            if (valType == 'text') {
+                optionArray.push($(this).text());
+            }
+            if (valType == 'val') {
+                optionArray.push($(this).val());
+            }
+
+        });
+        return optionArray;
+    }
+
+    function buildLocText(selector, type) {
+        var locText = '';
+        if (selector.length == 1) {
+            if (selector.val() == '0' || selector.val() == '') {
+                //locText = 'Search limited to ' + type.singular + '.'; // Was commented out.
+            } else if (type.singular == '') {
+                locText = 'Search limited to ' + selector.text() + '.';
+            } else {
+                locText = 'Search limited to ' + selector.text() + ' ' + type.singular + '.';
+            }
+        } else {
+
+            if (type.plural == '') {
+                locText = 'Search limited to ' + DOMoptionsToJSArray(selector, 'text').join(', ') + '.';
+            } else {
+                locText = 'Search limited to ' + DOMoptionsToJSArray(selector, 'text').join(', ') + ' ' + type.plural + '.';
+            }
+        }
+        return locText;
+    }
+
+    function displayLocText() {
+
+        var locText = '';
+        
+        var $distance = $("#distance");
+        var selectedSearchType = $("#locationDD").val();
+
+        if(selectedSearchType == 'all') {
+            locText = 'Results from entire state.';
+        }
+        else if (selectedSearchType == 'county') {
+            locText = buildLocText($("#countyids option:selected"), { singular: 'County', plural: 'Counties' });
+        }
+        else if (selectedSearchType == 'city') {
+            // singular: 'City', plural: 'Cities'
+            locText = buildLocText($("#cities option:selected"), {singular: '', plural: ''});
+        }
+        else if ((selectedSearchType == 'zip' || 
+            selectedSearchType == 'custom' || 
+            selectedSearchType == 'current') &&
+            $distance.val() != '') {
+                    
+            if (selectedSearchType == 'zip' && $('#zip').val() != '') {
+                locText = 'Within ' + $("#distance").val() + ' Miles ';
+                locText += ' of zip code ' + $('#zip').val() + '.';
+            }
+            else if (selectedSearchType == 'current' || selectedSearchType == 'custom') {
+                locText = 'Within ' + $("#distance").val() + ' Miles ';
+                if ($("#lat").val() == $("#currentlat").val() && $("#lon").val() == $("#currentlon").val()) {
+                    locText += ' of your <span style="white-space:nowrap">current location.</span>';
+                } else {
+                    locText += ' of <span style="white-space:nowrap">' + $("#lat").val() + ' ' + $("#lon").val() + '.</span>';
+                }
+            }
+        }
+        var textOnlyLocation = $('#locText').html(locText).text();
+        $('#searchText').html(locText);
+        return textOnlyLocation;
+    }
+    function getLatLonFromBrowser() {
+        if (chkGeoPosition) {
+            // Get latitude and longitude
+            $("#currentButtons").hide();
+            if (navigator.geolocation) { // Browser supports lookup
+                //Show loading icon
+                $("#loadingLatLon").html('<span style="white-space:nowrap"><img src="../img/ajax-loader.gif" alt="Geo Loading" title="Geo Loading" style="width: 18px;float:left" />&nbsp; Loading your current GeoLocation</span>');
+                $("#loadingLatLon").show();
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    console.log(position.coords.latitude.toFixed(3));
+                    $("#lat").val(position.coords.latitude.toFixed(3));
+                    $("#lon").val(position.coords.longitude.toFixed(3));
+                    $("#currentlat").val(position.coords.latitude.toFixed(3));
+                    $("#currentlon").val(position.coords.longitude.toFixed(3));
+                    distanceSearchType = 'latlon';
+                    displayLocText();
+                    $("#loadingLatLon").hide();
+                    $("#currentButtons").show();
+                }, function (error) {
+                    console.log(error);
+                    $('#smartMessage').append('geolocation error occurred. Error code: ' + error.code);
+                    $("#loadingLatLon").html('Unable to fetch your geolocation (' + error.code + ')');
+                    // error.code 2 occured when disconnected.
+                    //alert(error.code);
+                    //loadPageAsync(jsonFile);       
+                });
+                //alert('Break page'); // CAUTION - Putting an alert here breaks page.
+            }
+            if (!$("#lat").val()) {
+                //alert("Approve geocoding at the top of your browser.");
+            }
+            chkGeoPosition = false;
+        }
+    }
+
+
+        function checkUncheckPlacesCB(flag) {
+            //console.log(flag);
+            if(flag === 'on') {
+                $(".placesSelect").show();
+                $('#placesCB').prop( "checked", true );
+            } else {
+                $(".placesSelect").hide();
+                $('#placesCB').prop( "checked", false );
+            }
+       }
+
+                    
+        function setTabBackgroudColor(onload) {
+            
+            var cnt = 0;
+            //alert('setTabBackgroudColor'); // Does this need to occur 4 times?
+            if($('#shovelReadyCB').is(':checked')) {
+                $('#shovelReadyTab').addClass('menuTabBgColor');
+                cnt++;
+            } else {
+                $('#shovelReadyTab').removeClass('menuTabBgColor');
+                 
+            }
+            if($('#buildingsCB').is(':checked')) {
+                $('#buildingsTab').addClass('menuTabBgColor');
+                cnt++;
+            } else {
+                $('#buildingsTab').removeClass('menuTabBgColor');
+                 
+            }
+            if($('#manufacturersCB').is(':checked')) {
+                $('#manufacturersTab').addClass('menuTabBgColor');
+                cnt++;
+            } else {
+                $('#manufacturersTab').removeClass('menuTabBgColor');
+            }
+            
+            if($('#internationalCB').is(':checked')) {
+                $('#internationalTab').addClass('menuTabBgColor');
+                cnt++;
+            } else {
+                $('#internationalTab').removeClass('menuTabBgColor');
+            }
+            if(cnt > 1) {
+                $('#shovelReadyTab').removeClass('menuTabBgColor');
+                $('#buildingsTab').removeClass('menuTabBgColor');
+                $('#manufacturersTab').removeClass('menuTabBgColor');
+                $('#internationalTab').removeClass('menuTabBgColor');
+            }
+        }
+        function SearchEnter(event1) {
+            var kCode = String.fromCharCode(event1.keyCode);
+            if (kCode == "\n" || kCode == "\r") {
+                $("#searchButton").click();
+                return false;
+            }
+        }
+        function SearchFormValidate(f) {
+            if (f.query.value == "" || f.query.value == "Search") {
+                alert("Please enter a search term.");
+                f.query.focus();
+                return false;
+            }
+            else return true;
+        }
+        function SearchFormTextCheck(t, dirn) {
+            if (dirn == 1 && t.value == "Search") t.value = "";
+            //if (dirn == 0 && t.value == "") t.value = "Search";
+        }       
+    </script>
+
+</div>
+</body>
+</html>
