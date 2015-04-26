@@ -6,8 +6,9 @@ module.exports = function(grunt) {
     copy: {
       slick: {
         files: [
-          {expand: true, cwd: 'bower_components/slick-carousel/slick', src: ['slick.css', 'slick-theme.css'], dest: 'vendor/css/'},
-          {expand: true, cwd: 'bower_components/slick-carousel/slick', src: ['slick.min.js'], dest: 'vendor/js/'}
+          {expand: true, cwd: 'bower_components/slick-carousel/slick', src: ['slick.css', 'slick-theme.css', 'ajax-loader.gif'], dest: 'vendor/css/'},
+          {expand: true, cwd: 'bower_components/slick-carousel/slick', src: ['slick.min.js'], dest: 'vendor/js/'},
+          {expand: true, cwd: 'bower_components/slick-carousel/slick/fonts', src: ['**'], dest: 'vendor/fonts/'}
           
         ]
       }
@@ -22,3 +23,4 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['copy']);
 
 };
+
