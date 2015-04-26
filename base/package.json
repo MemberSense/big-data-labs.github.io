@@ -1,0 +1,29 @@
+{
+  "name": "base",
+  "version": "0.0.0",
+  "description": "collect feed",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/big-data-labs/big-data-labs.github.io"
+  },
+  "keywords": [
+    "big-data-labs"
+  ],
+  "author": "Dipak Yadav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/big-data-labs/big-data-labs.github.io/issues"
+  },
+  "homepage": "https://github.com/big-data-labs/big-data-labs.github.io"
+}
