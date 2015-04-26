@@ -366,7 +366,7 @@ function setBingMapPositionMarker(lat, lon, reposition)
             if (settings.updateBrowserHash == true) {
                 if (typeof ($.fn.hashchange) == "undefined") {
                     // Get the script and bind the handler
-                    var hashchangeUrl = scriptDomain + '/vendor/js/jquery.ba-hashchange.js';
+                    var hashchangeUrl = scriptDomain + '/vendor/js/jquery.ba-hashchange.min.js';
                     $.getScript(hashchangeUrl, function() {
                         $(window).on('hashchange.smartWidget', hashChange);
                     });
