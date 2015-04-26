@@ -11,6 +11,12 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'bower_components/slick-carousel/slick/fonts', src: ['**'], dest: 'vendor/fonts/'}
           
         ]
+      },
+      jqueryhashchange: {
+        files: [
+          {expand: true, cwd: 'bower_components/jquery-hashchange', src: ['jquery.ba-hashchange.min.js'], dest: 'vendor/js/'}
+          
+        ]
       }
     }
   });
