@@ -50,7 +50,7 @@ var feedOptions = [
     provider: "google",
     showCheckBoxes: false,
     type: "googlefeed",
-    url: "../nearby/npu-w-agendas--minutes.xml",
+    url: "https://groups.google.com/forum/feed/npu-w-agendas--minutes/msgs/rss_v2_0.xml?num=50",
     dataType: "xml",
     slickdiv:"#agendas"
 },
@@ -64,7 +64,7 @@ var feedOptions = [
     provider: "google",
     showCheckBoxes: false,
     type: "googlefeed",
-    url: "../nearby/nput_members.xml",
+    url: "https://groups.google.com/forum/feed/nput_members/msgs/rss_v2_0.xml?num=50",
     dataType: "xml",
     slickdiv:"#members"
 }/*,
