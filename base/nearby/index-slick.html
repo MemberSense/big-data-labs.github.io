@@ -116,6 +116,8 @@
             $.ajax({
                 url:feed.url,
                 dataType:"xml",
+                type: 'GET',
+                crossDomain: true,
                 success: function(feedData) {
                     var jsonData;
                     jsonData = convertXmlGoogleFeed($(feedData));
