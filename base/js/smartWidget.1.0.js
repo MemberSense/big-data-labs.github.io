@@ -4902,7 +4902,7 @@ function getLocalhostDetailsUrl(detailsUrl, defaultDomain, params) {
 
 function getLocalhostUrl(url, defaultDomain, params, useJsonp) {
     
-    if (location.host != 'localhost' && location.host != 'messycoders.com') {
+    if (location.host != 'localhost' && location.host != 'messycoders.com' && location.host != 'big-data-labs.github.io') {
         return url;
     }
 
