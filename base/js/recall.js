@@ -164,8 +164,9 @@ function getStateParkFeed(params) {
 
     //stateParkParams.show = 'images';
     stateParkParams.tid = 12620;
-
+    console.log(location.host);
     if (location.host == 'localhost' || location.host == 'big-data-labs.github.io') {
+        console.log(location.host);
         feedUrl = getLocalhostFeedUrl(feedUrl, 'http://gastateparks.org', stateParkParams);
         detailsUrl = getLocalhostDetailsUrl(detailsUrl, 'http://gastateparks.org', stateParkParams);
     }
@@ -183,6 +184,7 @@ function getStateParkFeed(params) {
         detailsUrl: detailsUrl,
         detailsSelector: detailsSelector
     };
+    console.log(feed);
 
     return feed;
 }
