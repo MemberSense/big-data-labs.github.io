@@ -127,7 +127,7 @@ function getHomeHistoryFeed(params) {
          delete homeHistoryParams.tid; // clear for now so that searches for buildings, mfg, etc. aren't included.
      }
 
-    if (location.host == 'localhost') {
+    if (location.host == 'localhost' || location.host == 'big-data-labs.github.io') {
         feedUrl = getLocalhostFeedUrl(feedUrl, 'http://grantpark.org', homeHistoryParams);
         detailsUrl = getLocalhostDetailsUrl(detailsUrl, 'http://grantpark.org', homeHistoryParams);
     }
@@ -165,7 +165,7 @@ function getStateParkFeed(params) {
     //stateParkParams.show = 'images';
     stateParkParams.tid = 12620;
 
-    if (location.host == 'localhost') {
+    if (location.host == 'localhost' || location.host == 'big-data-labs.github.io') {
         feedUrl = getLocalhostFeedUrl(feedUrl, 'http://gastateparks.org', stateParkParams);
         detailsUrl = getLocalhostDetailsUrl(detailsUrl, 'http://gastateparks.org', stateParkParams);
     }
@@ -230,7 +230,7 @@ function getAllForGoodFeed(params) {
         afgParams.search = params.keywords;
     }
 
-    if (location.host == 'localhost' && typeof(params.localhost) != 'undefined' && params.localhost == '1') {
+    if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io' && typeof(params.localhost) != 'undefined' && params.localhost == '1') {
         if(typeof(params.s) != 'undefined') {
            afgParams.s = params.s;
         }
@@ -241,7 +241,7 @@ function getAllForGoodFeed(params) {
         afgParams.localhost = params.localhost;
     }
 
-    if (location.host == 'localhost') {
+    if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
         feed.url = getLocalhostFeedUrl(feed.url, 'http://review.grantpark.org', afgParams);
     }
     else if ($.isEmptyObject(afgParams) == false) {
@@ -535,7 +535,7 @@ function submitPage(pageLoadParams) {
         }
 
         var querystring = '';
-        if (location.host == 'localhost') {
+        if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
             queryString = buildLocalhostQueryString(historyParams);
         }
         else {
@@ -787,7 +787,7 @@ function loadWidget(feeds) {
                     var queryString = '';
                     //var params = {id: $link.data("id")};
                     var params = {id: data.item.id};
-                    if (location.host == 'localhost') {
+                    if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
                         queryString = buildLocalhostQueryString(params);
                     }
                     else {
@@ -1095,7 +1095,7 @@ function restoreIcons() {
 function showAbout() {
     $('#contentHolder').show();
     $('#contentHolder').load('about.html', function () { 
-        if (location.host == 'localhost' || location.host.indexOf('review.') >= 0) {
+        if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io' || location.host.indexOf('review.') >= 0) {
             $("#shovelReadyLink").show();
         }
     });
@@ -1821,7 +1821,7 @@ $(document).on("click", '#fullWebsiteContinueLink', function (event) {
     else { // none are checked or more than one are checked.
         url = '/manufacturers';
     }
-    if (location.host == 'localhost') {
+    if (location.host == 'localhost' || location.host == 'big-data-labs.github.io') {
         location.href = getLocalhostUrl(url, 'http://georgiafacts.org', params, false);
     }
     else {
@@ -2622,10 +2622,10 @@ $('#smartMap').removeAttr('style');
 //}
 });
 */
-if (location.host == 'localhost') {
+if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
     $(".localhost").show();
 }
-if (location.host == 'localhost' || location.host.toLowerCase().indexOf('review.') >= 0) {
+if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io' || location.host.toLowerCase().indexOf('review.') >= 0) {
     $(".adminMessage").show(); // Since user-4 class is not available without local database.
     $("#shovelReadyDiv").show();
     $("#shovelReadyTab").show();
@@ -3065,7 +3065,7 @@ function getLocationAndBuildingFeed(params) {
 
     //var feedUrl2 = 'calendar/json/google.txt';
     //var feedType2 = 'events';
-    if (location.host == 'localhost') {
+    if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
         feedUrl = getLocalhostFeedUrl(feedUrl, 'http://georgiafacts.org', params);
         detailsUrl = getLocalhostDetailsUrl(detailsUrl, 'http://georgiafacts.org', params);
     }
