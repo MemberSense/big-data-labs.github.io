@@ -127,14 +127,14 @@ function getHomeHistoryFeed(params) {
          delete homeHistoryParams.tid; // clear for now so that searches for buildings, mfg, etc. aren't included.
      }
 
-    if (location.host == 'localhost' || location.host == 'big-data-labs.github.io') {
+    //if (location.host == 'localhost') {
         feedUrl = getLocalhostFeedUrl(feedUrl, 'http://grantpark.org', homeHistoryParams);
         detailsUrl = getLocalhostDetailsUrl(detailsUrl, 'http://grantpark.org', homeHistoryParams);
-    }
-    else if ($.isEmptyObject(homeHistoryParams) == false) {
-        feedUrl += feedUrl.indexOf('?') > 0 ? '&' : '?';
-        feedUrl += $.param(homeHistoryParams);
-    }
+    //}
+    //else if ($.isEmptyObject(homeHistoryParams) == false) {
+    //    feedUrl += feedUrl.indexOf('?') > 0 ? '&' : '?';
+    //    feedUrl += $.param(homeHistoryParams);
+    //}
 
     feed = {
         url: feedUrl,
@@ -164,16 +164,15 @@ function getStateParkFeed(params) {
 
     //stateParkParams.show = 'images';
     stateParkParams.tid = 12620;
-    console.log(location.host);
-    if (location.host == 'localhost' || location.host == 'big-data-labs.github.io') {
-        console.log(location.host);
+
+    //if (location.host == 'localhost') {
         feedUrl = getLocalhostFeedUrl(feedUrl, 'http://gastateparks.org', stateParkParams);
         detailsUrl = getLocalhostDetailsUrl(detailsUrl, 'http://gastateparks.org', stateParkParams);
-    }
-    else if ($.isEmptyObject(stateParkParams) == false) {
-        feedUrl += feedUrl.indexOf('?') > 0 ? '&' : '?';
-        feedUrl += $.param(stateParkParams);
-    }
+    //}
+    //else if ($.isEmptyObject(stateParkParams) == false) {
+    //    feedUrl += feedUrl.indexOf('?') > 0 ? '&' : '?';
+    //    feedUrl += $.param(stateParkParams);
+    //}
 
     feed = {
         url: feedUrl,
@@ -232,21 +231,22 @@ function getAllForGoodFeed(params) {
         afgParams.search = params.keywords;
     }
 
-    if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io' && typeof(params.localhost) != 'undefined' && params.localhost == '1') {
-        if(typeof(params.s) != 'undefined') {
-           afgParams.s = params.s;
-        }
-        if(typeof(params.db) != 'undefined') {
-           afgParams.db = params.db;
-        }
+    //if (location.host == 'localhost' && typeof(params.localhost) != 'undefined' && params.localhost == '1') {
+    //    if(typeof(params.s) != 'undefined') {
+    //       afgParams.s = params.s;
+    //    }
+    //    if(typeof(params.db) != 'undefined') {
+    //       afgParams.db = params.db;
+    //    }
+//
+  //      afgParams.localhost = params.localhost;
+    //}
 
-        afgParams.localhost = params.localhost;
-    }
-
-    if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
-        feed.url = getLocalhostFeedUrl(feed.url, 'http://review.grantpark.org', afgParams);
-    }
-    else if ($.isEmptyObject(afgParams) == false) {
+    //if (location.host == 'localhost') {
+    //    feed.url = getLocalhostFeedUrl(feed.url, 'http://review.grantpark.org', afgParams);
+    //}
+    //else
+    if ($.isEmptyObject(afgParams) == false) {
         feed.url += feed.url.indexOf('?') > 0 ? '&' : '?';
         feed.url += $.param(afgParams);
     }
@@ -537,12 +537,12 @@ function submitPage(pageLoadParams) {
         }
 
         var querystring = '';
-        if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
-            queryString = buildLocalhostQueryString(historyParams);
-        }
-        else {
+        //if (location.host == 'localhost') {
+        //    queryString = buildLocalhostQueryString(historyParams);
+        //}
+        //else {
             queryString = "?" + paramNoEncode(historyParams);
-        }
+        //}
         ignoreHistoryStateChange = true;
         History.pushState(historyParams, searchTitle, queryString);
         ignoreHistoryStateChange = false;
@@ -789,12 +789,12 @@ function loadWidget(feeds) {
                     var queryString = '';
                     //var params = {id: $link.data("id")};
                     var params = {id: data.item.id};
-                    if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
-                        queryString = buildLocalhostQueryString(params);
-                    }
-                    else {
+                    //if (location.host == 'localhost') {
+                    //    queryString = buildLocalhostQueryString(params);
+                    //}
+                    //else {
                         queryString = "?" + $.param(params);
-                    }
+                    //}
                     ignoreHistoryStateChange = true;
                     History.pushState({id: data.item.id}, data.item.title, queryString);
                     ignoreHistoryStateChange = false;
@@ -1823,13 +1823,13 @@ $(document).on("click", '#fullWebsiteContinueLink', function (event) {
     else { // none are checked or more than one are checked.
         url = '/manufacturers';
     }
-    if (location.host == 'localhost' || location.host == 'big-data-labs.github.io') {
-        location.href = getLocalhostUrl(url, 'http://georgiafacts.org', params, false);
-    }
-    else {
+    //if (location.host == 'localhost') {
+    //    location.href = getLocalhostUrl(url, 'http://georgiafacts.org', params, false);
+    //}
+    //else {
         // $(this).attr('href', url); // Doesn't work when "More Options" link bypasses dialogue popup.
         location.href = url;
-    }
+    //}
 });
 
 $(document).on("click", '#fullWebsiteCancelLink', function (event) {
@@ -3065,13 +3065,12 @@ function getLocationAndBuildingFeed(params) {
     var detailsUrl = '/info/{0}?mode=a';
     var detailsSelector = '#ItemInfoContentDiv';
 
-    //var feedUrl2 = 'calendar/json/google.txt';
-    //var feedType2 = 'events';
-    if (location.host == 'localhost'  || location.host == 'big-data-labs.github.io') {
+    //if (location.host == 'localhost') {
         feedUrl = getLocalhostFeedUrl(feedUrl, 'http://georgiafacts.org', params);
         detailsUrl = getLocalhostDetailsUrl(detailsUrl, 'http://georgiafacts.org', params);
-    }
-    else if ($.isEmptyObject(params) == false) {
+    //}
+    //else
+    if ($.isEmptyObject(params) == false) {
         feedUrl += feedUrl.indexOf('?') > 0 ? '&' : '?';
         feedUrl += $.param(params);
     }
@@ -3184,3 +3183,23 @@ function showHideOptionsDialog(show) {
         }
     }
 }
+
+// INFO BOX
+$('#showMessage').on('click.smartWidget', function(event) {
+    toggleInfoDialog();
+});
+function toggleInfoDialog() {
+    var scope = $('#infoDialog').scope();
+    if(typeof(scope) != 'undefined') {
+        //scope.contentSourceContainer = $('#mySearch form'); // move the modal content back to here when modal is hidden.
+        //scope.contentContainer = $('#modalContent'); // content to move
+
+        if(scope.isModalShown()) {
+            scope.closeModal();
+        }
+        else {
+            scope.openModal();
+        }
+    }
+}
+

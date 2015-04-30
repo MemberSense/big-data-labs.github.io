@@ -1,5 +1,8 @@
 # base/nearby
 
+
+[View it on Github Pages] (http://big-data-labs.github.io/base/nearby/)
+
 make sure you have npm installed.
 then from the root directory run the below command
 `bower install`

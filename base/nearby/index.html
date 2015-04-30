@@ -2,31 +2,15 @@
 <html>
 <html ng-app="baseApp">
     <head>
-        <title>Georgia Location Explorer</title>
+        <title>Location Explorer</title>
         <link rel="shortcut icon" type="image/png" href="../location/usa/ga/img/shortcut.ico" />
 
         <link href="../fonts/font-awesome-4.1.0/css/font-awesome.min.css" media="all" type="text/css" rel="stylesheet">
 
-        <!--
-        Removed - Adds Font Shadow. Why do we need?
-        
-        <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
-        -->
-        
-        <!--
-        <link rel="stylesheet" type="text/css" href="../css/base-old.css" />
-        -->
-
-        
-
-
         <link rel="stylesheet" type="text/css" href="../css/base.css" />
         <link rel="stylesheet" type="text/css" href="../css/smartWidget.1.0.css" />
         <link rel="stylesheet" href="../fonts/entypo/entypo.css" id="style-resource-2" />
-      
-        <!--
-        <link rel="stylesheet" type="text/css" href="../css/state.css" />
-        -->
+
         
         <link rel="stylesheet" href="http://code.ionicframework.com/1.0.0-beta.11/css/ionic.css" />
         <link rel="stylesheet" type="text/css" href="../css/slick.css" />
@@ -92,42 +76,35 @@
     <body>
         
         <div class="navigation" style="display:none">
-          <div id="headerTitle">Georgia Economic Development</div>
+          <div id="headerTitle">Location Explorer</div>
         </div>
         <div id="headerNav" class="headerNavTransparent">
-            <img src="../location/usa/ga/img/logo-sm.png" class="headerLogo">
-            
-            <div id="verticleMenu">
+            <!-- Use class .headerLogo so image shrinks with browser width. -->
+
+            <div id="verticleMenu" style="float:left">
                 <div class='smartmenu smartmenu-responsive'>
                 <ul>
-                   
-                   <li class="has-sub"><a href='#'><span>locations</span></a>
-                        <ul>
-                            <li><a href='?go=buildings'><span>available buildings</span></a></li>
-                            <li><a href='http://www.georgia.org/business-resources/available-industrial-grad-sites/'><span>shovel ready sites</span></a></li>
-                            <li><a href='?go=places'><span>facebook places</span></a></li>
-                            <li><a href='?go=parks'><span>state parks (coming soon)</span></a></li>
-                            <li><a href='?go=historic'><span>historic (coming soon)</span></a></li>
-                         </ul>
-                   </li>
+
                    <li class='active has-sub'><a href='#'><span>local made</span></a>
                         <ul>
                             <!--
                             <li><a href='#'><span>Consumer Products</span></a></li>
                             -->
-                            <li><a href='?go=manufacturers'><span>Local Manufacturers</span></a></li>
+                            <li><a href='?go=manufacturers'><span>Find Manufacturers</span></a></li>
                             <!--
                             <li><a href='#'><span>Locally Grown</span></a></li>
+                            <li><a href='?go=international'><span>International Headquarters</span></a></li>
                             -->
-                            <li class='last'><a href='?go=international'><span>International Headquarters</span></a></li>
+                            <li class='last'><a href='?go=allforgood'><span>volunteer projects</span></a></li>
+
                          </ul>
                    </li>
-                   <!--
-                   <li><a href='http://georgiafacts.org/counties?mode=m'><span>communities</span></a></li>
-                   -->
-                   <li class='has-sub last'><a href='#'><span>volunteer</span></a>
+                   <li class="has-sub"><a href='#'><span>search</span></a>
                         <ul>
-                            <li><a href='?go=allforgood'><span>find projects</span></a></li>
+                            <li><a href='?go=places'><span>facebook places</span></a></li>
+                            <li><a href='?go=buildings'><span>available buildings</span></a></li>
+                            <li><a href='?go=parks'><span>state parks</span></a></li>
+                            <li><a href='?go=historic'><span>neighborhood</span></a></li>
                          </ul>
 
                    </li>
@@ -160,9 +137,9 @@
           -->
 
           <div id="rightCornerIcons" style="float:right;margin-top:2px">
-            <div id="smartOptionsDialog" class="menuRight entypo-cog" style="font-size:28px;padding-top:2px"></div>
-            <div id="smartNavMenu" class="menuRight"></div>
-            <div id="showMessage" class="menuRight entypo-info-circled" style="font-size:24px;padding-top:4px;"></div>
+            <div id="smartOptionsDialog" class="menuRight entypo-cog" style="font-size:28px;"></div>
+            <div id="showMessage" class="menuRight entypo-info-circled" style="font-size:24px;padding-top:2px;"></div>
+            <div id="smartNavMenu" class="menuRight" style="padding-top:4px"></div>
           </div>
 
         </div>
@@ -219,15 +196,7 @@
 
                 <div id="smartMap"></div>
                 
-                
-                
-                <!-- &nbsp; BUGBUG: Without a character or space here, image below did not appear. 
-                Works fine now. -->
-
-                <!-- To do: change to use background to prevent loading -->
-                <!-- ../location/usa/ga/img/consumer.jpg -->
-                <br><br><br><br><br>
-                <img src="http://grantpark.org/go/GrantPark/Images/Bkgd/627-porch.jpg" style="display:none;width:100%;position:fixed" class="hideOnLoad" />
+                <img src="../location/usa/ga/img/consumer.jpg" style="display:none;width:100%;position:fixed;top:65px" class="hideOnLoad" />
 
                 <!-- search -->
                 <div id="mySearchPH"></div>
@@ -384,9 +353,11 @@
                             <div style="float:left;">
                                 <a id="searchButton" class="smartButton basicSearch searchButton" style="padding: 6px 17px 8px; margin:0 6px 14px 0;" href="#">GO</a>
                             </div>
+                            <!--
                             <div style="float:left;">
                                 <a href="" class="smartButton fullWebsiteLink desktopText" style="background:#ddd;margin:0 0 14px 0;padding: 6px 17px 8px;">Desktop Version</a>
                             </div>
+                            -->
                         </div>
                         <!-- /buttons -->
 
@@ -414,20 +385,44 @@
 
                 <div id="listContainer" class="widgets">
                     <div class="resultsBackground" style='position: relative;'>
-                        <div class="smartMessage"></div>
+                        
 
-                        <div class="infoDisplay">
-                            <div style="display:none;" class="adminMessage user-4"></div>
 
-                            <div>
-                                GeorgiaFacts is a service of the Georgia Department of Economic Development. Our manufacturing data and international listings are imported twice a year from our national data provider and combined with input from our local partners. Please <a href="/contact/" style="white-space:nowrap">contact us</a> if you have a change or correction.
+                        <div ng-controller="InfoDialog" id="infoDialog">
+                            <script id="infoDialogScript" type="text/ng-template">
+                                <ion-modal-view id="optionsDlg" style="max-width:500px; margin-left: auto; margin-right: auto; left: 0; right: 0">
+                                        <ion-header-bar style="background:#ccc">
+                                            <h1 class="title">App Info</h1>
+                                        </ion-header-bar>
+                                        <ion-content overflow-scroll="true" style="margin: 10px;">
+                                            
+                                            <div class="infoDisplay">
+                                                
+                                                <div style="display:none;" class="adminMessageX user-4"></div>
 
-                                <!--
-                                <p>For Don to reactivate:
-                                <a href="javascript:$('#staticMap').attr('style','margin-left:0px;');$('#showStaticMap').hide();LoadStaticMap();$('#staticMap').append('<br>Bing static maps contain up to 18 points.<br>');return;" id="showStaticMap" target="staticMap">Show static map</a></p>
-                                -->
-                            </div>
-                        </div>
+                                                
+
+                                                <div>
+                                                    <span style="font-size:16pt;line-height:22pt">
+                                                        A reader for navigating large data sets using 
+                                                    slideshows, galleries, calendars and maps.</span><br /><br />
+
+                                                    <div class="smartMessage"></div>
+                                                    <div class="adminMessage">adminMessage</div>
+
+                                                    <!--
+                                                    <p>For Don to reactivate:
+                                                    <a href="javascript:$('#staticMap').attr('style','margin-left:0px;');$('#showStaticMap').hide();LoadStaticMap();$('#staticMap').append('<br>Bing static maps contain up to 18 points.<br>');return;" id="showStaticMap" target="staticMap">Show static map</a></p>
+                                                    -->
+                                                </div>
+                                            </div>
+                                        </ion-content>
+
+                            </ion-modal-view>
+                        </script>
+                    </div>
+
+
                     </div>
                     <div id="smartCalendarHolder"></div>
                     <div id="smartList">smartList</div>
@@ -442,7 +437,7 @@
             <script id="my-modal.html" type="text/ng-template">
                 <ion-modal-view id="optionsDlg" style="max-width:500px; margin-left: auto; margin-right: auto; left: 0; right: 0">
                     <ion-header-bar style="background:#ccc">
-                        <h1 class="title">Display</h1>
+                        <h1 class="title">Display Settings</h1>
                     </ion-header-bar>
                     <ion-content overflow-scroll="true" style="margin: 10px;">
                     <form id="settingsDialogForm" class="settingsWide">

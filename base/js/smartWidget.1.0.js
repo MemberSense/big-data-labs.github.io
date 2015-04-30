@@ -747,7 +747,7 @@ function setBingMapPositionMarker(lat, lon, reposition)
 							var subHeader = '';
 							
 							if(curHeaderHeading != prevHeaderHeading) {
-								subHeader = '<div class="showAllResults button">Show All Results</div><div class="listHeader"><div data-feedtype="feedtype_'+feed.type+'" class="closeList closeIcon entypo-cancel-squared"></div>' + expandRows + checkAllRows + subHeaderText + '</div>';
+								subHeader = '<div class="showAllResults button smartButton">Show All Results</div><div class="listHeader"><div data-feedtype="feedtype_'+feed.type+'" class="closeList closeIcon entypo-cancel-squared"></div>' + expandRows + checkAllRows + subHeaderText + '</div>';
                                 subHeader += '';
 							} else if (feed.type == 'events' || feed.type == 'facebookevents') { // Prevents subHeaderText from repeating when not a date.
 								subHeader = '<div class="listHeader" style="margin-top:8px"><div data-feedtype="feedtype_'+feed.type+'" class="closeList closeIcon entypo-cancel-squared"></div>' + expandRows + checkAllRows + subHeaderText + '</div>';
@@ -3511,8 +3511,15 @@ function setBingMapPositionMarker(lat, lon, reposition)
                 //if (location.host == 'localhost' && typeof(text) == 'string') {
                     //$('#showMessage').show();
                     var html = timeStamp() + text + '<br>';
+
+                    // BUG BUG - Not finding
                     var $selector = $('.adminMessage', $widgetContainer);
+                    console.log($('.adminMessage'));
+                    console.log($('.adminMessage', $widgetContainer));
+                    console.log($selector);
+
                     if($selector.length != 0) {
+                        //alert('append to selector');
                         $selector.append(html);
                         return;
                     }

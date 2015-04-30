@@ -170,7 +170,7 @@ body {
     border-radius: 4px;
 }
 
-.adminMessage { display: none; }
+.adminMessage { /* display: none; */ }
 .slideshowContainer { background-color: #fff; }
 
 .slideContainer { min-height: 600px; max-height:600px; }
@@ -283,8 +283,7 @@ Reactivate.  Need to figure out why script in nearby/index.html does not then sh
 #mySearch {
     position:fixed;
     bottom:0; /* Required for scrolling with list "After Map" */
-    top:54px;
-    margin-top: 40px;
+    top:65px;
     overflow-y: auto;
     overflow-x: hidden;
     background: rgba(255,255,255,.90);

@@ -734,6 +734,63 @@ baseAppControllers.controller('AngularCarouselCtrl', function($scope, $ocLazyLoa
   };
 }]);
 
+
+
+
+baseAppControllers.controller('InfoDialog', function ($scope, $ionicModal) {
+
+    $scope.contentContainer = null;
+    $scope.contentSourceContainer = null;
+
+    $ionicModal.fromTemplateUrl('infoDialogScript', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    })
+    .then(function (modal) {
+        $scope.modal = modal;
+    });
+
+    $scope.openModal = function () {
+        $scope.modal.show();
+    };
+
+    $scope.closeModal = function () {
+        //console.log('close modal');
+        $scope.modal.hide();
+    };
+
+    $scope.isModalShown = function () {
+        return $scope.modal.isShown();
+    }
+
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function () {
+        // console.log('destroy modal');
+        $scope.modal.remove();
+    });
+
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function () {
+
+    });
+
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function () {
+        // Execute action
+        // console.log('model removed event');
+    });
+
+    $scope.showHideDialogControls = function () {
+        
+    };
+
+});
+
+
+
+
+
+
 baseAppControllers.controller('SettingsDialog', function ($scope, $ionicModal) {
 
     $scope.contentContainer = null;
@@ -749,7 +806,6 @@ baseAppControllers.controller('SettingsDialog', function ($scope, $ionicModal) {
 
     $scope.openModal = function () {
         $scope.modal.show();
-
         // move the dialog content into the dialog.
         if ($scope.contentContainer != null) {
             $scope.contentContainer.appendTo('#settingsDialogForm');
