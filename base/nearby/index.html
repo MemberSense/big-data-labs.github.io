@@ -408,7 +408,17 @@
                                                     slideshows, galleries, calendars and maps.</span><br /><br />
 
                                                     <div class="smartMessage"></div>
-                                                    <div class="adminMessage">adminMessage</div>
+                                                    <div class="adminMessage">
+                                                        <ion-list>
+                                                            <ion-item ng-repeat="item in adminMessages">
+                                                                <!-- {{item | sanitize}} -->
+                                                                <p ng-bind-html="trustAsHtml(item)"></p>
+                                                                
+                                                            </ion-item>
+                                                        </ion-list>
+                                                        
+                                                    </div>
+                                                   
 
                                                     <!--
                                                     <p>For Don to reactivate:

@@ -3499,13 +3499,21 @@ function setBingMapPositionMarker(lat, lon, reposition)
             //writeConsole('loadList End');
             
             function writeConsole(text) {
+                var cE = document.querySelector('[ng-controller=InfoDialog]');
+                    var cS = angular.element(cE).scope();
+                    
+                
+                
                 if (typeof (console) != "undefined") {
                     if(typeof(text) == 'string') {
                         console.log(timeStamp() + text);
+                        cS.adminMessages.push(timeStamp() + text);
                     }
                     else {
                         console.log(timeStamp() + 'Logging an object:');
                         console.log(text); // not a string value
+                        cS.adminMessages.push(timeStamp() + 'Logging an object:');
+                        cS.adminMessages.push(text);
                     }
                 }
                 //if (location.host == 'localhost' && typeof(text) == 'string') {
@@ -3514,9 +3522,9 @@ function setBingMapPositionMarker(lat, lon, reposition)
 
                     // BUG BUG - Not finding
                     var $selector = $('.adminMessage', $widgetContainer);
-                    console.log($('.adminMessage'));
-                    console.log($('.adminMessage', $widgetContainer));
-                    console.log($selector);
+                    // console.log($('.adminMessage'));
+                    // console.log($('.adminMessage', $widgetContainer));
+                    // console.log($selector);
 
                     if($selector.length != 0) {
                         //alert('append to selector');
@@ -3524,6 +3532,12 @@ function setBingMapPositionMarker(lat, lon, reposition)
                         return;
                     }
                     $selector = $('.smartSearch', $widgetContainer)
+                    
+                    // var cE = document.querySelector('[ng-controller=InfoDialog]');
+                    // var cS = angular.element(cE).scope();
+                    cS.adminMessages.push(html);
+                    // console.log("in write console.");
+                    
                     if($selector.length != 0) {
                         $('<div class="adminMessage"></div>').append(html).prependTo($selector);
                     }

@@ -737,10 +737,12 @@ baseAppControllers.controller('AngularCarouselCtrl', function($scope, $ocLazyLoa
 
 
 
-baseAppControllers.controller('InfoDialog', function ($scope, $ionicModal) {
+baseAppControllers.controller('InfoDialog', function ($scope, $ionicModal, $sce) {
 
     $scope.contentContainer = null;
     $scope.contentSourceContainer = null;
+    $scope.adminMessages = [];
+    $scope.trustAsHtml = $sce.trustAsHtml;
 
     $ionicModal.fromTemplateUrl('infoDialogScript', {
         scope: $scope,
