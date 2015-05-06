@@ -35,8 +35,7 @@
     "tag": "1.5.0",
     "commit": "e2880db4dc93eae2ce5001963cc653fd89a3e40d"
   },
-  "_source": "https://github.com/big-data-labs/slick.git",
+  "_source": "https://github.com/big-data-labs/carousel.git",
   "_target": "~1.5.0",
-  "_originalSource": "https://github.com/big-data-labs/slick.git",
-  "_direct": true
+  "_originalSource": "https://github.com/big-data-labs/carousel.git"
 }
