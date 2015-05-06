@@ -3141,6 +3141,11 @@ function setBingMapPositionMarker(lat, lon, reposition)
                   cssEase: 'linear',
                   lazyLoad: 'ondemand',
                 });
+                // On swipe event
+                $('#smartAngularCarouselHolder').on('swipe', function(event, slick, direction){
+                  console.log(direction);
+                  
+                });
                 var datalen = data.length
                     
                 for(var i = 0; i < datalen; i++) {
