@@ -13,7 +13,8 @@ var flgFeedLoaded = false, reInitFeed = true, activeLocationMarker = {type:null,
 },
 SmartSlideShowExImgs = [
     '1920585607_n.png'
-];
+]
+,markers = [];
 //var mrkrs = [];
 function timeStamp() {
     var mydate = new Date();
@@ -1924,12 +1925,19 @@ function setBingMapPositionMarker(lat, lon, reposition)
                                     strokeColor: 'black',
                                     strokeWeight: 1
                                 };
+                            var imgmarker = null;
+                            if(typeof item.images != 'undefined' && item.images != null && item.images.length >= 1) {
+                                if(typeof item.images[0].thumbnail != 'undefined' && item.images[0].thumbnail != null) {
+                                    imgmarker = item.images[0].thumbnail;
+                                }
+                            }
                             markerOptions = {
                                 position: loc,
                                 map: googlemap,
                                 //icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
                                 //icon: svgMarker,
                                 icon: circle,
+                                imgmarker:imgmarker,
                                 //shadow: 'http://chart.apis.google.com/chart?chst=d_map_pin_shadow',
                                 title: 'marker: ' + (itemIndex + 1)
                             }
@@ -1941,6 +1949,8 @@ function setBingMapPositionMarker(lat, lon, reposition)
                             var Static_marker = new google.maps.Marker(markerOptions);
                             bounds.extend(loc);
                             mrkrs.push(Static_marker);
+                            markers.push(Static_marker);
+                            
                             //infoHtml = getInfoHtml(item, itemIndex, feed, leftBorderColor, index, $listContainer, 'gmap');
                             
                             
@@ -2023,7 +2033,28 @@ function setBingMapPositionMarker(lat, lon, reposition)
                         }
                     }
                 });
-                
+                google.maps.event.addListener(googlemap, 'zoom_changed', function() {
+                    var zoomLevel = googlemap.getZoom();
+                    console.log('Zoom: ' + zoomLevel);
+                    if (zoomLevel >= 9) {
+                        for(var i = 0; i < markers.length; i++) {
+                            if (googlemap.getBounds().contains(markers[i].getPosition())) 
+                            {
+                                // markers[i] in visible bounds, change marker image if thumbnail image exists
+                                console.log(markers);
+                                var icon = markers[i].getIcon();
+                                //icon.fillColor = "red";
+                                
+                                icon = markers[i].imgmarker;
+                                if(icon != null) {
+                                    markers[i].setIcon(icon);
+                                }
+                                
+                            } 
+                        }
+                        
+                    }
+                });
                 google.maps.event.addListener(googlemap, 'dragend', function() {
                     /* set map dragged flag */
                     flgGmapDragged = true;
