@@ -70,7 +70,7 @@
         
         
         <style>
-            
+            .padding0 { padding : 0px !important; }
         </style>
 </head>
     <body>
@@ -410,7 +410,7 @@
                                                     <div class="smartMessage"></div>
                                                     <div class="adminMessage">
                                                         <ion-list>
-                                                            <ion-item ng-repeat="item in adminMessages">
+                                                            <ion-item ng-repeat="item in adminMessages" class ="item padding0">
                                                                 <!-- {{item | sanitize}} -->
                                                                 <p ng-bind-html="trustAsHtml(item)"></p>
                                                                 

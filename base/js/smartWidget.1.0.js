@@ -3557,29 +3557,30 @@ function setBingMapPositionMarker(lat, lon, reposition)
                     var html = timeStamp() + text + '<br>';
 
                     // BUG BUG - Not finding
-                    var $selector = $('.adminMessage', $widgetContainer);
+                    // var $selector = $('.adminMessage', $widgetContainer);
                     // console.log($('.adminMessage'));
                     // console.log($('.adminMessage', $widgetContainer));
                     // console.log($selector);
 
-                    if($selector.length != 0) {
+                    // if($selector.length != 0) {
                         //alert('append to selector');
-                        $selector.append(html);
-                        return;
-                    }
-                    $selector = $('.smartSearch', $widgetContainer)
+                        // $selector.append(html);
+                        // return;
+                    // }
+                    // $selector = $('.smartSearch', $widgetContainer)
                     
                     // var cE = document.querySelector('[ng-controller=InfoDialog]');
                     // var cS = angular.element(cE).scope();
                     cS.adminMessages.push(html);
                     // console.log("in write console.");
                     
+                    /*
                     if($selector.length != 0) {
                         $('<div class="adminMessage"></div>').append(html).prependTo($selector);
                     }
                     else {
                         $('<div class="adminMessage"></div>').append(html).prependTo($widgetContainer);
-                    }
+                    }*/
                 //}
             }
         }
