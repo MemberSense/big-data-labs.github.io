@@ -164,7 +164,7 @@ function setBingMapPositionMarker(lat, lon, reposition)
         showPositionIconOnMapLoad: false,
         maxGalleryImageDisplay: 6,
         updateBrowserHash: false, // Update the browser hash to reflect current selections.
-        showList: true,
+        showList: false,
         showImages: true, // slideshow
         showMap: true,
         showGallery: false,
@@ -405,8 +405,13 @@ function setBingMapPositionMarker(lat, lon, reposition)
                     $widgetContainer.append($detailContainer);
                 }
                 if ($listContainer == null) {
+                    console.log("creating listcontainer");
                     $listContainer = $('<div class="smartList"></div>');
                     $widgetContainer.append($listContainer);
+                }
+                if(settings.showList == false) {
+                    console.log("destroying listcontainer");
+                    $listContainer = null;
                 }
             }
 
@@ -668,6 +673,11 @@ function setBingMapPositionMarker(lat, lon, reposition)
                             writeConsole("Calling loadMaps");
                             loadMaps();
                         }
+                    }
+                    console.log("settings.showList : " + settings.showList);
+                    if(settings.showList == false) {
+                        console.log("destroying listcontainer");
+                        $listContainer = null;
                     }
 
                     staticLink = '';

@@ -666,7 +666,7 @@ function loadWidget(feeds) {
         longitude: lon != 0 ? lon : -83.644,
         useGoogleMap: useGoogleMap,
         showPositionIconOnMapLoad: showPositionIconOnMapLoad,
-        showList: viewOptions.showList,
+        showList: false,
         showImages: viewOptions.showImages, // slideshow
         showMap: viewOptions.showMap,
         showGallery: viewOptions.showGallery,
@@ -1022,7 +1022,7 @@ var chkGeoPosition = true;
 
 var searchParams;
 var defaultSearchParams = { 'useCurrent': null, 'locationDD': 'all' };
-var defaultViewOptions = { 'showImages': true, 'showMap': true, 'showList': true, 'showGallery': false, 'showCalendar': false };
+var defaultViewOptions = { 'showImages': true, 'showMap': true, 'showList': false, 'showGallery': false, 'showCalendar': false };
 var offsetTop = 90;
 var useCookies = true;
 
