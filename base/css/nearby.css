@@ -306,3 +306,9 @@ Reactivate.  Need to figure out why script in nearby/index.html does not then sh
 }
 
 .toggleCalendar {display:none;}
+
+.slick-prev:before,
+.slick-next:before
+{
+    color: blue !important;
+}

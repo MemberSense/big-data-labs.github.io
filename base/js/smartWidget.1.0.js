@@ -2041,7 +2041,7 @@ function setBingMapPositionMarker(lat, lon, reposition)
                             if (googlemap.getBounds().contains(markers[i].getPosition())) 
                             {
                                 // markers[i] in visible bounds, change marker image if thumbnail image exists
-                                console.log(markers);
+                                // console.log(markers);
                                 var icon = markers[i].getIcon();
                                 //icon.fillColor = "red";
                                 
@@ -3168,7 +3168,7 @@ function setBingMapPositionMarker(lat, lon, reposition)
                   // dots: true,
                   infinite: true,
                   speed: 500,
-                  fade: true,
+                  // fade: true,
                   cssEase: 'linear',
                   lazyLoad: 'ondemand',
                 });
