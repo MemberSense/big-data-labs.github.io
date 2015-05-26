@@ -668,9 +668,9 @@ function loadWidget(feeds) {
         showPositionIconOnMapLoad: showPositionIconOnMapLoad,
         showList: false,
         showImages: viewOptions.showImages, // slideshow
-        showMap: viewOptions.showMap,
-        showGallery: viewOptions.showGallery,
-        showCalendar: viewOptions.showCalendar,
+        showMap: false, // viewOptions.showMap,
+        showGallery: false,  // viewOptions.showGallery,
+        showCalendar: false, // viewOptions.showCalendar,
 
         // Handle addedListItem event
 
