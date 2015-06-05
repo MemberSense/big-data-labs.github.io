@@ -1,5 +1,5 @@
-var app = angular.module('feed', ['jsonFormatter']);
-
+var app = angular.module('feed', ['jsonFormatter', 'slick']);
+/*
 app.directive("gfSlickCarousel", function($timeout) {
     return {
         // Restrict it to be an attribute in this case
@@ -15,6 +15,7 @@ app.directive("gfSlickCarousel", function($timeout) {
         }
     };
 });
+*/
 
 app.controller('FeePageController', function($scope, $http) {
     $http.jsonp('http://georgiafacts.org/smart/api/itemfeed?dynamic=1&tid=16400&callback=JSON_CALLBACK&tid=16400').
