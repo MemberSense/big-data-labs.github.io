@@ -1,37 +1,24 @@
-var app = angular.module('feed', ['jsonFormatter', 'slick']);
-/*
-app.directive("gfSlickCarousel", function($timeout) {
-    return {
-        // Restrict it to be an attribute in this case
-        restrict: 'A',
-        // responsible for registering DOM listeners as well as updating the DOM
-        link: function(scope, element, attrs) {
-            $timeout(function() {
-                 $(element).slick(scope.$eval(attrs.gfSlickCarousel));
-                 console.log("slick initialized");
-            });
-            
-            
-        }
-    };
-});
-*/
-
-app.controller('FeePageController', function($scope, $http) {
-    $http.jsonp('http://georgiafacts.org/smart/api/itemfeed?dynamic=1&tid=16400&callback=JSON_CALLBACK&tid=16400').
-    success(function (data) {
-        $scope.data = data;
-        $scope.images = [];
-        console.log(data);
+$.ajax({
+    url: "../feed/json/buildings.json",
+    // url: "http://georgiafacts.org/smart/api/itemfeed?dynamic=1&tid=16400&callback=?&tid=16400",
+    // jsonp: "callback",
+    // Tell jQuery we're expecting JSONP
+    // dataType: "jsonp",
+    // Work with the response
+    success: function( data ) {
+        console.log( data ); // server response
+        var images = [];
         for(item in data.items) {
+            
             for(image in data.items[item].images) {
-                $scope.images.push(data.items[item].images[image].large);
+                
+                images.push('<div class="wrapper"><img data-lazy="' + data.items[item].images[image].large + '"/><div class="more-info-overlay"><h3 class="margin-5px">' + data.items[item].title + '</h3></div>');
             }
         }
-        console.log($scope.images);
-    }).
-    error(function (data) {
-        $scope.data = "Request failed";
-    });
+        $("#imgGallery").html(images).slick({
+          lazyLoad: 'ondemand',
+          slidesToShow: 1,
+          slidesToScroll: 1
+        });
+    }
 });
-
