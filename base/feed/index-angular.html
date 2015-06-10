@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html ng-app="feed" lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +9,27 @@
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
         
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.5/slick.css"/>
 
         <!-- // Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.5/slick-theme.css"/>
         <link rel="stylesheet" href="css/json-formatter.min.css"></div>
-        <link rel="stylesheet" href="../css/base.css">
         <link rel="stylesheet" href="css/feed.css">
+
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.5/slick.min.js"></script>
+        <script type="text/javascript" src="js/angular-slick.js"></script>
         
+
+        <script src="js/feed.js"></script>
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -26,18 +38,17 @@
         <![endif]-->
 
     </head>
-    <body>
+    <body ng-controller="FeePageController">
         
         <div class="container">
           <div class="header clearfix">
-            <!--<nav>
+            <nav>
               <ul class="nav nav-pills pull-right">
                 <li role="presentation" class="active"><a href="#">Home</a></li>
                 <li role="presentation"><a href="#">About</a></li>
                 <li role="presentation"><a href="#">Contact</a></li>
               </ul>
             </nav>
-            -->
             <h3 class="text-muted">Georgia Feeds</h3>
           </div>
 
@@ -48,7 +59,9 @@
               
             <div class="col-lg-8">
                 <h4>Image Gallery</h4>
-                <div id="imgGallery"></div>
+                 <slick lazy-load='ondemand' init-onload=true data="images" slides-to-show=1 slides-to-scroll=1 class="slider lazy">
+                  <div ng-repeat="img in images track by $index"><div class="image"><img data-lazy="{{img}}"/></div></div>
+                </slick>
               
             </div>
             <div class="col-lg-2"></div>
@@ -69,13 +82,6 @@
               
             <div class="col-lg-8">
               <h4>Feed List</h4>
-              <div class="panel panel-primary feedlist">
-                  <div class="panel-heading">Building Feeds</div>
-                  <!-- feedlist -->
-                  
-                  
-                  
-              </div>
               
             </div>
             <div class="col-lg-2"></div>
@@ -86,11 +92,8 @@
           </footer>
 
         </div> <!-- /container -->
+        <json-formatter json="data" open="1"></json-formatter>
         
-        
-        
-        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.5/slick.min.js"></script>
-        <script src="js/feed.js"></script>
+        <script src="js/json-formatter.min.js"></script>
     </body>
 </html>

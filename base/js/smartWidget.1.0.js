@@ -672,7 +672,7 @@ function setBingMapPositionMarker(lat, lon, reposition)
                     if(settings.showMap == false) {
                         console.log("destroying mapContainer");
                         // $(mapContainer).remove();
-                        $($mapContainer).remove();
+                        $($mapContainer).hide();
                         $mapContainer = null;
                     }
                     if($mapContainer != null && settings.showMap) {
