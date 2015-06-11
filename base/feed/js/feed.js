@@ -1,10 +1,4 @@
-function buildSlickCarouselDOM(items) {
-    
-}
 
-function buildFeedListDOM(items) {
-    
-}
 
 $.ajax({
     url: "../feed/json/buildings.json",
@@ -26,11 +20,14 @@ $.ajax({
             feed["thumbnail"] = "";
             feed["alt"] = "";
             
-            if(items[item].images !== null) {
+            if(_.isArray(items[item].images)) {
                 for(image in items[item].images) {
                     
-                    images.push('<div class="wrapper"><img data-lazy="' + items[item].images[image].large + '"/><div class="more-info-overlay"><h3 class="margin-5px">' + items[item].images[image].title + '</h3></div>');
-                    feed["thumbnail"] = typeof items[item].images[image].thumbnail !== 'undefined' ? items[item].images[image].thumbnail : "";
+                    var lat=_.isNull(items[item].venue) ? "" : _.isNull(items[item].venue.latitude) ? "" : items[item].venue.latitude,
+                        lan=_.isNull(items[item].venue) ? "" : _.isNull(items[item].venue.longitude) ? "" : items[item].venue.longitude;
+                    
+                    images.push('<div class="wrapper"><img data-lazy="' + items[item].images[image].large + '"/><div class="more-info-overlay"><h3 class="margin-5px">' + items[item].images[image].title + ' <a href="#" class="fmap" data-lat="' + lat +'" data-lan="' + lan +'"> <span class="label label-primary">Map</span></a></h3></div>');
+                    feed["thumbnail"] = _.isUndefined(items[item].images[image].thumbnail) ? "" : items[item].images[image].thumbnail;
                     feed["alt"] = items[item].images[image].title;
                 }
             }
@@ -42,8 +39,14 @@ $.ajax({
           lazyLoad: 'ondemand',
           slidesToShow: 1,
           slidesToScroll: 1
+          // vertical:1,
+          // verticalSwiping:1
         });
         
         $(".feedlist").append(feeds);
     }
+});
+
+$("body").on("click", ".fmap", function() {
+    alert("map - lat:" + $(this).data("lat") + ", lan:" + $(this).data("lan"));
 });
