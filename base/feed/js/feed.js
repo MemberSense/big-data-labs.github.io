@@ -1,4 +1,10 @@
 
+function loadScript() {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=initMap';
+  document.body.appendChild(script);
+}
 
 $.ajax({
     url: "../feed/json/buildings.json",
@@ -49,4 +55,13 @@ $.ajax({
 
 $("body").on("click", ".fmap", function() {
     alert("map - lat:" + $(this).data("lat") + ", lan:" + $(this).data("lan"));
+    // load gmap script if not already loaded.
+    
+    if (typeof google === 'object' && typeof google.maps === 'object') {
+        alert("map is loaded");
+        
+    } else {
+        loadScript();
+    }
+    
 });
