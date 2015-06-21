@@ -33,3 +33,6 @@ h3 {
     padding: 0px;
     display:none;
 }
+.badge-info {
+    background-color: #5bc0de;
+}
