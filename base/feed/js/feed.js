@@ -116,8 +116,8 @@ $.ajax({
                 creatortxt = '<div class="icon-user">' + creator["displayName"] + '</div>';
                 console.log(creatortxt);
             }
-            
-            feeds.push('<div class="media"><div class="media-left media-middle"><a href="#"><img class="media-object" src="' + feed["thumbnail"] +'" alt="' + feed["alt"] +'"></a></div><div class="media-body"><h4 class="media-heading">' + feed["heading"] +'</h4><div class="badge badge-info">' + (_.isNull(feed["keyDetails"]) ? "" : feed["keyDetails"])  + '</div><div><i class="icon-calendar"></i> ' + feed["start"] + '</div>' + filelink +'<div class="icon-external-link"><a href="' + feed["htmlLink"] + '">' + feed["htmlLink"] + '</a></div>' + creatortxt +'</div>');
+         
+            feeds.push('<div class="panel panel-default"><div class="panel-body"><div class="media"><div class="media-left media-middle"><a href="#"><img class="media-object" src="' + feed["thumbnail"] +'" alt="' + feed["alt"] +'"></a></div><div class="media-body"><h4 class="media-heading">' + feed["heading"] +'</h4><div class="badge badge-info">' + (_.isNull(feed["keyDetails"]) ? "" : feed["keyDetails"])  + '</div><div><i class="icon-calendar"></i> ' + feed["start"] + '</div>' + filelink +'<div class="icon-external-link"><a href="' + feed["htmlLink"] + '">' + feed["htmlLink"] + '</a></div>' + creatortxt +'</div></div></div>');
             
             buildingsfeed.push(feed);
         }
@@ -130,7 +130,13 @@ $.ajax({
           // verticalSwiping:1
         });
         
-        $(".feedlist").append(feeds);
+        $("#feedlist").html(feeds).slick({
+          lazyLoad: 'ondemand',
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          vertical:true,
+          verticalSwiping:true
+        });
         
         /*
         $('#imgGallery').on('swipe', function(event, slick, direction){
