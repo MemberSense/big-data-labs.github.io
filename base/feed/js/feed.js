@@ -18,6 +18,7 @@ function initMap() {
         zoomControl: false,
         //streetViewControl: false,
     }
+    $("#map-canvas").show();
     buildingmap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     
 }
@@ -166,8 +167,7 @@ $("body").on("click", ".sfmap", function(e) {
     }, 1000);
 });
 
-$("body").on("click", ".ffmap", function(e) {
-    e.preventDefault();
+function showGmap() {
     if (!(typeof google === 'object' && typeof google.maps === 'object')) {
         loadScript();
     }
@@ -176,4 +176,47 @@ $("body").on("click", ".ffmap", function(e) {
         addMarkers(buildingmap, buildingsfeed);
         buildingmap.setCenter(new google.maps.LatLng(34.397, -83.644));
     }, 1000);
+}
+
+function hideGmap() {
+    $("#map-canvas").hide();
+}
+
+$("body").on("click", ".ffmap", function(e) {
+    e.preventDefault();
+    var el = $(this);
+    var pe = $(this).parent();
+    console.log(pe);
+    if (!el.hasClass("menuMap")) {
+        console.log("gmamall link clicked");
+        showGmap();
+    } else {
+        if (el.hasClass("menuMap") && pe.hasClass("active")) {
+            hideGmap();
+            pe.removeClass("active");
+            console.log("decativate Map link");
+        } else {
+            showGmap();
+            pe.addClass("active");
+            console.log("ativate Map link");
+        }
+    }
+    
+});
+
+
+
+$("body").on("click", ".menuSlideShow", function(e) {
+    e.preventDefault();
+    // var el = $(this);
+    /* var pe = */ $(this).parent().toggleClass("active");
+    // pe.toggleClass("active");
+    $("#imgGallery").toggle();
+});
+$("body").on("click", ".menuList", function(e) {
+    e.preventDefault();
+    // var el = $(this);
+    /* var pe = */ $(this).parent().toggleClass("active");
+    // pe.toggleClass("active");
+    $("#feedlist").toggle();
 });
