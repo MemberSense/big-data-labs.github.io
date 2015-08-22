@@ -1,4 +1,4 @@
-var buildingmap = null, markers = [], buildingsfeed = [];
+var buildingmap = null, markers = [], buildingsfeed = [], imgGallery = null;
 function loadScript() {
   var script = document.createElement('script');
   script.type = 'text/javascript';
@@ -40,6 +40,9 @@ function deleteMarkers() {
   clearMarkers();
   markers = [];
 }
+
+
+
 // Add a marker to the map and push to the array.
 function addMarker(map, location) {
     var latlng = new google.maps.LatLng(location.lat, location.lng),
@@ -48,7 +51,20 @@ function addMarker(map, location) {
         map: map,
         icon: location.thumbnail,
         title: location.heading,
+        index: location.index
     });
+
+    marker.addListener("click", function() {
+        if (imgGallery != null) {
+            console.log(marker);
+            var slickCurrentSlide = imgGallery.slick("slickCurrentSlide");
+            if (slickCurrentSlide != marker.index) {
+                imgGallery.slick("slickGoTo", marker.index);
+            }
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
+    });
+    
     markers.push(marker);
     return marker;
 }
@@ -86,6 +102,7 @@ $.ajax({
             feed["keyDetails"] = items[item].keyDetails;
             feed["start"] = items[item].start;
             feed["htmlLink"] = items[item].htmlLink;
+            feed["index"] = item;
             
             var lat=_.isNull(items[item].venue) ? "" : _.isNull(items[item].venue.latitude) ? "" : items[item].venue.latitude,
                         lng=_.isNull(items[item].venue) ? "" : _.isNull(items[item].venue.longitude) ? "" : items[item].venue.longitude;
@@ -123,7 +140,7 @@ $.ajax({
             buildingsfeed.push(feed);
         }
         // feeds.push('</div>');
-        $("#imgGallery").html(images).slick({
+        imgGallery = $("#imgGallery").html(images).slick({
           lazyLoad: 'ondemand',
           slidesToShow: 1,
           slidesToScroll: 1
