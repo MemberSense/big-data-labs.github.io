@@ -188,7 +188,7 @@ function fbFetch(token) {
                 $.each(users, function(i, user) {
                     if (user.id == fb.actor_id) {
                         if (fb.actor_id != "129055803796451") {
-                            author = " .  By <a href='" + user.url + "'>" + user.name + "<a/>";
+                            // author = " .  By <a href='" + user.url + "'>" + user.name + "<a/>";
                         } else {
                             author = " .  By " + user.name;
                         }
