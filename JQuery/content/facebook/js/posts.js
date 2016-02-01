@@ -513,7 +513,11 @@ $(document).ready(function () {
             fbLimit = 10;
             fbOffset = 0;
             //fbFolder = 'RethinkAtlanta';
-            fbFolder = 'GrantParkGPNA';
+            //fbFolder = 'GrantParkGPNA';
+            // fbFolder = 'Test.Goverment.Page.1751330211762252';
+            fbFolder = 'southeast.atlanta';
+            // fbFolder = 'Atlanta-City-Council-Member-Carla-Smith-285182178269780';
+            // fbFolder = '285182178269780';
             // actor_id = '';
             // pubfeedfql = 'and actor_id in (select page_id from page where username=\''+fbFolder+'\')';
             
