@@ -10,7 +10,7 @@ var showComments = true;
 var commentQuantity = 8;
 var fbOffset = 0;
 var includePublicFeed = false;
-
+var nextfeedurl = '';
 NCA_includePublicFeed = Cookies.get('NCA_includePublicFeed');
 if (typeof NCA_includePublicFeed != "undefined") {
     
@@ -71,334 +71,210 @@ function fbFetch(token) {
 
     // You can also request multiple objects in a single query using the "ids" query parameter.
     // For example, the URL https://graph.facebook.com?ids=arjun,vernal returns both profiles in the same response.
-    // since=today&
-    $.ajaxSetup({async:false});
-    // Swicth from /posts to /feed to show everyone
+	// since=today&
+$.ajaxSetup({async:false});
+	// Swicth from /posts to /feed to show everyone
+    
+    
 
-    var excludePublicFeedFQL = 'and actor_id in (select page_id from page where username=\'' + fbFolder + '\')';
-    
-    
-    var url = '{"posts": "select action_links, actor_id,app_data, app_id, attachment, attribution, claim_count, comment_info, created_time, description, description_tags, expiration_timestamp, feed_targeting, filter_key, impressions, is_exportable, is_hidden, is_published, like_info, message, message_tags, parent_post_id, permalink, place, post_id, privacy, promotion_status, scheduled_publish_time, share_count, share_info, source_id, subscribed, tagged_ids, target_id,targeting,timeline_visibility, type, updated_time, via_id, viewer_id, with_location, with_tags, xid from stream where filter_key == \'owner\' and source_id in (select page_id from page where username=\''+fbFolder+'\') ' + (includePublicFeed ?  "" : excludePublicFeedFQL ) +' limit '+fbOffset+', '+fbLimit+'", "comments": "select post_id, fromid, text, time, username from comment where post_id in (select post_id from #posts)", "users": "SELECT id, name, username, url FROM profile WHERE id in (SELECT actor_id FROM #posts)"}';
-    // SELECT uid,first_name, last_name FROM user WHERE uid
-    // = '129055803796451'
-    if (typeof (console) != 'undefined' && typeof (console.log) != 'undefined') {
-        console.log('Facebook feed query:', url);
+	var url = '';
+	if (nextfeedurl == '') {
+        url = "https://graph.facebook.com/" + fbFolder + "/feed?access_token=" + token + "&limit=" + fbLimit + "&callback=?";
+    } else {
+        url = nextfeedurl + "&callback=?";
     }
+	//Use jQuery getJSON method to fetch the data from the url and then create our unordered list with the relevant data.
+	$.getJSON(url, function (json) {
+		var html = "<ul>";
+	    var commentCount = 0;
 
-    //alert('https://graph.facebook.com/fql?q=' + encodeURIComponent(url) + '&format=json&suppress_http_code=1&access_token=' + token);
-    //Use jQuery getJSON method to fetch the data from the url and then create our unordered list with the relevant data.
-    $.getJSON('https://graph.facebook.com/fql?q=' + encodeURIComponent(url) + '&format=json&suppress_http_code=1&access_token=' + token, function (json) {
-        var html = "";
-
-        if (typeof (json.error) != 'undefined') {
-            if (typeof (console) != 'undefined' && typeof (console.error) != 'undefined') {
-                console.error('Facebook returned an error: ', json.error);
-            }
-            $('div[id*="FacebookPanel"]').hide();
-            return;
+	    // These aren't working...
+	    if (!showComments) {
+	    	// Wrap newsText under thumbnail.  Allows for irregualar thumbnail widths, which look odd when comments don't separate.
+		    $('.newsText').attr('style', 'overflow: visible;');
+	    }
+	    if (showComments) {
+	    	$('.newsText').attr('style', 'overflow:hidden;');
+	    }
+        if(typeof json.paging != 'undefined' && typeof json.paging.next != 'undefined') {
+            nextfeedurl = json.paging.next;
         }
+        
 
-        html += "<ul>";
-        var commentCount = 0;
+	    //loop through and within data array's retrieve the message variable.
+	    $.each(json.data, function (i, fb) {
+            
+            
+            // console.log('i=> ' + i)
+            // console.log('fb=> ' + JSON.stringify(fb))
+	        var splitID = fb.id.split("_");
+            
+            var liclass = fb.from.id;
+            var displaycss = (!includePublicFeed && fbAdminID != '' && fb.from.id != fbAdminID  ? "style='display: none;'" : "");
+            
+			if (fb.link) {
+	            html += "<li class='linked " + liclass + "' " + displaycss + " onclick='javascript:document.location=\"" + fb.link + "\"'>";
+	        } else if (showComments) {
+				html += "<li class='linked " + liclass + "' " + displaycss + "  onclick='javascript:document.location=\"https://www.facebook.com/" + fbFolder + "/posts/" + splitID[1] + "\"'>";
+			} else {
+	            html += "<li class='linked " + liclass + "' " + displaycss + " onclick='javascript:document.location=\"https://www.facebook.com/" + fbFolder + "\"'>";
+	        }
+			
+	        if (!fb.from.category) {
+	            html += "<img style='float:left; margin-right:4px' src='https://graph.facebook.com/" + fb.from.id + "/picture' alt='' />";
+	        }
 
-        // These aren't working...
-        if (!showComments) {
-            // Wrap newsText under thumbnail.  Allows for irregualar thumbnail widths, which look odd when comments don't separate.
-            $('.newsText').attr('style', 'overflow: visible;');
-        }
-        if (showComments) {
-            $('.newsText').attr('style', 'overflow:hidden;');
-        }
+	        if (fb.picture) {
+	            html += "<img class='newsImage' src='" + fb.picture + "' alt='' />";
+	        }
 
-        var posts = json.data[0].fql_result_set,
-            comments = json.data[1].fql_result_set,
-            users = json.data[2].fql_result_set,
-            events;
-
-        console.log(users);
-        // get events
-        event_ids = []
-        $.each(posts, function (i, fb) {
-
-            if (fb.attachment["media"] && fb.attachment["media"][0] && fb.attachment["media"][0]["type"] && fb.attachment["media"][0]["type"] == "link") {
-
-                //console.log(fb.attachment["media"][0]["href"])
-                ev_id_array = fb.attachment["media"][0]["href"].split('/')
-
-                ev_id = ev_id_array[ev_id_array.length - 2]
-
-                if (parseInt(ev_id) == ev_id) {
-                    event_ids.push(ev_id)
-                }
-            }
-        });
-
-
-        if (event_ids.length > 0) {
-            //var ev_url = 'https://graph.facebook.com/' + ev_id + '?fields=name&method=GET&format=json&suppress_http_code=1&access_token=' + token
-            // was 117370968285365|5XkqBE8fUp29ZaTRAMTmAAfCFvk
-            var ev_url =
-            'https://graph.facebook.com/fql?q=select eid, location, end_time, start_time, name from event where eid in (' + event_ids.join(',') + ')&format=json&suppress_http_code=1&access_token=' + token
-
-            ////console.log(ev_url)
-            $.getJSON(ev_url, function (ev_json) {
-                ////console.log(ev_json)
-                //html += 'Evnet Title : ' + ev_json.data[0].name + '<br />'
-                events = ev_json
-            });
-        }
-
-
-        //loop through and within data array's retrieve the message variable.
-        $.each(posts, function (i, fb) {
-
-            //var splitID = fb.id.split("_");
-            var link = '';
-            var splitID = []
-            splitID[1] = fb.actor_id;
-            if (fb.attachment["href"]) {
-                link = fb.attachment["href"];
-            } else if (fb.attachment["media"] && fb.attachment["media"][0] && fb.attachment["media"][0]["href"]) {
-                link = fb.attachment["media"][0]["href"];
-            } else {
-                link = fb.permalink;
-            }
-            html += "<li class='linked fbRow fbRowCollapsed fbRowHover " + fb.actor_id + "'>";
-
-            html += "<div class='fbClose fbExpanded' style='float:right'><img style='width:15px;height:8px; margin-left:3px; opacity: 0.5; filter: alpha(opacity=50);' src='/core/elements/arrows/olive-down.gif' alt='less' /></div>";
-
-            html += "<div class='fbOpen fbCondensed' style='float:right'><img style='width:10px;height:10px' src='/core/elements/arrows/next-sm.gif' alt='more' /></div>";
-            /*
-            if (!fb.from.category) {
-            html += "<img style='float:left; margin-right:4px' src='https://graph.facebook.com/" + fb.from.id + "/picture' alt='' />";
-            }
-            */
-            if (fb.attachment["media"] && fb.attachment["media"][0] && fb.attachment["media"][0]["src"]) {
-
-                html += "<a onclick='goPage(\"" + fb.permalink + "\",event);' href='" + fb.permalink + "'><img class='newsImage newsImageSm fbCondensed' src='" + fb.attachment["media"][0]["src"] + "' alt='' /></a>";
-
-                html += "<a onclick='goPage(\"" + fb.permalink + "\",event);' href='" + fb.permalink + "'><img class='newsImage fbExpanded' src='" + fb.attachment["media"][0]["src"] + "' alt='' /></a>";
-            }
-
-            html += "<div class='newsText'>";
-            if (fb.created_time) {
-                var startDate = new Date(formatFBTimestamp(fb.created_time));
-                var startDateString = formatDate(startDate);
-                var author = "";
-                $.each(users, function(i, user) {
-                    if (user.id == fb.actor_id) {
-                        if (fb.actor_id != "129055803796451") {
-                            // author = " .  By <a href='" + user.url + "'>" + user.name + "<a/>";
-                        } else {
-                            author = " .  By " + user.name;
-                        }
-                        return false;
-                    }
-                });
-                
-                html += '<div class="postDate">Posted ' + startDateString +  author + '</div>';
-            }
-            if (fb.attachment["name"]) {
-                fbname = fb.attachment["name"];
-                if (fb.attachment["name"].indexOf(" ") == -1 && fb.attachment["name"].length > 40) {
-                    if (fb.attachment["name"].length < 80) {
-                        fbname = fb.attachment["name"].substring(0, 40) + '<br />' + fb.attachment["name"].substring(41);
-
-                    } else {
-                        fbname = '';
-                    }
-                }
-                if (fbname.length > 0) {
-                    if (fb.attachment["href"]) {
-                        html += "<div class='newsfeedTitle'><a href='" + fb.attachment["href"] + "'>" + fbname + "</a></div>";
-                    } else {
-                        html += "<div class='newsfeedTitle'><a href='https://www.facebook.com/" + fbFolder + "'>" + fbname + "</a></div>";
-                    }
-                }
-            }
-
-            if (fb.message) {
-                //if (fb.attachment["name"].length <= 0) {
-                if (fb.attachment.hasOwnProperty("name") == false) {
-                    html += "<div class='newsfeedTitle noneVerbose'><a href='" + link + "'>" + fb.message.substr(0, 100) + "</a></div>";
-                } else if (fb.attachment["name"] != fb.message) {
-                    html += "<div>" + fb.message.substr(0, 350);
-                    if (fb.message.length > 351) {
-                        html += " <a href='" + fb.permalink + "'>more...</a>";
-                    }
-                    html += "</div>";
-                }
-            }
-
-            if (fb.attachment["description"] || fb.attachment["caption"] || fb.description) {
-                if (fb.attachment["caption"] && fb.attachment["caption"].length > 250) {
-                    html += "<div class='newsfeedDesc fbExpanded'>";
-                } else {
-                    html += "<div class='newsfeedDesc fbExpanded' style='overflow:hidden'>";
-                }
-                if (fb.attachment["caption"]) {
-                    html += fb.attachment["caption"].substr(0, 500);
-                }
-                if (fb.attachment["description"]) {
-                    if (fb.attachment["caption"]) {
-                        html += " - ";
-                    }
-                    html += fb.attachment["description"].replace(fb.name, "").substr(0, 500);
-                } else if (fb.description) {
-                    if (fb.attachment["caption"]) {
-                        html += " - ";
-                    }
-
-                    if (fb.attachment["media"] && fb.attachment["media"][0] && fb.attachment["media"][0]["type"] && fb.attachment["media"][0]["type"] == "link") {
-
-                        //console.log(fb.attachment["media"][0]["href"])
-                        ev_id_array = fb.attachment["media"][0]["href"].split('/')
-
+	        html += "<div class='newsText'>";
+	        if (fb.created_time) {
+	        	var startDate = new Date(formatFBTime(fb.created_time));
+	            var startDateString = formatDate(startDate);
+	            html += '<div class="postDate">Posted ' + startDateString + '</div>';
+	        }
+	        if (fb.name) {
+				fbname = fb.name;
+	            if (fb.name.indexOf(" ") == -1 && fb.name.length > 40) {
+					if (fb.name.length < 80)
+					{
+						fbname = fb.name.substring(0,40) + '<br />' + fb.name.substring(41);
+						
+					} else {
+						fbname = '';
+					}
+				}
+				if (fbname.length > 0) {
+					if (fb.link) {
+						//html += "<div class='newsfeedTitle'><a href='javascript:document.location=\"" + fb.link + "\"'>" + fbname + "</a></div>";
+						html += "<div class='newsfeedTitle'><a href='" + fb.link + "'>" + fbname + "</a></div>";
+					} else {
+						//html += "<div class='newsfeedTitle'><a href='javascript:document.location=\"https://www.facebook.com/" + fbFolder + "\"'>" + fbname + "</a></div>";
+						html += "<div class='newsfeedTitle'><a href='https://www.facebook.com/" + fbFolder + "'>" + fbname + "</a></div>";
+					}
+				}
+	        }
+	        
+	        if (fb.message) {
+	            html += "<div >" + fb.message.substr(0,350);
+	            if (fb.message.length > 351) {
+	            	html += " <strong>more...</strong>";
+	            }
+	            html += "</div>";
+	        }
+			
+	        if (fb.description || fb.caption || fb.story) {
+	        	if (fb.caption && fb.caption.length > 250) {
+	        		html += "<div class='newsfeedDesc'>";
+	        	} else {
+	        		html += "<div class='newsfeedDesc' style='overflow:hidden'>";
+	        	}
+		        if (fb.caption) {
+		            html += fb.caption.substr(0,500);
+		        }
+		        if (fb.description) {
+		        	if (fb.caption) {
+			            html += " - ";
+			        }
+		        	html += fb.description.replace(fb.name, "").substr(0,500);
+		        } else if (fb.story) {
+		        	if (fb.caption) {
+			            html += " - ";
+			        }
+                    // get event title
+                    //https://graph.facebook.com/462861550460081?fields=name&method=GET&format=json&suppress_http_code=1&access_token=CAACEdEose0cBAM9GwZCZC6pvemsc0BP5xrA5uIS0pQWFAcatKeIN6U9bZCwsY75A1yTqpt4BVCSi9cKiXhqDQ6PfeedO5w2wdF0TB8cskwY9ZBSr5Xtp5SFjZBaiaH2BbmHeJcgBZBcR54UEURiZBVOrlwG0gnDZAF3KzkHpZAxaZB7SuY6OXY6diFZA1JvCJupbv55ZCVZAosgsLggZDZD
+                    if(fb.type == 'link') {
+                        
+                        ev_id_array = fb.link.split('/')
                         ev_id = ev_id_array[ev_id_array.length - 2]
-
-                        if (parseInt(ev_id) == ev_id) {
-                            //event_ids.push(ev_id)
-
-                            $.each(events.data, function (ei, event) {
-                                if (event.eid == ev_id) {
-                                    html += "<div class='newsfeedTitle'><a href='" + link + "'>" + event.name + "</a></div>";
-                                    if (event.location) {
-                                        html += '<b>Where:</b> ' + event.location + '<br />';
-                                    }
-                                    var start_time = event.start_time;
-                                    var end_time = event.end_time;
-                                    if (event.start_time == null) {
-                                        start_time = event.start_time * 1000;
-                                    }
-                                    if (event.end_time == null) {
-                                        end_time = event.end_time * 1000;
-                                    }
-                                    html += '<b>When:</b> ' + formatDateTicks(start_time, end_time) + '<br />';
-                                    events.data.remove(ei);
-                                    return false;
-                                }
-                            });
-                        }
+                        
+                        
+                        var ev_url = 'https://graph.facebook.com/' + ev_id + '?fields=name&method=GET&format=json&suppress_http_code=1&access_token=' + token
+                        
+                        $.getJSON(ev_url, function(ev_json) {
+                            html += 'Evnet Title : ' + ev_json.name + '<br />'
+                            console.log('Evnet Title : ' + ev_json.name)
+                        });
                     }
-                    html += fb.description.replace(fb.attachment["name"], "").substr(0, 500);
-                }
-                html += "</div>";
-            }
-            // Comments
-            // Only summary of comments is displayed, just like facebook default, only 2 available unless you "read more" or "view all"... 
-            // the graph call for "view all comments" is get the post ID of that post and append "/comment"...
-            // example:
-            // FEED: https://graph.facebook.com/161439580553446/feed
-            // A POST FROM THE FEED: https://graph.facebook.com/161439580553446_177522428945161
-            // VIEW ALL COMMENTS: https://graph.facebook.com/161439580553446_177522428945161/comments
+                    
+                    
+		        	html += fb.story.replace(fb.name, "").substr(0,500);
+		        }
+		        html += "</div>";
+		    }
+	        // Comments
+	        // Only summary of comments is displayed, just like facebook default, only 2 available unless you "read more" or "view all"... 
+	        // the graph call for "view all comments" is get the post ID of that post and append "/comment"...
+	        // example:
+	        // FEED: https://graph.facebook.com/161439580553446/feed
+	        // A POST FROM THE FEED: https://graph.facebook.com/161439580553446_177522428945161
+	        // VIEW ALL COMMENTS: https://graph.facebook.com/161439580553446_177522428945161/comments
 
+	        
 
+	        // COMMENTS
+	        if (showComments) {
+	            if (fb.comments) {
+	            	//commentCount = 0;
+	            	html += "<div class='comments'>";
+	            	$.each(fb.comments, function (i, theComments) {
+	            		if (i == "count") {
+	                        if (theComments > 3) {
+	                            html += "<a class='addComment commentIcon' href='https://www.facebook.com/" + fbFolder + "/posts/" + splitID[1] + "'>View all " + theComments + " comments / Add comment</a><br />";
+	                        } else {
+	                            html += "<a class='addComment commentIcon' href='https://www.facebook.com/" + fbFolder + "/posts/" + splitID[1] + "'>Add comment</a> | <a class='addComment' href='https://www.facebook.com/" + fbFolder + "/posts/" + splitID[1] + "'>View details</a><br />";
+	                        }
+	                    }
+	            		
+	            	});
+	            	html += "</div>"; // end .newsText
+	        		html += '<div style="clear:both"></div>';
 
-            // COMMENTS
-            if (showComments) {
+	                $.each(fb.comments, function (i, theComments) {
 
-                // check if comments for this post exists or not
-                if (fb.comment_info) {
-                    //commentCount = 0;
-                    html += "<div class='fbComments fbExpanded'>";
+	                    if (i == "data") {
+	                        $.each(theComments, function (i, data) {
 
-                    if (fb.comment_info.comment_count > 3) {
-                        html += "<a class='addComment commentIcon' href='" + fb.permalink + "'>View all " + fb.comment_info.comment_count + " comments / Add comment</a><br />";
-                    } else {
-                        html += "<a class='addComment commentIcon' href='" + fb.permalink + "'>Add comment</a> | <a class='addComment' href='" + fb.permalink + "'>View details</a><br />";
-                    }
+	                            data.message = data.message.replace(new RegExp("\\n", "g"),"<br />");
 
-                    html += "</div>"; // end .newsText
-                    html += '<div style="clear:both"></div>';
-                    //alert(commentQuantity);
-                    $.each(comments, function (i, theComments) {
+	                            var URLregex = new RegExp();
+								URLregex.compile("(^|[ \t\r\n])((ftp|http|https|gopher|mailto|news|nntp|telnet|wais|file|prospero|aim|webcal):(([A-Za-z0-9$_.+!*(),;/?:@&~=-])|%[A-Fa-f0-9]{2}){2,}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*(),;/?:@&~=%-]*))?([A-Za-z0-9$_+!*();/?:~-]))","g");
+								 
+								data.message = data.message.replace(URLregex, ' <a href="$2" target="_blank">view link</a> ');
 
-                        if (theComments.post_id == fb.post_id) {
-                            commentCount++;
+								//var DOMAINregex = new RegExp();
+								//DOMAINregex.compile(">https?://(?:www\.)?([^/]+)","g");
+								//data.message = data.message.replace(DOMAINregex, '>Visit link on $1');
 
-                            if (commentQuantity >= commentCount) {
-                                //console.log(theComments);
+	                            html += "<div class='comment'><img class='commentImage' src='https://graph.facebook.com/" + data.from.id + "/picture' alt='' />";
+	                            html += data.message + "<br />";
+	                            if (data.created_time) {
+	                                var startDate = new Date(formatFBTime(data.created_time));
+	                                //var startDateString = days[startDate.getDay()] + ' at ' + showTheHours(startDate.getHours()) + ':' + showZeroFilled(startDate.getMinutes()) + ' ' + showAmPm(startDate);
+	                                html += '<span class="commentDate">Posted ' + formatDate(startDate) + '</span><br />';
+	                            }
 
-                                data = theComments
+	                            html += "</div><div style='clear:both'></div>";
+	                        });
+	                    }
+	                    
+	                });
+					html += "</div>";
+	            } else {
+	            	html += "</div>"; // end .newsText
+	        		html += '<div style="clear:both"></div>';
+	                html += "<a class='addComment' href='https://www.facebook.com/" + fbFolder + "/posts/" + splitID[1] + "'>Add comment</a><br />";
+	            }
+	        }
 
-                                //if (i == "data") {
-                                // $.each(theComments, function (i, data) {
+	        html += "<div style='clear:both'></div></li>";
+	    });
+	    html += "</ul>";
 
-                                data.text = data.text.replace(new RegExp("\\n", "g"), "<br />");
-
-                                var URLregex = new RegExp();
-                                URLregex.compile("(^|[ \t\r\n])((ftp|http|https|gopher|mailto|news|nntp|telnet|wais|file|prospero|aim|webcal):(([A-Za-z0-9$_.+!*(),;/?:@&~=-])|%[A-Fa-f0-9]{2}){2,}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*(),;/?:@&~=%-]*))?([A-Za-z0-9$_+!*();/?:~-]))", "g");
-
-                                data.text = data.text.replace(URLregex, ' <a href="$2" target="_blank">view link</a> ');
-
-                                //var DOMAINregex = new RegExp();
-                                //DOMAINregex.compile(">https?://(?:www\.)?([^/]+)","g");
-                                //data.message = data.message.replace(DOMAINregex, '>Visit link on $1');
-
-                                html += "<div onclick='goPage(\"" + fb.permalink + "\",event);' class='comment fbExpanded'><img class='commentImage' src='https://graph.facebook.com/" + data.fromid + "/picture' alt='' />";
-                                html += data.text + "<br />";
-                                if (data.timetime) {
-                                    var startDate = new Date(formatFBTime(data.time));
-                                    //var startDateString = days[startDate.getDay()] + ' at ' + showTheHours(startDate.getHours()) + ':' + showZeroFilled(startDate.getMinutes()) + ' ' + showAmPm(startDate);
-                                    html += '<span class="commentDate">Posted ' + formatDate(startDate) + '</span><br />';
-                                }
-
-                                html += "</div><div style='clear:both'></div>";
-                                //});
-                            }
-                        }
-
-                    });
-                    html += "</div>";
-                    commentCount = 0;
-                } else {
-                    html += "</div>"; // end .newsText
-                    html += '<div style="clear:both"></div>';
-                    html += "<a class='addComment' href='" + fb.permalink + "'>Add comment</a><br />";
-                }
-            } else {
-                html += "<a class='addComment commentIcon' href='" + fb.permalink + "'><a class='addComment' href='" + fb.permalink + "'>View details</a><br />";
-            }
-
-            //                              if (fb.properties.name) {
-            //                                      html += fb.properties.name + "<br />";
-            //                              }
-
-            //                                  if (fb.updated_time) {
-            //                                      var offset = new Date(fb.updated_time);
-            //                                      //var offset = curdate.getTimeZoneOffset();
-            //                                      var startDateString = days[offset.getDay()] + ' at ' + offset.getHours() + ':' + offset.getMinutes();
-            //                                      //+ ", " + months[offset.getMonth()] + ' ' + offset.getDate() + ', ' + fourdigits(offset.getYear());
-            //                                      html += 'Updated ' + startDateString + '</a><br />';
-            //                                  }
-
-
-
-            html += "<div style='clear:both'></div></li>";
-        });
-        html += "</ul>";
-
-        // TO DO: Add a variable to show theses
-        //html += "<div class='fbDetails button button-grey button-sm' style='margin:10px 10px 10px 0'>Expand Posts</div>";
-        //html += "<div class='fbShrink button button-grey button-sm' style='display:none; margin:10px 10px 10px 0'>Shrink Posts</div>";
-
-        //Animate - Fuzzy text with IE8
-        //                              $('.newsfeed').animate({ opacity: 0 }, 500, function () {
-
-        //                                  $('.newsfeed').html(html);
-
-        //                              });
-
-        //                              $('.newsfeed').animate({ opacity: 1 }, 500);
-
-        // Temp, no animation
-
-        //$('.newsfeed').html(html); // Overwrites
-        $('.newsfeed').append(html);
-
-    });
-
-
+	    
+		$('.newsfeed').append(html);
+	});
 
 };
 /*
@@ -515,7 +391,7 @@ $(document).ready(function () {
             //fbFolder = 'RethinkAtlanta';
             //fbFolder = 'GrantParkGPNA';
             // fbFolder = 'Test.Goverment.Page.1751330211762252';
-            fbFolder = 'southeast.atlanta';
+            // fbFolder = 'southeast.atlanta';
             // fbFolder = 'Atlanta-City-Council-Member-Carla-Smith-285182178269780';
             // fbFolder = '285182178269780';
             // actor_id = '';
@@ -523,8 +399,11 @@ $(document).ready(function () {
             
             //fbFolder = 'georgiastateparks';
             //fbFolder = 'GlenwoodParkAtlanta';
+            fbFolder = 'GlenwoodParkAtlanta';
+            fbAdminID = '291472227559838';
             fbFetch(token); // Access token from Neighborhood App.
-            admin_actor_id_class = ".129055803796451";
+            admin_actor_id_class = ".291472227559838";
+            
             
             
             $("#loadMoreFbFeeds").click(function() {
@@ -563,3 +442,18 @@ function goPage(page,e) {
 }
 
 
+function formatFBTime(fbDate) {
+	// For Explorer 8 and Firefox 3
+	var arrDateTime = fbDate.split("T");
+	var arrDateCode = arrDateTime[0].split("-");
+	var strTimeCode = arrDateTime[1].substring(0, arrDateTime[1].indexOf("+"));
+	var arrTimeCode = strTimeCode.split(":");
+	var valid_date = new Date()
+	valid_date.setUTCFullYear(arrDateCode[0]);
+	valid_date.setUTCMonth(arrDateCode[1] - 1);
+	valid_date.setUTCDate(arrDateCode[2]);
+	valid_date.setUTCHours(arrTimeCode[0]);
+	valid_date.setUTCMinutes(arrTimeCode[1]);
+	valid_date.setUTCSeconds(arrTimeCode[2]);
+	return valid_date;
+}
